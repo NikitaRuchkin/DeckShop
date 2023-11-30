@@ -1,0 +1,64 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+  padding: 24px 0;
+  //margin-top: 128px;
+  border-top: 1px solid rgba(5, 32, 85, 0.40);
+}
+
+.routesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marginBottom {
+  margin-bottom: 24px;
+}
+
+.routes {
+  display: flex;
+  align-items: center;
+}
+
+.routesLink {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  color: #052055;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  cursor: pointer;
+}
+
+.privacy {
+  cursor: pointer;
+  color: rgba(5, 32, 85, 0.70);
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  margin-right: 24px;
+  text-decoration-line: underline;
+}
+
+.privacyShop {
+  cursor: pointer;
+  color: rgba(5, 32, 85, 0.70);
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  text-decoration-line: none;
+}
+
+.logo {
+  background: url("../../assets/img/Logo.svg");
+  width: 44px;
+  height: 32px;
+}

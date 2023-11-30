@@ -1,0 +1,101 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+  padding-top: 56px;
+}
+
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexBoxDefault {
+  display: flex;
+}
+
+.info {
+  &__text {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 32px;
+    width: 640px;
+    height: 640px;
+    &__info {
+      color: #052055;
+      font-family: var(--font-TTInterfaces);
+      font-size: 72px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 115%;
+      margin-bottom: 42px;
+    }
+    &__span {
+      color: #052055;
+      font-family: var(--font-TTInterfaces);
+      font-size: 72px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 115%;
+      border-bottom: 4px solid #052055;
+    }
+  }
+  &__img {
+    width: 704px;
+    height: 704px;
+    flex-shrink: 0;
+    border-radius: 24px;
+  }
+}
+
+.materialsLinks {
+  margin-bottom: 56px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.itemLink {
+  border-radius: 16px;
+  flex-direction: column;
+  background: #F2F5FA;
+  display: flex;
+  align-items: baseline;
+  white-space: pre;
+  cursor: pointer;
+  width: 152px;
+  height: 200px;
+  padding: 24px;
+  justify-content: space-between;
+  align-self: stretch;
+  transition: ease-out  300ms;
+  &__text {
+    color: #000D25;
+    font-family: var(--font-TTInterfaces);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    position: relative;
+  }
+}
+
+
+.cardInfo {
+  color: #052055;
+  font-family: var(--font-TTInterfaces);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 16px;
+  z-index: 1;
+}
+
+.btnMargin {
+  margin-right: 16px;
+}

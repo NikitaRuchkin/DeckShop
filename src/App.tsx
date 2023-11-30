@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/Header'
+import Footer from "./components/footer/Footer";
+import CompanyInfo from "./components/CompanyInfo/CompanyInfo";
+import Motivation from "./components/Motivation/Motivation";
+import Banner from "./components/banner/Banner";
+import CarouselComponent from "./components/carousel/CarouselComponent";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='Header'>
+          <Header />
+      </div>
+      <CompanyInfo/>
+      <Motivation/>
+        <CarouselComponent special='Wood materials' title='Decking products, wood, lumber'/>
+        <CarouselComponent special='Deck accessories' title='Fasteners, railings, other accessories'/>
+        <CarouselComponent special='Lighting accessories' title='LEDs, hubs, controllers & more'/>
+      <Banner/>
+      <Footer/>
     </div>
   );
 }

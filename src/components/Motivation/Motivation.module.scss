@@ -1,0 +1,61 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: auto;
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+
+.howWeStand {
+  display: inline-flex;
+  padding: 4px 16px;
+  align-items: center;
+  gap: 16px;
+  border-radius: 24px;
+  background: rgba(10, 65, 170, 0.08);
+  color: #0A41AA;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+}
+
+.text {
+  color: #052055;
+  font-family: var(--font-TTInterfaces);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+  margin: 16px 0 32px 0;
+}
+
+.cardBox {
+  display: flex;
+  justify-content: space-between;
+  &__card {
+    background: #fff;
+    display: flex;
+    width: 400px;
+    border-radius: 24px;
+    height: 232px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    transition: ease-out  300ms;
+  }
+  &__text {
+    color: #052055;
+    font-family: var(--font-TTInterfaces);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+}
+
+.image {
+  font-size: 72px;
+}

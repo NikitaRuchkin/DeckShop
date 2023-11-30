@@ -1,0 +1,47 @@
+.card {
+  width: 344px;
+  height: 424px;
+  box-sizing: border-box;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 24px;
+  background: #FFF;
+  &__info {
+    padding: 16px;
+  }
+  &__textGray {
+    color: rgba(5, 32, 85, 0.50);
+    font-family: var(--font-TTInterfaces);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    text-align: left;
+  }
+  &__textBlue {
+    color: #052055;
+    font-family: var(--font-TTInterfaces);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: left;
+  }
+  &__price {
+    color: var(--text-accent, #052055);
+    font-family: var(--font-TTInterfaces);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: left;
+    margin: 16px 0;
+  }
+}
+
+.image {
+  text-align: left;
+}
