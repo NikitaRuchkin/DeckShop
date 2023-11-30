@@ -20,6 +20,9 @@
     font-weight: 600;
     line-height: 150%;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__textBlue {
     color: #052055;
@@ -29,6 +32,9 @@
     font-weight: 500;
     line-height: 150%;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__price {
     color: var(--text-accent, #052055);
@@ -44,4 +50,55 @@
 
 .image {
   text-align: left;
+}
+
+.arrow {
+  display: flex;
+  width: 56px;
+  height: 32px;
+  padding: 8px 0;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 16px;
+  border: 1px solid var(--function-white-30, rgba(255, 255, 255, 0.30));
+  background: var(--function-black-60, rgba(0, 0, 0, 0.60));
+  &__left_position {
+    position: absolute;
+    right: 16px;
+    z-index: 3;
+    bottom: 16px;
+  }
+  &__right_position {
+    position: absolute;
+    left: 16px;
+    z-index: 3;
+    bottom: 14px;
+  }
+  &__left {
+    font-size: 16px;
+    transform: rotate(180deg);
+    color: #fff;
+  }
+  &__right {
+    font-size: 16px;
+    color: #fff;
+  }
+}
+
+.carouselProp {
+  width: 328px;
+  height: 216px;
+  box-sizing: border-box;
+  position: relative;
+  .carousel__element {
+    width: 328px;
+    height: 216px;
+    position: relative;
+    border-radius: 16px;
+  }
+}
+
+.arrowHidden {
+  display: none;
 }

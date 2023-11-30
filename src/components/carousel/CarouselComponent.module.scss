@@ -65,10 +65,10 @@
   border-radius: 32px;
   border: 1.5px solid var(--function-element-blue, #0038A5);
   position: absolute;
-  right: 0;
+  right: 64px;
   top: -49px;
   &__left_position {
-    right: 64px;
+    right: 0;
   }
   &__left {
     font-size: 16px;
@@ -89,6 +89,7 @@
 
 .card_carousel {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 16px;
   margin-top: 32px;
 }

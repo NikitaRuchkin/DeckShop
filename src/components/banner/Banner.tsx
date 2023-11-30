@@ -18,7 +18,7 @@ function Banner() {
     return (
         <div className={styles.mainContainer}>
             {data.map(
-                (item)=> <div className={styles.banner}>
+                (item, index)=> <div className={styles.banner} key={index}>
                     <div className={styles.banner__special}>{item.special}</div>
                     <div className={styles.banner__text}>{item.text}</div>
                     <div className={cn(styles.banner__arrow, 'icon-arrow-top-right')}/>

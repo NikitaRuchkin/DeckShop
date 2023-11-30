@@ -122,3 +122,26 @@ body {
 .carousel.carousel-slider {
   overflow: visible !important;
 }
+
+.carousel .carousel-status {
+  position: absolute;
+  right: 124px !important;
+  top: unset !important;
+  bottom: 0 !important;
+  box-sizing: border-box !important;
+
+  font-family: var(--font-inter) !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 170% !important; /* 23.8px */
+  letter-spacing: 0.07px !important;
+  display: flex !important;
+  width: 66px !important;
+  padding: 4px 16px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.30) !important;
+  background: rgba(0, 0, 0, 0.60) !important;
+}
