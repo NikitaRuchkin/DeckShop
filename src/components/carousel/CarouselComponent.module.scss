@@ -53,6 +53,11 @@
   box-sizing: border-box;
   align-items: center;
   margin-bottom: 16px;
+  transition: linear 250ms;
+  cursor: pointer;
+  &:hover {
+    background: #0F61FF;
+  }
 }
 
 .arrow {
@@ -67,17 +72,28 @@
   position: absolute;
   right: 64px;
   top: -49px;
+  color: #0038A5;
+  transition: linear 150ms;
+  &:hover {
+    background: #0038A5;
+    .arrow__right {
+      transition: linear 150ms;
+      color: #fff;
+    }
+    .arrow__left {
+      transition: linear 150ms;
+      color: #fff;
+    }
+  }
   &__left_position {
     right: 0;
   }
   &__left {
     font-size: 16px;
     transform: rotate(180deg);
-    color: #0038A5;
   }
   &__right {
     font-size: 16px;
-    color: #0038A5;
   }
 }
 

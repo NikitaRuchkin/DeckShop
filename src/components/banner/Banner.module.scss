@@ -17,6 +17,15 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  transition: linear 250ms;
+
+  &:hover {
+    background: #0F54DA;
+    .image {
+      transform: scale(1.06);
+      transition: linear 250ms;
+    }
+  }
   &__text {
     margin: 32px 0 36px 0;
     color: var(--miscellaneous-white, #FFF);

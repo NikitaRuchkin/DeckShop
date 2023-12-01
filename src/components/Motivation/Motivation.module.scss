@@ -44,7 +44,15 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-shrink: 0;
-    transition: ease-out  300ms;
+    transition: linear 250ms;
+    &:hover {
+      background: #0038A5;
+      color: #fff !important;
+      .cardBox__text {
+        transition: linear 250ms;
+        color: #fff !important;
+      }
+    }
   }
   &__text {
     color: #052055;

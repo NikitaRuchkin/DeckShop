@@ -11,12 +11,22 @@
   background: #0038A5;
   color: #052055;
   padding: 8px 12px 8px 16px;
+  transition: linear 150ms;
+  &:hover {
+    background: #E7EEFC;
+    color: #0F54DA;
+  }
 }
 
 .main__withOutImage {
   background: #fff;
   padding: 8px 16px;
   color: #052055;
+  transition: linear 150ms;
+  &:hover {
+    background: #E7EEFC;
+    color: #0F54DA;
+  }
 }
 
 .text {

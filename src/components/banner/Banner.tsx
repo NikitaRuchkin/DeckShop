@@ -1,5 +1,6 @@
 import styles from './Banner.module.scss'
 import cn from 'clsx'
+import {useState} from "react";
 
 const data = [
     {
@@ -15,10 +16,14 @@ const data = [
 ]
 
 function Banner() {
+    const [scale, setScale] = useState<number>(-1)
     return (
         <div className={styles.mainContainer}>
             {data.map(
-                (item, index)=> <div className={styles.banner} key={index}>
+                (item, index)=> <div className={styles.banner} key={index}
+                                     onMouseEnter={()=> setScale(index)}
+                                     onMouseLeave={()=> setScale(-1)}
+                >
                     <div className={styles.banner__special}>{item.special}</div>
                     <div className={styles.banner__text}>{item.text}</div>
                     <div className={cn(styles.banner__arrow, 'icon-arrow-top-right')}/>

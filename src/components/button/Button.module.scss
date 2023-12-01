@@ -10,15 +10,24 @@
 
 .main__blue {
   background: #0038A5;
-  color: #fff !important;
+  color: #fff;
   padding: 12px 18px 12px 24px;
+  transition: linear 100ms;
+  &:hover {
+    background: #0F61FF;
+  }
 }
 
 .main__white {
   background: #fff;
   padding: 11px 18px 11px 24px;
-  color: #0038A5 !important;
+  color: #0038A5;
   border: 1.5px solid #0038A5;
+  transition: linear 100ms;
+  &:hover {
+    background: #0038A5;
+    color: #fff;
+  }
 }
 
 .text {
@@ -41,4 +50,3 @@
 .imagePadding {
   padding: 16px 16px;
 }
-
