@@ -33,6 +33,22 @@
 .cardBox {
   display: flex;
   justify-content: space-between;
+  &__line {
+    opacity: 0;
+    color: var(--miscellaneous-white, #FFF);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.08px;
+    width: 400px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.75);
+    transition: linear 250ms;
+    transition-delay: 300ms;
+  }
   &__card {
     background: #fff;
     display: flex;
@@ -49,8 +65,10 @@
       background: #0038A5;
       color: #fff !important;
       .cardBox__text {
-        transition: linear 250ms;
         color: #fff !important;
+      }
+      .cardBox__line {
+        opacity: 1;
       }
     }
   }
@@ -66,4 +84,8 @@
 
 .image {
   font-size: 72px;
+}
+
+.cardBox__text {
+  transition: linear 250ms;
 }

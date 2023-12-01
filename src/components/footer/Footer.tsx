@@ -1,6 +1,5 @@
 import styles from './Footer.module.scss'
 import cn from 'clsx'
-import Logo from '../../assets/img/Logo.svg'
 
 const routes = [
     {
@@ -26,7 +25,7 @@ export default function Footer () {
                     (item, index)=> <div key={index} className={styles.routesLink}>{item.title}</div>
                 )}
             </div>
-            <div className={styles.routesLink}>Toronto, Canada</div>
+            <div className={styles.city}>Toronto, Canada</div>
         </div>
         <div className={styles.routesContainer}>
             <div>

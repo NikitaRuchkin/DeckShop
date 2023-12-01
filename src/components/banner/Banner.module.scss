@@ -22,8 +22,7 @@
   &:hover {
     background: #0F54DA;
     .image {
-      transform: scale(1.06);
-      transition: linear 250ms;
+      transform: scale(1.06) translate(-3px, -5px);
     }
   }
   &__text {
@@ -65,4 +64,5 @@
   position: absolute;
   left: 507px;
   top: -9%;
+  transition: linear 250ms;
 }

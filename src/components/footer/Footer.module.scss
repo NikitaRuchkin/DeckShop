@@ -2,7 +2,6 @@
   max-width: 1424px;
   margin: 0 auto;
   padding: 24px 0;
-  //margin-top: 128px;
   border-top: 1px solid rgba(5, 32, 85, 0.40);
 }
 
@@ -22,6 +21,23 @@
 }
 
 .routesLink {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  color: #052055;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  cursor: pointer;
+  transition: linear 250ms;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.city {
   display: flex;
   align-items: center;
   margin-left: 24px;
