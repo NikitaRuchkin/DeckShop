@@ -1,0 +1,76 @@
+.card {
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  &__title {
+    color: #052055;
+    font-family: var(--font-TTInterfaces);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin: 24px 0 32px 0;
+  }
+  &__info {
+    cursor: pointer;
+    box-sizing: border-box;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    width: 344px;
+    height: 208px;
+    padding: 24px;
+    align-items: center;
+    gap: 32px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: var(--Miscellaneous-White, #FFF);
+    &:hover .card__text {
+      color: var(--Function-Element-Blue, #0038A5);
+      background: var(--Function-Badge-Background, #E7EEFC);
+    }
+    &:hover .card__arrow {
+      display: block;
+      opacity: 1;
+    }
+  }
+  &__text {
+    border-radius: 24px;
+    color: var(--Text-Accent, #052055);
+    text-align: center;
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.08px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: linear 150ms;
+  }
+  &__icon {
+    margin-top: 16px;
+    width: 248px;
+    height: 56px;
+  }
+  &_flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__arrow {
+    display: none;
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    color: #0038A5;
+    transition: linear 250ms;
+  }
+}

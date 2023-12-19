@@ -6,7 +6,7 @@ import {ButtonType} from "../../shared/types/ButtonTypes";
 
 export default function Header() {
     return (
-        <header>
+        <header className={styles.header}>
             <div className={styles.mainContainer}>
                 <div className={styles.main}>
                     <div className={cn(styles.flexBox, styles.flexBasis)}>

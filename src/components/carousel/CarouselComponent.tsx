@@ -4,21 +4,22 @@ import { Carousel } from 'react-responsive-carousel';
 import cn from 'clsx'
 import Card from "../card/Card";
 import { Key } from "react";
+import Badge from "../badge/Badge";
+import BadgeSecondary from "../badgeSecondary/BadgeSecondary";
 
 interface IPropCarousel {
     special?: string;
     title?: string;
     products?: any[];
+    badgeSecondary?: boolean;
 }
 
-function CarouselComponent({special, title, products}: IPropCarousel) {
+function CarouselComponent({special, title, products, badgeSecondary = false}: IPropCarousel) {
     return (
         <div className={styles.mainContainer}>
             <div className={styles.carouselContainer}>
-                {special && <div className={styles.specialContainer}>
-                    <div className={styles.carousel__special}>{special}</div>
-                    <div className={cn(styles.carousel__special_arrow, 'icon-arrow-top-right')}/>
-                </div>}
+                {special && !badgeSecondary && <Badge text={special} icon={'icon-arrow-top-right'}/>}
+                {special && badgeSecondary && <div className={styles.BadgeSecondary}><BadgeSecondary text={special}/></div>}
                 {title && <div className={styles.carousel__title}>{title}</div>}
                 <Carousel showStatus={false} showIndicators={false}
                           stopOnHover={true}

@@ -1,0 +1,53 @@
+.main {
+  border-radius: 16px;
+  background: #E9E9E9;
+  display: inline-flex;
+  justify-content: left;
+  padding: 4px 16px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.house {
+  font-size: 16px;
+  text-decoration: none;
+  &:visited {
+    color: var(--Text-Body, #2A416E);
+  }
+  &:active {
+    color: var(--Text-Body, #2A416E);
+  }
+}
+
+.arrowRight {
+  font-size: 16px;
+  margin: 0 6px;
+  color: rgba(5, 32, 85, 0.5);
+}
+
+.linkComponent {
+  display: flex;
+  align-items: center;
+}
+
+.linkText {
+  color: var(--Text-Body, #2A416E);
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  letter-spacing: 0.07px;
+  text-decoration: none;
+  &:visited {
+    color: var(--Text-Body, #2A416E);
+  }
+  &:active {
+    color: var(--Text-Body, #2A416E);
+  }
+}
+
+.linkTextBold {
+  color: var(--Text-Accent, #052055);
+  font-weight: 500;
+}

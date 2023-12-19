@@ -1,0 +1,32 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+}
+
+.category {
+  margin-top: 56px;
+  &__box {
+    margin-bottom: 128px;
+  }
+  &__title {
+    color: var(--Text-Accent, #052055);
+    font-family: var(--font-TTInterfaces);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    padding-top: 24px;
+  }
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  &__cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,52 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+}
+
+.errorPage {
+  margin-top: 56px;
+}
+
+.code {
+  color: var(--Function-Action-Hover, #0F61FF);
+  font-family: var(--font-TTInterfaces);
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 115%;
+  margin-bottom: 8px;
+}
+
+.text {
+  color: var(--Text-Accent, #052055);
+  font-family: var(--font-TTInterfaces);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+  display: flex;
+  width: 584px;
+  height: 104px;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.textSmall {
+  color: var(--Text-Body, #2A416E);
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.08px;
+  margin-bottom: 32px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.btnMargin {
+  margin-left: 16px;
+}

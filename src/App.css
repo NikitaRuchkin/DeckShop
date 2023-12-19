@@ -1,11 +1,3 @@
-.Header {
-  height: 82px;
-}
-
-body {
-  background: #F5F5F5;
-}
-
 @font-face {
   font-family: 'TT Interfaces';
   src: url('fonts/TTInterfaces-Thin.ttf');
@@ -145,4 +137,27 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.30) !important;
   text-shadow: none !important;
   background: rgba(0, 0, 0, 0.60) !important;
+}
+
+.Header {
+  height: 82px;
+}
+
+body {
+  background: #F5F5F5;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+#root {
+  height: 100%;
 }

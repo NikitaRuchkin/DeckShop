@@ -1,29 +1,55 @@
-import React, {useState} from 'react';
 import './App.css';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
 import Header from './components/header/Header'
 import Footer from "./components/footer/Footer";
-import CompanyInfo from "./components/CompanyInfo/CompanyInfo";
-import Motivation from "./components/Motivation/Motivation";
-import Banner from "./components/banner/Banner";
-import CarouselComponent from "./components/carousel/CarouselComponent";
-import {data, preparedData} from './components/carousel/data'
+import HomePage from "./pages/HomePage/HomePage";
+import Catalog from "./pages/Catalog/Catalog";
+import Category from "./pages/Category/Category";
+import Product from "./pages/Product/Product";
+import Error from "./pages/Error/Error";
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        errorElement: <Error />,
+        element: <HomePage />,
+    },
+    {
+        path: "/catalog",
+        errorElement: <Error />,
+        element: <Catalog />,
+    },
+    {
+        path: "/catalog/category",
+        errorElement: <Error />,
+        element: <Category />,
+    },
+    {
+        path: "/catalog/category/product",
+        errorElement: <Error />,
+        element: <Product />,
+    },
+    {
+        path: "/404",
+        errorElement: <Error />,
+        element: <Error />,
+    },
+]);
 
 function App() {
-    const [products] = useState<any[]>(preparedData(data))
   return (
-    <div className="App">
-      <div className='Header'>
-          <Header />
-      </div>
-      <CompanyInfo/>
-      <Motivation/>
-      <CarouselComponent special='Wood materials' title='Decking products, wood, lumber' products={products}/>
-      <CarouselComponent special='Deck accessories' title='Fasteners, railings, other accessories' products={products}/>
-      <CarouselComponent special='Lighting accessories' title='LEDs, hubs, controllers & more' products={products}/>
-      <Banner/>
-      <Footer/>
-    </div>
+        <div className="App">
+          <div className='Header'>
+              <Header />
+          </div>
+          <div className='main'>
+            <RouterProvider router={router} />
+          </div>
+          <Footer/>
+        </div>
   );
 }
 
