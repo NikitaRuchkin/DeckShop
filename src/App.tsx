@@ -10,6 +10,7 @@ import Catalog from "./pages/Catalog/Catalog";
 import Category from "./pages/Category/Category";
 import Product from "./pages/Product/Product";
 import Error from "./pages/Error/Error";
+import Cart from "./pages/Cart/Cart";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
         path: "/catalog/category/product",
         errorElement: <Error />,
         element: <Product />,
+    },
+    {
+      path: "/cart",
+      errorElement: <Error />,
+      element: <Cart />,
     },
     {
         path: "/404",

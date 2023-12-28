@@ -1,0 +1,24 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #052055;
+  font-family: var(--font-TTInterfaces);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  margin-top: 56px;
+  margin-bottom: 32px;
+}
+
+.cartBox {
+  margin-bottom: 16px;
+}
+
+.containerContent {
+  display: flex;
+  justify-content: space-between;
+}
