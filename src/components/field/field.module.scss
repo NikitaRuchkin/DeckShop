@@ -1,0 +1,37 @@
+.field {
+  color: var(--Text-Accent, #052055);
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-family: var(--font-inter);
+  font-weight: 400;
+  line-height: 150%;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  letter-spacing: -0.08px;
+  border-radius: 24px;
+  border: 1px solid var(--text-accent-50, rgba(5, 32, 85, 0.50));
+  &:focus-visible {
+    outline: none;
+  }
+  &:hover {
+    border: 1.5px solid var(--Function-Action-Hover, #0F61FF);
+  }
+  &::placeHolder {
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: rgba(5, 32, 85, 0.50);
+  }
+  &__title {
+    color: var(--Text-Accent, #052055);
+    font-family: var(--font-TTInterfaces);
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+}

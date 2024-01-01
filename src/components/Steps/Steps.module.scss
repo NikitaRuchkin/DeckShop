@@ -1,0 +1,75 @@
+.checkout {
+  width: 344px;
+  height: 400px;
+  box-sizing: border-box;
+  padding: 24px;
+  border-radius: 24px;
+  background: #000D25;
+  overflow: hidden;
+  position: relative;
+  &__text {
+    color: #FFF;
+    font-family: var(--font-TTInterfaces);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin-bottom: 32px;
+  }
+  &__stepFlex {
+    display: flex;
+    align-items: center;
+  }
+  &__stepNumberContainer {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 24px;
+    border: 1px solid #FFF;
+    background: #FFF;
+  }
+  &__stepNumberContainerEmpty {
+    background: transparent;
+  }
+  &__stepNumber {
+    color: #052055;
+    text-align: center;
+    font-family: var(--font-TTInterfaces);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  &__stepNumberWhite {
+    color: #fff;
+  }
+  &__stepText {
+    color: #FFF;
+    text-align: center;
+    font-family: var(--font-TTInterfaces);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin-left: 16px;
+  }
+}
+
+.line {
+  width: 2px;
+  height: 72px;
+  background: #fff;
+  margin-left: 24px;
+}
+
+.bgIcon {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.10);
+  font-size: 314px;
+  top: 175px;
+  left: 223px;
+}

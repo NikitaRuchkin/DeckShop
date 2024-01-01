@@ -11,6 +11,9 @@ import Category from "./pages/Category/Category";
 import Product from "./pages/Product/Product";
 import Error from "./pages/Error/Error";
 import Cart from "./pages/Cart/Cart";
+import CheckoutFirst from "./pages/CheckoutFirst/CheckoutFirst";
+import CheckoutSecond from "./pages/CheckoutSecond/CheckoutSecond";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 
 const router = createBrowserRouter([
     {
@@ -39,9 +42,24 @@ const router = createBrowserRouter([
       element: <Cart />,
     },
     {
-        path: "/404",
-        errorElement: <Error />,
-        element: <Error />,
+      path: "/checkoutFirst",
+      errorElement: <Error />,
+      element: <CheckoutFirst />,
+    },
+    {
+      path: "/checkoutSecond",
+      errorElement: <Error />,
+      element: <CheckoutSecond />,
+    },
+    {
+      path: "/createAccount",
+      errorElement: <Error />,
+      element: <CreateAccount />,
+    },
+    {
+      path: "/404",
+      errorElement: <Error />,
+      element: <Error />,
     },
 ]);
 

@@ -1,6 +1,10 @@
 import styles from './CartMini.module.scss'
 import defaultImage from '../../assets/imgPng/5.png'
 
+interface IProp {
+  extended?: boolean;
+}
+
 const data = [
   {
     img: '',
@@ -16,7 +20,7 @@ const data = [
   },
 ]
 
-export default function CartMini() {
+export default function CartMini({extended = false}: IProp) {
   return <div className={styles.mainContainer}>
     <div className={styles.cartMini__title}>Order summary</div>
     <div className={styles.cartItemBox}>
@@ -33,8 +37,22 @@ export default function CartMini() {
           </div>
       )}
     </div>
+    {extended && <div className={styles.extendedContainer}>
+        <div className={styles.extendedContainer__totalContainer}>
+            <div className={styles.extendedContainer__text}>Subtotal</div>
+            <div className={styles.extendedContainer__price}>$198.00</div>
+        </div>
+        <div className={styles.extendedContainer__totalContainerMargins}>
+            <div className={styles.extendedContainer__text}>Shipping & Handling</div>
+            <div className={styles.extendedContainer__price}>$15.00</div>
+        </div>
+        <div className={styles.extendedContainer__totalContainer}>
+            <div className={styles.extendedContainer__text}>Tax</div>
+            <div className={styles.extendedContainer__price}>$39.00</div>
+        </div>
+    </div>}
     <div className={styles.cartSubtotal}>
-      <div className={styles.cartSubtotal__text}>Order subtotal</div>
+      <div className={styles.cartSubtotal__text}>{extended? 'Grand total':'Order subtotal'}</div>
       <div className={styles.cartSubtotal__price}>$198.00</div>
     </div>
   </div>
