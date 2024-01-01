@@ -14,6 +14,7 @@ import Cart from "./pages/Cart/Cart";
 import CheckoutFirst from "./pages/CheckoutFirst/CheckoutFirst";
 import CheckoutSecond from "./pages/CheckoutSecond/CheckoutSecond";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import Account from "./pages/Account/Account";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
       path: "/createAccount",
       errorElement: <Error />,
       element: <CreateAccount />,
+    },
+    {
+      path: "/account",
+      errorElement: <Error />,
+      element: <Account />,
     },
     {
       path: "/404",
