@@ -1,5 +1,4 @@
 import styles from './Support.module.scss'
-import cn from 'clsx'
 import SupportInfo from "../../components/SupportInfo/SupportInfo";
 import SupportAnswers from "../../components/SupportAnswers/SupportAnswers";
 import SupportQuestion from "../../components/SupportQuestion/SupportQuestion";

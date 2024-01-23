@@ -1,6 +1,5 @@
 import cn from 'clsx'
 import styles from './ButtonPrimary.module.scss'
-import {ButtonType} from "../../shared/types/ButtonTypes";
 import {Link} from "react-router-dom";
 
 interface IButtonProps {
