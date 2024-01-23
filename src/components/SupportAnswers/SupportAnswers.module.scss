@@ -1,0 +1,18 @@
+.supportAnswers {
+  margin: 128px 0;
+  &__title {
+    color: var(--Text-Accent, #052055);
+    font-family: var(--font-TTInterfaces);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+    padding: 16px 0 32px 0;
+  }
+  &__banners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 128px;
+  }
+}

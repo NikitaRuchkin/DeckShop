@@ -1,0 +1,36 @@
+.status {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 170%;
+  letter-spacing: 0.07px;
+  border-radius: 24px;
+  display: flex;
+  width: 104px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.delivery {
+  border: 1.5px solid var(--Function-Element-Blue, #0038A5);
+  color: #0038A5;
+}
+
+.delivered {
+  border: 1.5px solid var(--Function-Element-Blue, #139E00);
+  color: #139E00;
+}
+
+.pending {
+  border: 1.5px solid var(--Function-Element-Blue, #EA8B00);
+  color: #EA8B00;
+}
+
+.cancelled {
+  border: 1.5px solid var(--Function-Element-Blue, #E25555);
+  color: #E25555;
+}

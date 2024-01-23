@@ -69,7 +69,7 @@ function Card({images, name, secondName, price}: IPropCard) {
                 <div className={styles.card__textGray}>{secondName}</div>
                 <div className={styles.card__textBlue}>{name}</div>
                 <div className={styles.card__price}>${price}</div>
-                <div className={styles.image}><Button type={ButtonType.Blue} imageClassName={'icon-cart'} heightImage={16}/> </div>
+                <div className={styles.image}><Button type={ButtonType.Blue} imageClassName={'icon-cart'} fontSize={16}/> </div>
             </div>
         </div>
         </div>

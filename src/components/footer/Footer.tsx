@@ -1,18 +1,19 @@
 import styles from './Footer.module.scss'
 import cn from 'clsx'
+import {Link} from "react-router-dom";
 
 const routes = [
     {
         title: 'Home',
-        url: '',
+        url: '/',
     },
     {
         title: 'Catalog',
-        url: '',
+        url: '/catalog',
     },
     {
         title: 'Support',
-        url: '',
+        url: '/support',
     },
 ]
 
@@ -22,7 +23,7 @@ export default function Footer () {
             <div className={styles.routes}>
                 <div className={styles.logo}/>
                 {routes.map(
-                    (item, index)=> <div key={index} className={styles.routesLink}>{item.title}</div>
+                    (item, index)=> <Link to={item.url} key={index} className={styles.routesLink}>{item.title}</Link>
                 )}
             </div>
             <div className={styles.city}>Toronto, Canada</div>

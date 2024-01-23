@@ -1,0 +1,27 @@
+.mainContainer {
+  display: inline-flex;
+  padding: 4px 16px;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+  border-radius: 24px;
+}
+
+.text {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  letter-spacing: 0.07px;
+}
+
+.blue {
+  background: var(--Function-Badge-Background, #E7EEFC);
+  color: var(--Function-Element-Blue, #0038A5);
+}
+
+.black {
+  background: var(--function-white-10, rgba(255, 255, 255, 0.10));
+  color: var(--Miscellaneous-White, #FFF);
+}

@@ -1,0 +1,32 @@
+.mainContainer {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid var(--Text-Body, #2A416E);
+  &:hover {
+    border: 2px solid var(--Function-Action-Hover, #0F61FF) !important;
+  }
+  &::before {
+    border: 2px solid var(--Function-Action-Hover, #0F61FF) !important;
+  }
+}
+
+.custom-check-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #50514f;
+  margin-right: 8px;
+}
+
+.custom-check-icon::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #9b7ede;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

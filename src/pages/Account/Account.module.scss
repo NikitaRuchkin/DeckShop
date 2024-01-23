@@ -25,6 +25,9 @@
   }
   &__routes {
     display: flex;
-    justify-content: space-between;
+    &__marginLeft {
+      margin-left: 16px;
+      width: 100%;
+    }
   }
 }

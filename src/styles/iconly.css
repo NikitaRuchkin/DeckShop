@@ -7,8 +7,8 @@
   font-family: "Iconly";
   font-style: normal;
   font-weight: 400;
-  src: url("./iconly.eot?1702564179590");
-  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1702564179590") format("woff2"), url("./iconly.woff?1702564179590") format("woff"), url("./iconly.ttf?1702564179590") format("truetype"), url("./iconly.svg?1702564179590#Iconly") format("svg");
+  src: url("./iconly.eot?1706051109050");
+  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1706051109050") format("woff2"), url("./iconly.woff?1706051109050") format("woff"), url("./iconly.ttf?1706051109050") format("truetype"), url("./iconly.svg?1706051109050#Iconly") format("svg");
 }
 
 [class="icon"], [class^="icon-"], [class*=" icon-"] {
@@ -211,7 +211,7 @@
   content: "\e02e";
 }
 
-.icon-chevron-bottom-2:before {
+.icon-redo:before {
   content: "\e02f";
 }
 
@@ -223,7 +223,7 @@
   content: "\e031";
 }
 
-.icon-cart-2:before {
+.icon-log-out:before {
   content: "\e032";
 }
 
@@ -243,11 +243,11 @@
   content: "\e036";
 }
 
-.icon-arrow-top-right-2:before {
+.icon-envelope:before {
   content: "\e037";
 }
 
-.icon-arrow-right-2:before {
+.icon-address:before {
   content: "\e038";
 }
 
@@ -257,4 +257,12 @@
 
 .icon-a-z:before {
   content: "\e03a";
+}
+
+.icon-2-cards:before {
+  content: "\e03b";
+}
+
+.icon-shield:before {
+  content: "\e03c";
 }

@@ -1,6 +1,7 @@
 import styles from './Banner.module.scss'
 import cn from 'clsx'
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 const data = [
     {
@@ -20,7 +21,7 @@ function Banner() {
     return (
         <div className={styles.mainContainer}>
             {data.map(
-                (item, index)=> <div className={styles.banner} key={index}
+                (item, index)=> <Link to={'/catalog'} className={styles.banner} key={index}
                                      onMouseEnter={()=> setScale(index)}
                                      onMouseLeave={()=> setScale(-1)}
                 >
@@ -28,7 +29,7 @@ function Banner() {
                     <div className={styles.banner__text}>{item.text}</div>
                     <div className={cn(styles.banner__arrow, 'icon-arrow-top-right')}/>
                     <div className={cn(styles.image, `${item.img}`)}/>
-                </div>
+                </Link>
             )}
         </div>
     )

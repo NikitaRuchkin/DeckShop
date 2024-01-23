@@ -2,7 +2,7 @@
   max-width: 1424px;
   margin: 0 auto;
   padding: 24px 0;
-  border-top: 1px solid rgba(5, 32, 85, 0.40);
+  border-top: 1px solid #C0C7D4;
   width: 100%;
 }
 
@@ -33,7 +33,9 @@
   line-height: 150%;
   cursor: pointer;
   transition: linear 250ms;
+  text-decoration: none;
   &:hover {
+    text-underline-offset: 4px;
     text-decoration: underline;
   }
 }
@@ -53,7 +55,7 @@
 
 .privacy {
   cursor: pointer;
-  color: rgba(5, 32, 85, 0.70);
+  color: #2A416E;
   font-family: var(--font-inter);
   font-size: 14px;
   font-style: normal;
@@ -61,11 +63,12 @@
   line-height: 150%; /* 21px */
   margin-right: 24px;
   text-decoration-line: underline;
+  text-underline-offset: 4px;
 }
 
 .privacyShop {
   cursor: pointer;
-  color: rgba(5, 32, 85, 0.70);
+  color: #2A416E;
   font-family: var(--font-inter);
   font-size: 14px;
   font-style: normal;

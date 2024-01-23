@@ -14,9 +14,9 @@ export default function Error() {
            </div>
            <div className={styles.textSmall}>Try using search or go to the home page and start your journey once again.</div>
            <div className={styles.buttons}>
-               <Button text={'To catalog'} imageClassName={'icon-arrow-right'} heightImage={16}/>
+               <Button text={'To catalog'} imageClassName={'icon-arrow-right'} fontSize={16} link={'/catalog'}/>
                <div className={styles.btnMargin}>
-                <Button text={'To home page'} imageClassName={'icon-house'} heightImage={16} type={ButtonType.White}/>
+                <Button text={'To home page'} imageClassName={'icon-house'} fontSize={16} type={ButtonType.White} link={'/'}/>
                </div>
            </div>
        </div>

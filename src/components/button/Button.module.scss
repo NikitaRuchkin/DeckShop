@@ -6,6 +6,7 @@
   flex-shrink: 0;
   border-radius: 24px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .main__blue {
@@ -19,10 +20,14 @@
 }
 
 .main__white {
-  background: #fff;
+  background: transparent;
   padding: 11px 18px 11px 24px;
   color: #0038A5;
   border: 1.5px solid #0038A5;
+  box-shadow: 0 0 0 0.5px #0038A5;
+  //height: 46px;
+  //box-sizing: border-box;
+  //todo problem with height
   transition: linear 100ms;
   &:hover {
     background: #0038A5;

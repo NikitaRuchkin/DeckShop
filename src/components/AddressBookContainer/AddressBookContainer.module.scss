@@ -1,0 +1,10 @@
+.address {
+  &__add {
+	color: rgba(5, 32, 85, 0.75);
+	font-family: var(--font-inter);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+  }
+}

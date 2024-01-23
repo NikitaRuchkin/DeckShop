@@ -161,3 +161,17 @@ body {
 #root {
   height: 100%;
 }
+
+.defaultContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+}
+
+.MuiTableCell-head {
+   color: #052055 !important;
+   font-family: var(--font-TTInterfaces) !important;
+   font-size: 16px !important;
+   font-style: normal !important;
+   font-weight: 500 !important;
+   line-height: 150% !important;
+ }
