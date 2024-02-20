@@ -1,9 +1,12 @@
 import cn from 'clsx'
 import styles from './AccountMenu.module.scss'
 import {Link, useLocation} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {deleteToken} from '../../store/reducers/user/UserReducer'
 
 export default function AccountMenu() {
   const location = useLocation()
+  const dispatch = useDispatch()
   // const checkCaps = (event: any) => {
   //   if (event.getModifierState("CapsLock")) {
   //     console.log('CAPS')
@@ -32,6 +35,10 @@ export default function AccountMenu() {
     <Link to={'/account/accountInfo'} className={styles.flexBox}>
       <div className={cn(styles.icon, location.pathname === '/account/accountInfo' && styles.textActive, 'icon-user-info')}/>
       <div className={cn(styles.text, location.pathname === '/account/accountInfo' && styles.textActive)}>Account information</div>
+    </Link>
+    <Link to={'/'} className={styles.flexBox} onClick={()=> dispatch(deleteToken())}>
+      <div className={cn(styles.icon, styles.textRed, 'icon-log-out')}/>
+      <div className={cn(styles.text, styles.textRed)}>Log out</div>
     </Link>
   </div>
 }

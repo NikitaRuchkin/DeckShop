@@ -1,0 +1,33 @@
+.StoredPaymentsMethod {
+  margin-bottom: 128px;
+  &__add {
+    color: rgba(5, 32, 85, 0.75);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+  &__iconTitle {
+    font-size: 24px;
+    color: rgba(0, 56, 165, 1);
+    margin-right: 8px;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    color: var(--Text-Accent, #052055);
+    font-family: var(--font-TTInterfaces);
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  &__middleWrapContainer {
+    margin: 16px 0;
+  }
+  &__addCardContainer {
+    margin-top: 16px;
+    margin-bottom: 128px;
+  }
+}

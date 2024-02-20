@@ -4,8 +4,10 @@ import React from "react";
 import {Route, Routes} from "react-router-dom";
 import AccountOverview from "../../components/AccountOverview/AccountOverview";
 import AddressBookContainer from "../../components/AddressBookContainer/AddressBookContainer";
+import AccountOrderHistory from "../../components/AccountOrderHistory/AccountOrderHistory";
+import StoredPaymentsMethod from "../../components/StoredPaymentsMethod/StoredPaymentsMethod";
+import AccountInformation from "../../components/AccountInformation/AccountInformation";
 
-//TODO check font-family of account__info (There was Arial Nova)
 export default function Account() {
   return <div className={styles.mainContainer}>
     <div className={styles.account__userName}>Good day, Igor!</div>
@@ -15,11 +17,10 @@ export default function Account() {
       <div className={styles.account__routes__marginLeft}>
         <Routes>
           <Route  path={'/'} element={<AccountOverview/>}/>
-          <Route  path={'/orderHistory'} element={<div>321</div>}/>
+          <Route  path={'/orderHistory'} element={<AccountOrderHistory/>}/>
           <Route  path={'/addressBook'} element={<AddressBookContainer/>}/>
-          {/*<Route  path={'/addressBook'} element={<CheckoutProcess step={1}/>}/>*/}
-          {/*<Route  path={'/addressBook'} element={<CheckoutProcess step={1}/>}/>*/}
-          {/*<Route  path={'/addressBook'} element={<CheckoutProcess step={1}/>}/>*/}
+          <Route  path={'/paymentMethod'} element={<StoredPaymentsMethod/>}/>
+          <Route  path={'/accountInfo'} element={<AccountInformation/>}/>
         </Routes>
       </div>
     </div>

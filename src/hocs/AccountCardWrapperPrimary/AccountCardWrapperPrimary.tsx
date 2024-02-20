@@ -5,13 +5,16 @@ import {ButtonType} from "../../shared/types/ButtonTypes";
 import Button from "../../components/button/Button";
 
 interface IProp {
-	title: string;
-	buttonText: string;
+	title: string | ReactElement;
+	buttonText?: string;
 	buttonIcon?: string;
 	buttonIconSize?: number;
 	buttonLink?: string;
 	children: ReactElement;
 	childrenTable?: boolean;
+	marginNone?: boolean;
+	classNameContainer?: string;
+	redButton?: boolean;
 }
 
 export default function AccountCardWrapperPrimary({
@@ -21,18 +24,28 @@ export default function AccountCardWrapperPrimary({
 																										buttonIcon,
 																										children,
 																										buttonIconSize,
-																										childrenTable = false
+																										childrenTable = false,
+																										marginNone = false,
+																										classNameContainer,
+																										redButton = false,
 	}:IProp) {
 
-	return <div className={styles.wrapper}>
+	return <div className={cn(styles.wrapper, classNameContainer && classNameContainer)}>
 		<div className={styles.wrapper__title}>
 			{title}
 		</div>
-		<div className={cn(childrenTable? styles.wrapper__childrenTable : styles.wrapper__children)}>{children}</div>
-		<div>
+		<div className={cn(childrenTable? styles.wrapper__childrenTable : styles.wrapper__children, marginNone && styles.wrapper__marginNone)}>{children}</div>
+		{buttonText && !redButton && <div>
 			<div className={styles.wrapper__btn}>
-				<Button text={buttonText} type={ButtonType.Blue} imageClassName={buttonIcon} fontSize={buttonIconSize} link={buttonLink}/>
+				<Button text={buttonText} type={ButtonType.Blue} imageClassName={buttonIcon} fontSize={buttonIconSize}
+								link={buttonLink}/>
 			</div>
-		</div>
+		</div>}
+		{buttonText && redButton && <div>
+        <div className={styles.wrapper__btn}>
+            <Button text={buttonText} type={ButtonType.Red} imageClassName={buttonIcon} fontSize={buttonIconSize}
+                    link={buttonLink}/>
+        </div>
+    </div>}
 	</div>
 }

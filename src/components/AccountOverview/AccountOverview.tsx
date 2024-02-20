@@ -7,9 +7,7 @@ import AccountCardWrapperPrimary from "../../hocs/AccountCardWrapperPrimary/Acco
 
 export default function AccountOverview() {
 	return <div>
-		<AccountCardWrapperPrimary title={'Account information'} buttonText={'Edit contact information'}>
-			<AccountInformation/>
-		</AccountCardWrapperPrimary>
+		<AccountInformation smallVariant/>
 		<div className={styles.margin}>
 			<AccountCardWrapperPrimary title={'Default address'} buttonText={'Manage addresses'}>
 				<AddressBook/>
@@ -17,7 +15,7 @@ export default function AccountOverview() {
 		</div>
 		<div className={cn(styles.margin, styles.marginFooter)}>
 			<AccountCardWrapperPrimary title={'Recent orders'} buttonText={'View all orders'} childrenTable>
-				<RecentOrders/>
+				<RecentOrders orderHistory/>
 			</AccountCardWrapperPrimary>
 		</div>
 	</div>

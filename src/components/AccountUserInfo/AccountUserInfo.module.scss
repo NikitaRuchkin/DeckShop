@@ -1,0 +1,27 @@
+.accountUserInfo {
+  &__info {
+	height: 56px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--Function-Line, #C0C7D4);
+	&_text {
+	  color: var(--Text-Accent, #052055);
+	  font-family: var(--font-TTInterfaces);
+	  font-size: 16px;
+	  font-style: normal;
+	  font-weight: 500;
+	  line-height: 150%;
+	  flex-basis: 50%;
+	}
+	&_value {
+	  color: var(--Text-Body, #2A416E);
+	  font-family: var(--font-inter);
+	  font-size: 16px;
+	  font-style: normal;
+	  font-weight: 400;
+	  line-height: 150%;
+	  letter-spacing: -0.08px;
+	  flex-basis: 50%;
+	}
+  }
+}

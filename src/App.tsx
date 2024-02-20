@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/catalog/category/product",
+    path: "/catalog/category/:product",
     errorElement: <HeaderFooterWrapper>
           <Error/>
         </HeaderFooterWrapper>,
@@ -131,6 +131,12 @@ const router = createBrowserRouter([
       {
         path: "orderHistory",
         element: <Account />,
+        // children: [
+        //   {
+        //     path: "test",
+        //     element: <Account />,
+        //   }
+        // ]
         // loader: redirectIfUser,
       },
       {

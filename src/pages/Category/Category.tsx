@@ -5,9 +5,14 @@ import {Key, useState} from "react";
 import Card from "../../components/card/Card";
 import {data, preparedData} from "../../components/carousel/data";
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
+import FilterDrawer from "../../components/FilterDrawer/FilterDrawer";
+import SortByDrawer from "../../components/SortByDrawer/SortByDrawer";
 
 export default function Category() {
     const [products] = useState<any[]>(preparedData(data))
+    const [showSortByDrawer, setShowSortByDrawer] = useState(false)
+    const [showFilterDrawer, setShowFilterDrawer] = useState(false)
+
     return <div className={styles.mainContainer}>
         <div className={styles.category}>
             <div className={styles.breadCrumbsBox}>
@@ -15,8 +20,8 @@ export default function Category() {
             </div>
             <div className={styles.category__title}>Decking materials</div>
             <div className={styles.category__filters}>
-                <Button type={ButtonType.Blue} imageClassName='icon-filter' fontSize={16} text='Filters'/>
-                <Button text='Sort by' type={ButtonType.White} imageClassName='icon-sort' fontSize={16}/>
+                <Button type={ButtonType.Blue} imageClassName='icon-filter' fontSize={16} text='Filters' click={()=> setShowFilterDrawer(true)}/>
+                <Button text='Sort by' type={ButtonType.White} imageClassName='icon-sort' fontSize={16} click={()=> setShowSortByDrawer(true)}/>
             </div>
             <div className={styles.category__box}>
                 {
@@ -31,5 +36,7 @@ export default function Category() {
                 }
             </div>
         </div>
+        <FilterDrawer isOpen={showFilterDrawer} closeFn={()=> setShowFilterDrawer(false)}/>
+        <SortByDrawer isOpen={showSortByDrawer} closeFn={()=> setShowSortByDrawer(false)}/>
     </div>
 }

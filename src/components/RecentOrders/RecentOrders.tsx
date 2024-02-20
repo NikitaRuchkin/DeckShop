@@ -11,6 +11,10 @@ import Paper from '@mui/material/Paper';
 import {ReactElement} from "react";
 import Status from "../Status/Status";
 
+interface IProp {
+	orderHistory?: boolean;
+}
+
 function createData(
 		OrderID: string,
 		Date: string,
@@ -28,7 +32,8 @@ const rows = [
 	createData('000000004', '10/22/23', 'customer test', '$354.00', <Status status={'Cancelled'}/>),
 ];
 
-export default function RecentOrders() {
+export default function RecentOrders({orderHistory = false}: IProp) {
+	//TODO request for orderHistory
 	return (
 			<TableContainer component={Paper} style={{boxShadow: 'none', borderBottom: '1px solid #C0C7D4', borderRadius: '0px'}} className={styles.table__container}>
 				<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -49,7 +54,7 @@ export default function RecentOrders() {
 								>
 									<TableCell padding={'none'}>
 										<div className={cn(styles.table__container, styles.table__horizontalAlignLeft)}>
-											{row.OrderID}
+											<div className={cn('icon-arrow-top-right', styles.icon)}/>{row.OrderID}
 										</div>
 									</TableCell>
 									<TableCell align="center">

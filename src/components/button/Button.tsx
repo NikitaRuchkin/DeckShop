@@ -10,14 +10,17 @@ interface IButtonProps {
     imageClassName?: string;
     link?: string;
     href?: string;
+    click?: ()=> void;
 }
 
-function Button ({text, type, imageClassName, fontSize, link, href }: IButtonProps) {
+function Button ({text, type, imageClassName, fontSize, link, href, click }: IButtonProps) {
     if(link) {
         return <Link
             to={link}
             className={cn(styles.main,
-                !type? styles.main__blue : styles.main__white,
+                type === ButtonType.Blue && styles.main__blue,
+                type === ButtonType.White && styles.main__white,
+                type === ButtonType.Red && styles.main__red,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -30,7 +33,9 @@ function Button ({text, type, imageClassName, fontSize, link, href }: IButtonPro
     if(href) {
         return <a href={href}
             className={cn(styles.main,
-                !type? styles.main__blue : styles.main__white,
+                type === ButtonType.Blue && styles.main__blue,
+                type === ButtonType.White && styles.main__white,
+                type === ButtonType.Red && styles.main__red,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -41,8 +46,11 @@ function Button ({text, type, imageClassName, fontSize, link, href }: IButtonPro
     }
     return <div
         className={cn(styles.main,
-            !type? styles.main__blue : styles.main__white,
+            type === ButtonType.Blue && styles.main__blue,
+            type === ButtonType.White && styles.main__white,
+            type === ButtonType.Red && styles.main__red,
             !text && styles.imagePadding)}
+        onClick={click}
     >
         {text && <div className={cn(styles.text)}>
             {text}

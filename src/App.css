@@ -175,3 +175,7 @@ body {
    font-weight: 500 !important;
    line-height: 150% !important;
  }
+
+.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
+  height: auto !important;
+}

@@ -1,11 +1,27 @@
+import {useState} from 'react'
 import styles from './Header.module.scss'
 import cn from 'clsx'
 import Button from "../button/Button";
 import ButtonPrimary from "../buttonPrimary/ButtonPrimary";
+import {useDispatch, useSelector} from "react-redux";
+
+import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
+import {getUserTokenState} from "../../store/reducers/user/UserReducer";
 import {ButtonType} from "../../shared/types/ButtonTypes";
+import {RootState} from "../../store/store";
 import {Link} from "react-router-dom";
+import RegisterDrawer from "../RegisterDrawer/RegisterDrawer";
 
 export default function Header() {
+  const token = useSelector((state: RootState)=>getUserTokenState(state))
+  const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
+  const dispatch = useDispatch()
+  // const token = getUserTokenState((state)=> state.UserReducer.token)
+  console.log('userInfo: ', token)
+  console.log('showRegisterDrawer: ', showRegisterDrawer)
+  const setDrawer = ()=> {
+    dispatch(setShowDrawer(true))
+  }
   return (
       <header className={styles.header}>
         <div className={styles.mainContainer}>
@@ -28,9 +44,11 @@ export default function Header() {
               <div className={styles.buttonMargin}>
                 <Button text={'Cart'} type={ButtonType.White} imageClassName={'icon-cart'} fontSize={16} link={'/cart'}/>
               </div>
-              <Button type={ButtonType.Blue} imageClassName={'icon-user'} fontSize={16} link={'/account'}/>
+              {token && <Button type={ButtonType.Blue} imageClassName={'icon-user'} fontSize={16} link={'/account'}/>}
+              {!token && <Button type={ButtonType.Blue} imageClassName={'icon-user'} fontSize={16} click={setDrawer}/>}
             </div>
           </div>
+          <RegisterDrawer/>
         </div>
       </header>
   )

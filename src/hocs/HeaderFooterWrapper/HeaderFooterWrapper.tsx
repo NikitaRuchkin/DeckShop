@@ -4,7 +4,7 @@ import Footer from "../../components/footer/Footer";
 import React, {ReactElement} from "react";
 
 interface IProp {
-  children: ReactElement;
+  children?: ReactElement;
 }
 
 export default function HeaderFooterWrapper({children}:IProp){
