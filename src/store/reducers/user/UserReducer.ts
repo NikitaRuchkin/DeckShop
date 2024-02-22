@@ -4,7 +4,8 @@ import {UserState} from './type'
 
 const initialState: UserState = {
 	userInfo: {
-		name: 'Igor'
+		name: 'Igor',
+		address: {},
 	},
 	token: '123'
 }

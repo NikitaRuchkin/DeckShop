@@ -17,6 +17,10 @@
   &:hover {
     background: #0F61FF;
   }
+  &:focus-visible {
+    background: var(--Function-Action-Blue, #0F54DA);
+    color: #fff;
+  }
 }
 
 .main__white {
@@ -31,6 +35,10 @@
   transition: linear 100ms;
   &:hover {
     background: #0038A5;
+    color: #fff;
+  }
+  &:focus-visible {
+    background: var(--Function-Action-Blue, #0F54DA);
     color: #fff;
   }
 }
@@ -49,6 +57,10 @@
     background: #E25555;
     color: #fff;
   }
+  &:focus-visible {
+    background: var(--Function-Red-FF, #FF7E7E);
+    color: #fff;
+  }
 }
 
 .main__grey {
@@ -64,6 +76,51 @@
     border-radius: 24px;
     background: var(--Function-Badge-Background, #E7EEFC);
     color: rgba(42, 65, 110, 1);
+  }
+}
+
+.main__blue_disable {
+  background: var(--Function-Disabled-Primary, #D4D5D8);
+  color: #fff;
+  cursor: default;
+  &:hover {
+    background: var(--Function-Disabled-Primary, #D4D5D8);
+    color: #fff;
+  }
+  &:focus-visible {
+    background: var(--Function-Disabled-Primary, #D4D5D8);
+    color: #fff;
+  }
+}
+
+.main__white_disable {
+  border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
+  color: var(--Function-Disabled-Secondary, #9FBBF0);
+  cursor: default;
+  &:hover {
+    border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
+    color: var(--Function-Disabled-Secondary, #9FBBF0);
+  }
+  &:focus-visible {
+    border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
+    color: var(--Function-Disabled-Secondary, #9FBBF0);
+  }
+}
+
+.main__red_disable {
+  border: 1.5px solid var(--Function-Red, #E25555);
+  opacity: 0.4;
+  color: var(--Function-Red, #E25555);
+  cursor: default;
+  &:hover {
+    border: 1.5px solid var(--Function-Red, #E25555);
+    opacity: 0.4;
+    color: var(--Function-Red, #E25555);
+  }
+  &:focus-visible {
+    border: 1.5px solid var(--Function-Red, #E25555);
+    opacity: 0.4;
+    color: var(--Function-Red, #E25555);
   }
 }
 

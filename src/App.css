@@ -174,7 +174,16 @@ body {
    font-style: normal !important;
    font-weight: 500 !important;
    line-height: 150% !important;
- }
+}
+
+/*button {*/
+/*  border: none;*/
+/*}*/
+
+/*button:focus {*/
+/*  border: none;*/
+/*  outline: none;*/
+/*}*/
 
 .css-1160xiw-MuiPaper-root-MuiDrawer-paper {
   height: auto !important;

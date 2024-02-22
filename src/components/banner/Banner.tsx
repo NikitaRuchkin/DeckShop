@@ -1,5 +1,5 @@
-import styles from './Banner.module.scss'
 import cn from 'clsx'
+import styles from './Banner.module.scss'
 import {useState} from "react";
 import {Link} from "react-router-dom";
 

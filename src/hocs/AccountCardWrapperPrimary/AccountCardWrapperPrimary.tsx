@@ -15,6 +15,8 @@ interface IProp {
 	marginNone?: boolean;
 	classNameContainer?: string;
 	redButton?: boolean;
+	disable?: boolean;
+	click?: ()=> void;
 }
 
 export default function AccountCardWrapperPrimary({
@@ -28,6 +30,8 @@ export default function AccountCardWrapperPrimary({
 																										marginNone = false,
 																										classNameContainer,
 																										redButton = false,
+																										disable = false,
+																										click
 	}:IProp) {
 
 	return <div className={cn(styles.wrapper, classNameContainer && classNameContainer)}>
@@ -38,13 +42,13 @@ export default function AccountCardWrapperPrimary({
 		{buttonText && !redButton && <div>
 			<div className={styles.wrapper__btn}>
 				<Button text={buttonText} type={ButtonType.Blue} imageClassName={buttonIcon} fontSize={buttonIconSize}
-								link={buttonLink}/>
+								link={buttonLink} click={click} disable={disable}/>
 			</div>
 		</div>}
 		{buttonText && redButton && <div>
         <div className={styles.wrapper__btn}>
             <Button text={buttonText} type={ButtonType.Red} imageClassName={buttonIcon} fontSize={buttonIconSize}
-                    link={buttonLink}/>
+                    link={buttonLink} click={click} disable={disable}/>
         </div>
     </div>}
 	</div>

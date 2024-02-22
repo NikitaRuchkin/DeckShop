@@ -1,0 +1,51 @@
+.modalEdit {
+  &__container {
+	overflow-y: auto;
+  }
+  &__position {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	overflow-y: auto;
+	scrollbar-width: none;
+	&:focus {
+	  outline: none;
+	}
+  }
+  &__mainContainer {
+	margin: 24px 0;
+	width: 896px;
+  }
+  &__title {
+	display: flex;
+	align-items: center;
+	color: var(--Text-Accent, #052055);
+	font-family: var(--font-TTInterfaces);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%;
+	padding: 16px 0;
+  }
+  &__iconTitle {
+	font-size: 20px;
+	color: rgba(0, 56, 165, 1);
+	margin-right: 8px;
+  }
+  &__fieldContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	padding-top: 24px;
+	border-bottom: 1px solid var(--Function-Line, #C0C7D4);
+  }
+  &__fieldWidth {
+	width: 440px;
+	margin-bottom: 24px;
+  }
+  &__borderBottom {
+	border-bottom: 1px solid var(--Function-Line, #C0C7D4);
+	margin-bottom: 32px;
+  }
+}

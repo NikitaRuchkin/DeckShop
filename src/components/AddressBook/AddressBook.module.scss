@@ -80,6 +80,7 @@
     border-bottom: 1px solid var(--Function-Line, #C0C7D4);
     &__titleContainer {
       display: flex;
+      align-items: center;
     }
     &__icon {
       color: rgba(0, 56, 165, 1);
@@ -97,6 +98,7 @@
     &__iconEdit {
       color: rgba(5, 32, 85, 0.5);
       font-size: 24px;
+      cursor: pointer;
     }
   }
   &__billingContainer {

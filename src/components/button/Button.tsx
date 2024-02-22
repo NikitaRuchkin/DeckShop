@@ -11,9 +11,11 @@ interface IButtonProps {
     link?: string;
     href?: string;
     click?: ()=> void;
+    disable?: boolean;
 }
 
-function Button ({text, type, imageClassName, fontSize, link, href, click }: IButtonProps) {
+function Button ({text, type, imageClassName, fontSize, link, href, click, disable = false }: IButtonProps) {
+
     if(link) {
         return <Link
             to={link}
@@ -22,6 +24,9 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
                 type === ButtonType.White && styles.main__white,
                 type === ButtonType.Red && styles.main__red,
                 type === ButtonType.Grey && styles.main__grey,
+                type === ButtonType.Blue && disable && styles.main__blue_disable,
+                type === ButtonType.White && disable &&  styles.main__white_disable,
+                type === ButtonType.Red && disable &&  styles.main__red_disable,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -38,6 +43,9 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
                 type === ButtonType.White && styles.main__white,
                 type === ButtonType.Red && styles.main__red,
                 type === ButtonType.Grey && styles.main__grey,
+                type === ButtonType.Blue && disable && styles.main__blue_disable,
+                type === ButtonType.White && disable &&  styles.main__white_disable,
+                type === ButtonType.Red && disable &&  styles.main__red_disable,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -52,8 +60,11 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
             type === ButtonType.White && styles.main__white,
             type === ButtonType.Red && styles.main__red,
             type === ButtonType.Grey && styles.main__grey,
+            type === ButtonType.Blue && disable && styles.main__blue_disable,
+            type === ButtonType.White && disable &&  styles.main__white_disable,
+            type === ButtonType.Red && disable &&  styles.main__red_disable,
             !text && styles.imagePadding)}
-        onClick={click}
+        onClick={disable? ()=>{} : click}
     >
         {text && <div className={cn(styles.text)}>
             {text}
