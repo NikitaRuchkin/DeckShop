@@ -48,6 +48,10 @@
   flex-basis: 33%;
 }
 
+.positionRelative {
+  position: relative;
+}
+
 .img {
   &__logo {
     width: 44px;
@@ -191,6 +195,11 @@
       font-weight: 400;
       line-height: 150%;
     }
+  }
+  &__popup {
+    position: absolute;
+    top: 48px;
+    right: 0;
   }
 }
 

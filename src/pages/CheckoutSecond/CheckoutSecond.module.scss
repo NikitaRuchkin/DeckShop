@@ -55,4 +55,41 @@
     line-height: 150%;
     margin: 24px 0;
   }
+  &__checkboxContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+  &__cardInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0;
+  }
+  &__fieldInfo {
+    width: 256px;
+  }
+  &__checkboxText {
+    color: var(--Text-Accent, #052055);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    letter-spacing: -0.08px;
+    margin-left: 8px;
+  }
+  &__smallMarg {
+    margin-bottom: 24px;
+  }
+  &__mediumMarg {
+    margin-bottom: 32px;
+  }
+  &__largeMarg {
+    margin-bottom: 56px;
+  }
+  &__extraLargeMarg {
+    margin-bottom: 128px;
+  }
 }

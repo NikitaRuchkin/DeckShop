@@ -4,9 +4,10 @@ import styles from './Product.module.scss'
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
 import productImage from '../../assets/img/Product.png'
 import Button from "../../components/button/Button";
-import {preparedData, data} from "../../components/carousel/data";
+import {data, preparedData} from "../../components/carousel/data";
 import CarouselComponent from "../../components/carousel/CarouselComponent";
 import CircleButton from "../../components/circleButton/CircleButton";
+import {ButtonType} from "../../shared/types/ButtonTypes";
 
 const dataImage = [
     {link: productImage},
@@ -55,7 +56,7 @@ export default function Product() {
                 <div className={styles.product__info__name}>TimberTech Driftwood</div>
                 <div className={styles.product__info__price}>$99.00</div>
                 <div>
-                    <Button text={'Add to cart'} imageClassName={'icon-cart'} />
+                    <Button text={'Add to cart'} type={ButtonType.Blue} imageClassName={'icon-cart'} />
                 </div>
                 <div>
                     <div className={styles.line} />

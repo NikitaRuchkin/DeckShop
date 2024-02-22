@@ -1,0 +1,42 @@
+.buttonSimple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  text-decoration: none;
+  border-top: 1px solid var(--Function-Line, #C0C7D4);
+  border-bottom: 1px solid var(--Function-Line, #C0C7D4);
+  border-left: none;
+  border-right: none;
+  color: var(--Text-Accent, #052055);
+  font-family: var(--font-TTInterfaces);
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  height: 80px;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  width: 100%;
+  transition: linear 100ms;
+  &:hover {
+    background: var(--Function-Element-Blue, #0038A5);
+    border-top: 1px solid var(--Function-Line, #0038A5);
+    border-bottom: 1px solid var(--Function-Line, #0038A5);
+    color: #fff;
+  }
+  &:focus-visible {
+    background: var(--Function-Action-Blue, #0F54DA);
+    border-top: 1px solid var(--Function-Line, #0F54DA);
+    border-bottom: 1px solid var(--Function-Line, #0F54DA);
+  }
+  &__icon {
+    font-size: 24px;
+  }
+  &__large {
+
+  }
+  &__small {
+
+  }
+}

@@ -1,0 +1,14 @@
+.menuPopup {
+  height: 306px;
+  display: flex;
+  align-items: end;
+  &__container {
+	border-radius: 24px;
+	width: 264px;
+	padding: 16px 0;
+	box-sizing: border-box;
+	border: 1px solid var(--Function-Gray-E9, #E9E9E9);
+	background: var(--Miscellaneous-White, #FFF);
+	box-shadow: 0 64px 32px -32px rgba(0, 0, 0, 0.15);
+  }
+}

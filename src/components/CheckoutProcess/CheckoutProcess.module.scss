@@ -1,12 +1,16 @@
 .checkout {
-  width: 344px;
-  height: 400px;
   box-sizing: border-box;
   padding: 24px;
   border-radius: 24px;
   background: #000D25;
   overflow: hidden;
   position: relative;
+  &__medium {
+    width: 344px;
+  }
+  &__large {
+    width: 584px;
+  }
   &__text {
     color: #FFF;
     font-family: var(--font-TTInterfaces);
@@ -69,6 +73,15 @@
 .bgIcon {
   position: absolute;
   color: rgba(255, 255, 255, 0.10);
+}
+
+.bgMedium {
+  font-size: 266px;
+  top: 144px;
+  left: 194px;
+}
+
+.bgLarge {
   font-size: 314px;
   top: 175px;
   left: 223px;

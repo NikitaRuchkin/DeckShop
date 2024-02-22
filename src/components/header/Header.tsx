@@ -6,19 +6,23 @@ import ButtonPrimary from "../buttonPrimary/ButtonPrimary";
 import {useDispatch, useSelector} from "react-redux";
 
 import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
-import {getUserTokenState} from "../../store/reducers/user/UserReducer";
+import {getUserInfoState, getUserTokenState} from "../../store/reducers/user/UserReducer";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import {RootState} from "../../store/store";
 import {Link} from "react-router-dom";
 import RegisterDrawer from "../RegisterDrawer/RegisterDrawer";
+import MenuPopup from "../MenuPopup/MenuPopup";
 
 export default function Header() {
   const token = useSelector((state: RootState)=>getUserTokenState(state))
+  const user = useSelector((state: RootState)=>getUserInfoState(state.UserReducer))
   const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
   const dispatch = useDispatch()
-  // const token = getUserTokenState((state)=> state.UserReducer.token)
+
+  const [showPopupMenu, setShowPopupMenu] = useState<Boolean>(false)
+
   console.log('userInfo: ', token)
-  console.log('showRegisterDrawer: ', showRegisterDrawer)
+  console.log('user: ', user)
   const setDrawer = ()=> {
     dispatch(setShowDrawer(true))
   }
@@ -40,12 +44,30 @@ export default function Header() {
               <div className={cn('icon-search', styles.imageSearch)}/>
               <input  className={styles.inputContainer__input} placeholder='Search for products'/>
             </div>
-            <div className={cn(styles.flexBox, styles.flexBasis, styles.flexBoxEnd)}>
+            <div className={cn(styles.flexBox, styles.flexBasis, styles.flexBoxEnd, styles.positionRelative)}>
               <div className={styles.buttonMargin}>
                 <Button text={'Cart'} type={ButtonType.White} imageClassName={'icon-cart'} fontSize={16} link={'/cart'}/>
               </div>
-              {token && <Button type={ButtonType.Blue} imageClassName={'icon-user'} fontSize={16} link={'/account'}/>}
-              {!token && <Button type={ButtonType.Blue} imageClassName={'icon-user'} fontSize={16} click={setDrawer}/>}
+              {token &&
+                  <div onMouseEnter={()=>setShowPopupMenu(true)}
+                       onMouseLeave={()=> setShowPopupMenu(false)}
+                  >
+                    <Button
+                      type={ButtonType.Blue}
+                      imageClassName={'icon-user'}
+                      text={`Welcome, ${user.name}`}
+                      fontSize={16}
+                    />
+                    {showPopupMenu && <div className={styles.inputContainer__popup}><MenuPopup click={setShowPopupMenu}/></div>}
+                  </div>
+              }
+              {!token &&
+                  <Button
+                      type={ButtonType.Blue}
+                      imageClassName={'icon-user'}
+                      fontSize={16}
+                      click={setDrawer}/>
+              }
             </div>
           </div>
           <RegisterDrawer/>

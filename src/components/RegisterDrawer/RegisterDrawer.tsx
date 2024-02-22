@@ -8,6 +8,7 @@ import Button from "../button/Button";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import Field from "../field/field";
 import Checkbox from "../Checkbox/Checkbox";
+import ButtonSimple from "../ButtonSimple/ButtonSimple";
 
 
 export default function RegisterDrawer() {
@@ -46,9 +47,8 @@ export default function RegisterDrawer() {
 					</div>
 					<div><Button type={ButtonType.Blue} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 				</div>
-				<div className={styles.registerDrawer__footer}>
-					<div className={styles.registerDrawer__footer_text}>Create new account</div>
-					<div className={cn('icon-new-user', styles.registerDrawer__footer_icon)}/>
+				<div onClick={setDrawer}>
+					<ButtonSimple text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
 				</div>
 			</div>
 		</Drawer>

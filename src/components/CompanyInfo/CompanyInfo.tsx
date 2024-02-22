@@ -43,9 +43,9 @@ export default function CompanyInfo () {
                 </div>
                 <div className={styles.flexBoxDefault}>
                     <div className={styles.btnMargin}>
-                        <Button text={'Full catalog'} imageClassName={'icon-arrow-right'} fontSize={16} link={'/catalog'}/>
+                        <Button text={'Full catalog'} imageClassName={'icon-arrow-right'} fontSize={16} link={'/catalog'} type={ButtonType.Blue}/>
                     </div>
-                    <Button text={'Sign up'} imageClassName={'icon-user'} fontSize={16} type={ButtonType.White}/>
+                    <Button text={'Sign up'} imageClassName={'icon-user'} fontSize={16} type={ButtonType.White} link={'/checkoutFirst'}/>
                 </div>
             </div>
             <img className={styles.info__img} src={house} alt='house'/>

@@ -16,6 +16,7 @@ import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import Account from "./pages/Account/Account";
 import HeaderFooterWrapper from "./hocs/HeaderFooterWrapper/HeaderFooterWrapper";
 import Support from "./pages/Support/Support";
+import CheckoutThird from "./pages/CheckoutThird/CheckoutThird";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,17 @@ const router = createBrowserRouter([
     element: (
         <HeaderFooterWrapper>
           <CheckoutSecond />
+        </HeaderFooterWrapper>
+    ),
+  },
+  {
+    path: "/checkoutThird",
+    errorElement: <HeaderFooterWrapper>
+      <Error/>
+    </HeaderFooterWrapper>,
+    element: (
+        <HeaderFooterWrapper>
+          <CheckoutThird />
         </HeaderFooterWrapper>
     ),
   },

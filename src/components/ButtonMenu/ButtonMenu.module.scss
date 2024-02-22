@@ -1,0 +1,53 @@
+.buttonMenu {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  text-decoration: none;
+  border: none;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  letter-spacing: 0.07px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: linear 100ms;
+  &__blue {
+	&:hover {
+	  background: var(--Function-Element-Blue, #0038A5);
+	  color: #fff;
+	}
+	&:focus-visible {
+	  background: var(--Function-Action-Blue, #0F54DA);
+	}
+  }
+  &__red {
+	color: var(--Function-Red, #E25555);
+	&:hover {
+	  background: var(--Function-Red, #E25555);
+	  color: #fff;
+	}
+	&:focus-visible {
+	  background: var(--Function-Red-FF, #FF7E7E);
+	}
+  }
+  &__icon {
+	font-size: 16px;
+	margin-right: 8px;
+  }
+  &__active {
+	color: var(--Function-Action-Blue, #0F54DA);
+  }
+  &__default {
+	color: var(--Text-Accent, #052055);
+  }
+  &__small {
+	padding: 16px 24px;
+	height: 40px;
+  }
+  &__large {
+	padding: 16px 24px;
+	height: 56px;
+  }
+}

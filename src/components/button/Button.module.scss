@@ -51,6 +51,22 @@
   }
 }
 
+.main__grey {
+  background: transparent;
+  padding: 11px 18px 11px 24px;
+  color: var(--text-accent-50, rgba(5, 32, 85, 0.50));
+  border: 0;
+  //height: 46px;
+  //box-sizing: border-box;
+  //todo problem with height
+  transition: linear 100ms;
+  &:hover {
+    border-radius: 24px;
+    background: var(--Function-Badge-Background, #E7EEFC);
+    color: rgba(42, 65, 110, 1);
+  }
+}
+
 .text {
   font-family: var(--font-inter);
   font-size: 16px;

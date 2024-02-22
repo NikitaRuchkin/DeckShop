@@ -1,5 +1,11 @@
 export enum ButtonType {
     Blue,
     White,
-    Red
+    Red,
+    Grey
+}
+
+export enum ButtonSimpleType {
+    small,
+    large
 }

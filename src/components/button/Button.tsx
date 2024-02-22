@@ -21,6 +21,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
                 type === ButtonType.Blue && styles.main__blue,
                 type === ButtonType.White && styles.main__white,
                 type === ButtonType.Red && styles.main__red,
+                type === ButtonType.Grey && styles.main__grey,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -36,6 +37,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
                 type === ButtonType.Blue && styles.main__blue,
                 type === ButtonType.White && styles.main__white,
                 type === ButtonType.Red && styles.main__red,
+                type === ButtonType.Grey && styles.main__grey,
                 !text && styles.imagePadding)}
         >
             {text && <div className={cn(styles.text)}>
@@ -49,6 +51,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click }: IBu
             type === ButtonType.Blue && styles.main__blue,
             type === ButtonType.White && styles.main__white,
             type === ButtonType.Red && styles.main__red,
+            type === ButtonType.Grey && styles.main__grey,
             !text && styles.imagePadding)}
         onClick={click}
     >

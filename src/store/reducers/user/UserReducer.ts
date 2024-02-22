@@ -3,7 +3,9 @@ import {RootState} from '../../store'
 import {UserState} from './type'
 
 const initialState: UserState = {
-	userInfo: {},
+	userInfo: {
+		name: 'Igor'
+	},
 	token: '123'
 }
 

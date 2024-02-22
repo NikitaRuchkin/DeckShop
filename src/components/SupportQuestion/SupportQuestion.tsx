@@ -1,6 +1,7 @@
 import styles from './SupportQuestion.module.scss'
 import BadgeSimple from "../badgeSimple/BadgeSimple";
 import Button from "../button/Button";
+import {ButtonType} from "../../shared/types/ButtonTypes";
 
 // href={'mailto:mail@htmlacademy.ru'}
 
@@ -12,6 +13,6 @@ export default function SupportQuestion() {
 			If you did not find an answer to your question or
 			if you have issues with your order, please contact us via email.
 		</div>
-		<Button text={'Send a letter'} imageClassName={'icon-envelope'} fontSize={16}	href='mailto:bear419000@gmail.com'/>
+		<Button text={'Send a letter'} imageClassName={'icon-envelope'} type={ButtonType.Blue} fontSize={16}	href='mailto:bear419000@gmail.com'/>
 	</div>
 }

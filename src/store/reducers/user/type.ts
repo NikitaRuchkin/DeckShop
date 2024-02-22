@@ -1,4 +1,6 @@
 export interface UserState {
-	userInfo: {},
+	userInfo: {
+		name: string;
+	},
 	token: string;
 }
