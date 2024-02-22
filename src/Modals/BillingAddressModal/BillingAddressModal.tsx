@@ -64,8 +64,6 @@ export default function BillingAddressModal({open, closeFn, edit, billing}:IProp
 		<Modal
 				open={open}
 				onClose={closeFn}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
 		>
 			<div className={styles.modalEdit__position}>
 				<ModalWrapper
