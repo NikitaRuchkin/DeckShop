@@ -18,7 +18,7 @@
 	  background: var(--Function-Element-Blue, #0038A5);
 	  color: #fff;
 	}
-	&:focus-visible {
+	&:active {
 	  background: var(--Function-Action-Blue, #0F54DA);
 	}
   }
@@ -28,7 +28,7 @@
 	  background: var(--Function-Red, #E25555);
 	  color: #fff;
 	}
-	&:focus-visible {
+	&:active {
 	  background: var(--Function-Red-FF, #FF7E7E);
 	}
   }

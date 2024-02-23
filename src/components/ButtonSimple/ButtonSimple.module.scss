@@ -25,7 +25,7 @@
     border-bottom: 1px solid var(--Function-Line, #0038A5);
     color: #fff;
   }
-  &:focus-visible {
+  &:active {
     background: var(--Function-Action-Blue, #0F54DA);
     border-top: 1px solid var(--Function-Line, #0F54DA);
     border-bottom: 1px solid var(--Function-Line, #0F54DA);

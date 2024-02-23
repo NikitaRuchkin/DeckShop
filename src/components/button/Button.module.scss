@@ -17,7 +17,7 @@
   &:hover {
     background: #0F61FF;
   }
-  &:focus-visible {
+  &:active {
     background: var(--Function-Action-Blue, #0F54DA);
     color: #fff;
   }
@@ -37,7 +37,7 @@
     background: #0038A5;
     color: #fff;
   }
-  &:focus-visible {
+  &:active {
     background: var(--Function-Action-Blue, #0F54DA);
     color: #fff;
   }
@@ -57,7 +57,7 @@
     background: #E25555;
     color: #fff;
   }
-  &:focus-visible {
+  &:active {
     background: var(--Function-Red-FF, #FF7E7E);
     color: #fff;
   }
@@ -87,7 +87,7 @@
     background: var(--Function-Disabled-Primary, #D4D5D8);
     color: #fff;
   }
-  &:focus-visible {
+  &:active {
     background: var(--Function-Disabled-Primary, #D4D5D8);
     color: #fff;
   }
@@ -101,7 +101,7 @@
     border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
     color: var(--Function-Disabled-Secondary, #9FBBF0);
   }
-  &:focus-visible {
+  &:active {
     border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
     color: var(--Function-Disabled-Secondary, #9FBBF0);
   }
@@ -117,7 +117,7 @@
     opacity: 0.4;
     color: var(--Function-Red, #E25555);
   }
-  &:focus-visible {
+  &:active {
     border: 1.5px solid var(--Function-Red, #E25555);
     opacity: 0.4;
     color: var(--Function-Red, #E25555);

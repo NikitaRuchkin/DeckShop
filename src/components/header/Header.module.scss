@@ -176,7 +176,7 @@
     gap: 8px;
     border: none;
     background: rgba(5, 32, 85, 0);
-    &:focus-visible {
+    &:active {
       outline: none;
     }
     &::placeHolder {

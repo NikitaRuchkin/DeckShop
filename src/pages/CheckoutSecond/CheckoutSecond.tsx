@@ -41,8 +41,8 @@ export default function CheckoutSecond() {
             <Field placeHolder='Full name' title='Holder name' onChange={()=>{}} />
           </div>
 
-          {billingSame && <div>
-            <div className={styles.fields__title}>Payment method</div>
+          {!billingSame && <div>
+            <div className={styles.fields__title}>Billing address</div>
             <div className={styles.fields__mediumMarg}>
               <Field placeHolder='Canada' title='Country' onChange={()=>{}} />
             </div>
