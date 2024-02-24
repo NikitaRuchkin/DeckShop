@@ -14,29 +14,50 @@
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
-  height: 80px;
   box-sizing: border-box;
   padding: 16px 32px;
   width: 100%;
   transition: linear 100ms;
   &:hover {
+    .buttonSimple__subTitle {
+      color: #fff;
+    }
     background: var(--Function-Element-Blue, #0038A5);
     border-top: 1px solid var(--Function-Line, #0038A5);
     border-bottom: 1px solid var(--Function-Line, #0038A5);
     color: #fff;
   }
   &:active {
+    .buttonSimple__subTitle {
+      background: var(--Function-Action-Blue, #0F54DA);
+      border-top: 1px solid var(--Function-Line, #0F54DA);
+      border-bottom: 1px solid var(--Function-Line, #0F54DA);
+      color: #fff;
+    }
     background: var(--Function-Action-Blue, #0F54DA);
     border-top: 1px solid var(--Function-Line, #0F54DA);
     border-bottom: 1px solid var(--Function-Line, #0F54DA);
+  }
+  &__subTitle {
+    display: flex;
+    justify-content: start;
+    color: var(--Text-Body, #2A416E);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.08px;
+    margin-top: 8px;
+    transition: linear 100ms;
   }
   &__icon {
     font-size: 24px;
   }
   &__large {
-
+    height: 112px;
   }
   &__small {
-
+    height: 80px;
   }
 }

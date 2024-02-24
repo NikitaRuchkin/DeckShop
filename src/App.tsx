@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/catalog/category",
+    path: "/catalog/:category",
     errorElement: <HeaderFooterWrapper>
           <Error/>
         </HeaderFooterWrapper>,

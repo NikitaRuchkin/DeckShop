@@ -15,7 +15,7 @@ export const RegisterDrawerReducer = createSlice({
 		// },
 
 		setShowDrawer: (state, action) => {
-			console.log('action: ', action)
+			// console.log('action: ', action)
 			// state.showDrawer = action.payload
 			state.showDrawer = action.payload
 		},

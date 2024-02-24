@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import cn from "clsx";
 import styles from './Product.module.scss'
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
@@ -8,6 +8,10 @@ import {data, preparedData} from "../../components/carousel/data";
 import CarouselComponent from "../../components/carousel/CarouselComponent";
 import CircleButton from "../../components/circleButton/CircleButton";
 import {ButtonType} from "../../shared/types/ButtonTypes";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../store/store";
+import {getCardById, setCardById} from "../../store/reducers/Products/ProductsReducer";
 
 const dataImage = [
     {link: productImage},
@@ -18,6 +22,8 @@ const dataImage = [
 ]
 
 export default function Product() {
+    let {product} = useParams();
+    const dispatch = useDispatch()
     const [products] = useState<any[]>(preparedData(data))
     const [currentPhoto, setCurrentPhoto] = useState(0)
     const [quantity, setQuantity] = useState(1)
@@ -27,8 +33,13 @@ export default function Product() {
         }
         setQuantity(quantity - 1)
     }
-
-
+    
+    const cardInfo = useSelector((state: RootState)=>getCardById(state))
+    useEffect(()=> {
+          dispatch(setCardById(product))
+      }
+      ,[])
+    console.log('cardInfo: ', cardInfo)
     return <div className={styles.mainContainer}>
         <div className={styles.breadCrumbsBox}>
             <BreadCrumbs/>
@@ -53,8 +64,8 @@ export default function Product() {
             </div>
             <div className={styles.product__info}>
                 <div className={styles.product__info__brend}>Trex</div>
-                <div className={styles.product__info__name}>TimberTech Driftwood</div>
-                <div className={styles.product__info__price}>$99.00</div>
+                <div className={styles.product__info__name}>{cardInfo && cardInfo.name}</div>
+                <div className={styles.product__info__price}>${cardInfo && cardInfo.price_range.minimum_price.regular_price.value}</div>
                 <div>
                     <Button text={'Add to cart'} type={ButtonType.Blue} imageClassName={'icon-cart'} />
                 </div>
@@ -74,8 +85,10 @@ export default function Product() {
                             <div className={styles.sectionInfo__quantity_control}>
                                 <div className={styles.sectionInfo__quantity}>{quantity}</div>
                                 <div className={styles.flex__control}>
-                                    <CircleButton icon={'icon-minus'} click={quantityMinus} disabled={quantity === 1}/>
-                                    <CircleButton icon={'icon-plus'} click={()=>setQuantity(quantity + 1)}/>
+                                    <Button type={ButtonType.White} imageClassName={'icon-minus'} click={quantityMinus} disable={quantity === 1} />
+                                    <div className={styles.btnMargin}>
+                                        <Button type={ButtonType.White} imageClassName={'icon-plus'} click={()=>setQuantity(quantity + 1)} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

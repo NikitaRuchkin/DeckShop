@@ -1,42 +1,34 @@
 import axios from "axios";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {CatalogTypes} from "../../shared/types/CatalogTypes";
+import {CategoryTypes} from "../../shared/types/CatalogTypes";
 
-export const loadProductsCatalog = () => {
-	let catalog:CatalogTypes | undefined;
+export const loadProductsCategory = (id: string) => {
+	let catalog:CategoryTypes | undefined;
 	let data = JSON.stringify({
 		query: `{
-				categories(
-					filters: {
-						ids: {}
-					}
-					pageSize:3
-					currentPage: 1
-				) {
+				products(
+					filter: {
+						category_uid: {eq: ${id}}
+				}, pageSize: 200, sort: { name: DESC}) {
 					total_count
 					items {
-						uid
-						level
 						name
-						path
+						sku
 						url_key
-						children_count
-						children {
-							uid
-							level
-							name
-							url_key
-							path
-							children_count
+						price_range {
+							minimum_price {
+								regular_price {
+									value
+									currency
+								}
+							}
 						}
 					}
 					page_info {
-						current_page
 						page_size
-						total_pages
+						current_page
 					}
 				}
-		}`,
+			}`,
 		variables: {}
 	});
 

@@ -1,11 +1,10 @@
 import {Drawer} from "@mui/material";
-import cn from 'clsx'
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
 import styles from './RegisterDrawer.module.scss'
 import Button from "../button/Button";
-import {ButtonType} from "../../shared/types/ButtonTypes";
+import {ButtonSimpleType, ButtonType} from "../../shared/types/ButtonTypes";
 import Field from "../field/field";
 import Checkbox from "../Checkbox/Checkbox";
 import ButtonSimple from "../ButtonSimple/ButtonSimple";
@@ -48,7 +47,7 @@ export default function RegisterDrawer() {
 					<div><Button type={ButtonType.Blue} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 				</div>
 				<div onClick={setDrawer}>
-					<ButtonSimple text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
+					<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
 				</div>
 			</div>
 		</Drawer>

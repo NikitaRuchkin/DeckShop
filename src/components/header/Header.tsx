@@ -21,8 +21,6 @@ export default function Header() {
 
   const [showPopupMenu, setShowPopupMenu] = useState<Boolean>(false)
 
-  console.log('userInfo: ', token)
-  console.log('user: ', user)
   const setDrawer = ()=> {
     dispatch(setShowDrawer(true))
   }

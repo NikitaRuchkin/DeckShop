@@ -1,0 +1,1 @@
+export const getBaseUrl = 'https://deckshop.com/graphql'

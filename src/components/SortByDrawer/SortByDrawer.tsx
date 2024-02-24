@@ -2,12 +2,21 @@ import {Drawer} from "@mui/material";
 import cn from 'clsx'
 import styles from './SortByDrawer.module.scss'
 import Button from "../button/Button";
-import {ButtonType} from "../../shared/types/ButtonTypes";
+import {ButtonSimpleType, ButtonType} from "../../shared/types/ButtonTypes";
+import ButtonSimple from "../ButtonSimple/ButtonSimple";
 
 interface IProp {
 	isOpen: boolean;
 	closeFn: ()=> void
 }
+
+const btnsSort = [
+	<ButtonSimple type={ButtonSimpleType.large} text='Default' imageClassName='icon-default-list'/>,
+	<ButtonSimple type={ButtonSimpleType.large} text='Low to high' subTitle='Low to high' imageClassName='icon-low-high'/>,
+	<ButtonSimple type={ButtonSimpleType.large} text='High to low' subTitle='High to low' imageClassName='icon-high-low'/>,
+	<ButtonSimple type={ButtonSimpleType.large} text='A to Z' subTitle='A to Z' imageClassName='icon-a-z'/>,
+	<ButtonSimple type={ButtonSimpleType.large} text='Z to A' subTitle='Z to A' imageClassName='icon-z-a'/>,
+]
 
 const sortByData = [
 	{
@@ -59,13 +68,14 @@ export default function SortByDrawer({isOpen, closeFn}:IProp) {
 					<Button click={closeFn} type={ButtonType.White} imageClassName={'icon-cross'} fontSize={16}/>
 				</div>
 				<div>
-					{sortByData.map(
-							(item)=> <div key={item.id} className={styles.sortByDrawer__body} onClick={setSortBy}>
-								<div>
-									<div className={styles.sortByDrawer__body_text}>{item.filter}</div>
-									<div className={styles.sortByDrawer__body_description}>{item.description}</div>
-								</div>
-								<div className={cn(item.icon, styles.sortByDrawer__body_icon)}/>
+					{btnsSort.map(
+							(item, index)=> <div key={index} onClick={setSortBy}>
+								{item}
+								{/*<div>*/}
+								{/*	<div className={styles.sortByDrawer__body_text}>{item.filter}</div>*/}
+								{/*	<div className={styles.sortByDrawer__body_description}>{item.description}</div>*/}
+								{/*</div>*/}
+								{/*<div className={cn(item.icon, styles.sortByDrawer__body_icon)}/>*/}
 							</div>
 					)}
 				</div>

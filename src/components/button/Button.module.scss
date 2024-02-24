@@ -88,7 +88,7 @@
     color: #fff;
   }
   &:active {
-    background: var(--Function-Disabled-Primary, #D4D5D8);
+    background: transparent;
     color: #fff;
   }
 }
@@ -99,10 +99,12 @@
   cursor: default;
   &:hover {
     border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
+    background: transparent;
     color: var(--Function-Disabled-Secondary, #9FBBF0);
   }
   &:active {
     border: 1.5px solid var(--Function-Disabled-Secondary, #9FBBF0);
+    background: transparent;
     color: var(--Function-Disabled-Secondary, #9FBBF0);
   }
 }
@@ -139,6 +141,10 @@
 
 .text__white {
   color: #FFF;
+}
+
+.marginZero {
+  margin: 0;
 }
 
 .imagePadding {

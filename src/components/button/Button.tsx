@@ -69,7 +69,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
         {text && <div className={cn(styles.text)}>
             {text}
         </div>}
-        {imageClassName && <div className={imageClassName} style={{fontSize: `${fontSize}px`}}/>}
+        {imageClassName && <div className={cn(imageClassName)} style={{fontSize: `${fontSize}px`}}/>}
     </div>
 }
 
