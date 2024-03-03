@@ -1,6 +1,15 @@
 import {ISort} from "../../pages/Category/Category";
 
 export const categoryQuery = (id: string, search: ISort): string => {
+	let sort: ISort | null | string = null
+	console.log('search: ',search)
+	if(String(search.name) === 'null' && String(search.price) == 'null') {
+		sort = ``
+	} else if (String(search.price) === 'null') {
+		sort = `(sort: {name:${search.name}})`
+	} else if (String(search.name) === 'null') {
+		sort = `(sort: {price:${search.price}})`
+	}
 	return JSON.stringify({
 		query: `{
     categories(filters: { url_key: { in: "${id}" } }) {
@@ -10,7 +19,7 @@ export const categoryQuery = (id: string, search: ISort): string => {
             uid
             url_key
             url_path
-            products(sort: { price: ${search.price}, name: ${search.name} }) {
+            products${sort} {
                 items {
                     id
                     name
@@ -38,7 +47,7 @@ export const categoryQuery = (id: string, search: ISort): string => {
 export const catalogQuery = ()=> {
 	return JSON.stringify({
 		query: `{
-        categories(filters: { ids: { eq: "2" } }) {
+        categories(filters: { ids: { eq: "3" } }) {
             items {
                 id
                 level

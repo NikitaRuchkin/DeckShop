@@ -13,6 +13,11 @@
   border: 1px solid var(--text-accent-50, rgba(5, 32, 85, 0.50));
   &:active {
     outline: none;
+    border: 1.5px solid var(--Function-Action-Hover, #0F61FF);
+  }
+  &:focus {
+    outline: none;
+    border: 1.5px solid var(--Function-Action-Hover, #0F61FF);
   }
   &:hover {
     border: 1.5px solid var(--Function-Action-Hover, #0F61FF);

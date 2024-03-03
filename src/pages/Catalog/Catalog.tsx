@@ -2,11 +2,11 @@ import CatalogCards from "../../components/catalogCards/CatalogCards";
 import styles from './Catalog.module.scss'
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
 import {CatalogChildren, CatalogTypes} from "../../shared/types/CatalogTypes";
-import {useGetCategoryQuery} from "../../api/Products/api";
+import {useGetCatalogQuery} from "../../api/Products/api";
 import {catalogQuery} from '../../api/Products/query'
 
 export default function Catalog() {
-    const {data, isLoading, error} = useGetCategoryQuery(catalogQuery())
+    const {data, isLoading, error} = useGetCatalogQuery(catalogQuery())
     
     return <div className={styles.mainContainer}>
         <div className={styles.catalogBox}>

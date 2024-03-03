@@ -19,8 +19,8 @@ export default function SortByDrawer({isOpen, closeFn, setSortCategory}:IProp) {
 	
 	const btnsSort = [
 		<ButtonSimple type={ButtonSimpleType.large} text='Default' imageClassName='icon-default-list' click={()=> setSortCategory({name: null, price: null})}/>,
-		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='Low to high' imageClassName='icon-low-high' click={()=> setSortCategory({name: null, price: 'DESC'})}/>,
-		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='High to low' imageClassName='icon-high-low' click={()=> setSortCategory({name: null, price: 'ASC'})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='Low to high' imageClassName='icon-low-high' click={()=> setSortCategory({name: null, price: 'ASC'})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='High to low' imageClassName='icon-high-low' click={()=> setSortCategory({name: null, price: 'DESC'})}/>,
 		<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='A to Z' imageClassName='icon-a-z' click={()=> setSortCategory({name: 'ASC', price: null})}/>,
 		<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='Z to A' imageClassName='icon-z-a' click={()=> setSortCategory({name: 'DESC', price: null})}/>,
 	]

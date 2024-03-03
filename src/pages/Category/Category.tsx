@@ -19,6 +19,7 @@ export interface ISort {
 export default function Category() {
     let {category} = useParams();
     let [searchParams, setSearchParams] = useSearchParams();
+    
     const getSearchParams = ():ISort => {
         const search: ISort = {
             name: null,
@@ -28,15 +29,16 @@ export default function Category() {
             search.name = searchParams.get('name')
         }
         if (searchParams.get('price')) {
-            search.name = searchParams.get('name')
+            search.price = searchParams.get('price')
         }
         return search
     }
+
     const [showSortByDrawer, setShowSortByDrawer] = useState(false)
     const [showFilterDrawer, setShowFilterDrawer] = useState(false)
     const [sort, setSort] = useState<ISort>(getSearchParams())
     const {data, isLoading, error} = useGetCategoryQuery(categoryQuery((category as string), sort))
-    
+    console.log('isLoading: ', isLoading)
     const setSortAndCloseModal = (sort: ISort)=> {
         if (sort) {
             setSort(sort)
@@ -61,8 +63,8 @@ export default function Category() {
                   <div className={styles.category__box}>
                       {data &&
                         (data.data as CategoryTypes).categories.items.map(
-                          (itemArray, idx) => <div>{itemArray.products.items.map(
-                            (itemCard)=><div key={idx} className={styles.category__cards}>
+                          (itemArray, idx) => <div className={styles.category__cards} key={idx}>{itemArray.products.items.map(
+                            (itemCard, index)=><div key={index} className={styles.category__cards}>
                                 <Card
                                   category={(data.data as CategoryTypes).categories.items[0].url_key}
                                   urlKey={itemCard.url_key}
