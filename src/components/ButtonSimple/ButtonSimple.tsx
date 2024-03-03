@@ -22,18 +22,19 @@ export default function ButtonSimple({text, type, imageClassName, fontSize, link
 				type === ButtonSimpleType.small && styles.buttonSimple__small,
 				type === ButtonSimpleType.large && styles.buttonSimple__large)}>
 			{text && <div>
-          <div>{text}</div>
+          <div className={styles.buttonSimple__text}>{text}</div>
 				{subTitle && <div className={styles.buttonSimple__subTitle}>{subTitle}</div>}
       </div>}
 			{imageClassName && <div className={cn(imageClassName, styles.buttonSimple__icon)} style={{fontSize: `${fontSize}px`}}/>}
 		</Link>
 	}
 	return <button
+		onClick={click}
 		className={cn(styles.buttonSimple,
 		type === ButtonSimpleType.small && styles.buttonSimple__small,
 		type === ButtonSimpleType.large && styles.buttonSimple__large)}>
 		{text && <div>
-				<div>{text}</div>
+				<div className={styles.buttonSimple__text}>{text}</div>
 			{subTitle && <div className={styles.buttonSimple__subTitle}>{subTitle}</div>}
 		</div>}
 		{imageClassName && <div className={cn(imageClassName, styles.buttonSimple__icon)} style={{fontSize: `${fontSize}px`}}/>}

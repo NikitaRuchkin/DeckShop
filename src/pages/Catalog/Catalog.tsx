@@ -1,30 +1,35 @@
 import CatalogCards from "../../components/catalogCards/CatalogCards";
 import styles from './Catalog.module.scss'
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../store/store";
-import {getProducts, setProducts} from "../../store/reducers/Products/ProductsReducer";
-import {useEffect} from "react";
-import {CategoryItems} from "../../shared/types/CatalogTypes";
+import {CatalogChildren, CatalogTypes} from "../../shared/types/CatalogTypes";
+import {useGetCategoryQuery} from "../../api/Products/api";
+import {catalogQuery} from '../../api/Products/query'
 
 export default function Catalog() {
-    const products = useSelector((state: RootState)=>getProducts(state))
-    const dispatch = useDispatch()
-    useEffect(()=> {
-            dispatch(setProducts())
-        }
-    ,[])
-
+    const {data, isLoading, error} = useGetCategoryQuery(catalogQuery())
+    
     return <div className={styles.mainContainer}>
         <div className={styles.catalogBox}>
             <div className={styles.breadCrumbsContainer}>
                 <BreadCrumbs/>
             </div>
-            {products && <div className={styles.catalogMargin}>
-                {products.items.map((item)=><div className={styles.catalogMiddleMargin} key={item.uid}>
-                    <CatalogCards text={item.name} cards={item.children as CategoryItems[]}/>
-                </div>)}
-            </div>}
+            {isLoading? <div>Loading...</div>
+            :
+              <div>
+                  {data && <div className={styles.catalogMargin}>
+                      {(data.data.categories as CatalogTypes).items.map(
+                        (item)=> <div key={item.id}>
+                            {item.children.map(
+                              (child)=> <div className={styles.catalogMiddleMargin} key={child.uid}>
+                                  <CatalogCards text={child.name} cards={child.children as CatalogChildren[]}/>
+                              </div>
+                            )}
+                        </div>
+                      )}
+                  </div>
+                  }
+              </div>
+            }
         </div>
     </div>
 }

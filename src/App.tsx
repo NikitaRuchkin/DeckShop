@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/catalog/category/:product",
+    path: "/catalog/:category/:product",
     errorElement: <HeaderFooterWrapper>
           <Error/>
         </HeaderFooterWrapper>,

@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import cn from "clsx";
 import { Carousel } from 'react-responsive-carousel';
@@ -6,10 +6,6 @@ import styles from './Card.module.scss'
 import Button from "../button/Button";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import testImage from '../../assets/imgPng/5.png'
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../store/store";
-import {getCardById, setCardById} from "../../store/reducers/Products/ProductsReducer";
-import {useParams} from "react-router-dom";
 
 interface IPropCard {
     images?: string;
@@ -17,9 +13,10 @@ interface IPropCard {
     secondName?: string;
     price?: number;
     urlKey?: string;
+    category?: string | null;
 }
 
-function Card({images, name, secondName, price, urlKey}: IPropCard) {
+function Card({images, name, secondName, price, urlKey, category = 'category'}: IPropCard) {
   const [showArrows, setShowArrows] = useState<boolean>(false)
     return (
         <div className={styles.card}>
@@ -73,7 +70,7 @@ function Card({images, name, secondName, price, urlKey}: IPropCard) {
                 <div className={styles.card__textGray}>{secondName}</div>
                 <div className={styles.card__textBlue}>{name}</div>
                 <div className={styles.card__price}>${price}</div>
-                <div className={styles.image}><Button type={ButtonType.Blue} imageClassName={'icon-cart'} fontSize={16} link={`/catalog/category/${urlKey}`}/> </div>
+                <div className={styles.image}><Button type={ButtonType.Blue} imageClassName={'icon-cart'} fontSize={16} link={`/catalog/${category}/${urlKey}`}/> </div>
             </div>
         </div>
         </div>

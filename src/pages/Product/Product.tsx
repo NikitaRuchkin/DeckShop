@@ -11,7 +11,7 @@ import {ButtonType} from "../../shared/types/ButtonTypes";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {getCardById, setCardById} from "../../store/reducers/Products/ProductsReducer";
+import {getCardById} from "../../store/reducers/Products/ProductsReducer";
 
 const dataImage = [
     {link: productImage},
@@ -35,10 +35,10 @@ export default function Product() {
     }
     
     const cardInfo = useSelector((state: RootState)=>getCardById(state))
-    useEffect(()=> {
-          dispatch(setCardById(product))
-      }
-      ,[])
+    // useEffect(()=> {
+    //       dispatch(setCardById(product))
+    //   }
+    //   ,[])
     console.log('cardInfo: ', cardInfo)
     return <div className={styles.mainContainer}>
         <div className={styles.breadCrumbsBox}>
@@ -64,8 +64,8 @@ export default function Product() {
             </div>
             <div className={styles.product__info}>
                 <div className={styles.product__info__brend}>Trex</div>
-                <div className={styles.product__info__name}>{cardInfo && cardInfo.name}</div>
-                <div className={styles.product__info__price}>${cardInfo && cardInfo.price_range.minimum_price.regular_price.value}</div>
+                {/*<div className={styles.product__info__name}>{cardInfo && cardInfo.name}</div>*/}
+                {/*<div className={styles.product__info__price}>${cardInfo && cardInfo.price_range.minimum_price.regular_price.value}</div>*/}
                 <div>
                     <Button text={'Add to cart'} type={ButtonType.Blue} imageClassName={'icon-cart'} />
                 </div>

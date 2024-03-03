@@ -30,8 +30,6 @@
   &:active {
     .buttonSimple__subTitle {
       background: var(--Function-Action-Blue, #0F54DA);
-      border-top: 1px solid var(--Function-Line, #0F54DA);
-      border-bottom: 1px solid var(--Function-Line, #0F54DA);
       color: #fff;
     }
     background: var(--Function-Action-Blue, #0F54DA);
@@ -50,6 +48,9 @@
     letter-spacing: -0.08px;
     margin-top: 8px;
     transition: linear 100ms;
+  }
+  &__text {
+    text-align: left;
   }
   &__icon {
     font-size: 24px;

@@ -4,56 +4,26 @@ import styles from './SortByDrawer.module.scss'
 import Button from "../button/Button";
 import {ButtonSimpleType, ButtonType} from "../../shared/types/ButtonTypes";
 import ButtonSimple from "../ButtonSimple/ButtonSimple";
+import {ISort} from "../../pages/Category/Category";
 
 interface IProp {
 	isOpen: boolean;
-	closeFn: ()=> void
+	closeFn: ()=> void;
+	setSortCategory: (sort: ISort)=> void
 }
 
-const btnsSort = [
-	<ButtonSimple type={ButtonSimpleType.large} text='Default' imageClassName='icon-default-list'/>,
-	<ButtonSimple type={ButtonSimpleType.large} text='Low to high' subTitle='Low to high' imageClassName='icon-low-high'/>,
-	<ButtonSimple type={ButtonSimpleType.large} text='High to low' subTitle='High to low' imageClassName='icon-high-low'/>,
-	<ButtonSimple type={ButtonSimpleType.large} text='A to Z' subTitle='A to Z' imageClassName='icon-a-z'/>,
-	<ButtonSimple type={ButtonSimpleType.large} text='Z to A' subTitle='Z to A' imageClassName='icon-z-a'/>,
-]
-
-const sortByData = [
-	{
-		filter: 'Default',
-		icon: 'icon-default-list',
-		id: 0,
-	},
-	{
-		filter: 'Price',
-		description: 'Low to high',
-		icon: 'icon-low-high',
-		id: 1,
-	},
-	{
-		filter: 'Price',
-		description: 'High to low',
-		icon: 'icon-high-low',
-		id: 2,
-	},
-	{
-		filter: 'Name',
-		description: 'Z to A',
-		icon: 'icon-a-z',
-		id: 3,
-	},
-	{
-		filter: 'Price',
-		description: 'Z to A',
-		icon: 'icon-z-a',
-		id: 4,
-	},
-]
-
-export default function SortByDrawer({isOpen, closeFn}:IProp) {
-	const setSortBy = ()=> {
-		closeFn()
+export default function SortByDrawer({isOpen, closeFn, setSortCategory}:IProp) {
+	const setSortCategoryFn = (sort: ISort) => {
+		setSortCategory(sort)
 	}
+	
+	const btnsSort = [
+		<ButtonSimple type={ButtonSimpleType.large} text='Default' imageClassName='icon-default-list' click={()=> setSortCategory({name: null, price: null})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='Low to high' imageClassName='icon-low-high' click={()=> setSortCategory({name: null, price: 'DESC'})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='High to low' imageClassName='icon-high-low' click={()=> setSortCategory({name: null, price: 'ASC'})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='A to Z' imageClassName='icon-a-z' click={()=> setSortCategory({name: 'ASC', price: null})}/>,
+		<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='Z to A' imageClassName='icon-z-a' click={()=> setSortCategory({name: 'DESC', price: null})}/>,
+	]
 
 	return <div>
 		<Drawer
@@ -69,15 +39,21 @@ export default function SortByDrawer({isOpen, closeFn}:IProp) {
 				</div>
 				<div>
 					{btnsSort.map(
-							(item, index)=> <div key={index} onClick={setSortBy}>
+							(item, index)=> <div key={index}>
 								{item}
-								{/*<div>*/}
-								{/*	<div className={styles.sortByDrawer__body_text}>{item.filter}</div>*/}
-								{/*	<div className={styles.sortByDrawer__body_description}>{item.description}</div>*/}
-								{/*</div>*/}
-								{/*<div className={cn(item.icon, styles.sortByDrawer__body_icon)}/>*/}
+					{/*			/!*<div>*!/*/}
+					{/*			/!*	<div className={styles.sortByDrawer__body_text}>{item.filter}</div>*!/*/}
+					{/*			/!*	<div className={styles.sortByDrawer__body_description}>{item.description}</div>*!/*/}
+					{/*			/!*</div>*!/*/}
+					{/*			/!*<div className={cn(item.icon, styles.sortByDrawer__body_icon)}/>*!/*/}
 							</div>
 					)}
+					
+					{/*	<ButtonSimple type={ButtonSimpleType.large} text='Default' imageClassName='icon-default-list' click={setSortBy} />,*/}
+					{/*	<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='Low to high' imageClassName='icon-low-high'/>,*/}
+					{/*	<ButtonSimple type={ButtonSimpleType.large} text='Price' subTitle='High to low' imageClassName='icon-high-low'/>,*/}
+					{/*	<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='A to Z' imageClassName='icon-a-z'/>,*/}
+					{/*	<ButtonSimple type={ButtonSimpleType.large} text='Name' subTitle='Z to A' imageClassName='icon-z-a'/>,*/}
 				</div>
 			</div>
 		</Drawer>
