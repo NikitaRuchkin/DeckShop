@@ -27,42 +27,42 @@ export default function CheckoutSecond() {
             <div className={styles.fields__checkboxText}>My shipping and billing addresses are the same</div>
           </div>
           <div>
-            <Field placeHolder='Enter card number' title='Card number' onChange={()=>{}} />
+            <Field name={'name'} type={'text'} placeHolder='Enter card number' title='Card number' onChange={()=>{}} />
           </div>
           <div className={styles.fields__cardInfoContainer}>
             <div className={styles.fields__fieldInfo}>
-              <Field placeHolder='12/12' onChange={()=>{}} title='Expiration date'/>
+              <Field name={'name'} type={'text'} placeHolder='12/12' onChange={()=>{}} title='Expiration date'/>
             </div>
             <div className={styles.fields__fieldInfo}>
-              <Field placeHolder='***' onChange={()=>{}} title='CVV'/>
+              <Field name={'name'} type={'text'} placeHolder='***' onChange={()=>{}} title='CVV'/>
             </div>
           </div>
           <div className={cn(styles.fields__smallMarg, billingSame && styles.fields__largeMarg)}>
-            <Field placeHolder='Full name' title='Holder name' onChange={()=>{}} />
+            <Field name={'name'} type={'text'} placeHolder='Full name' title='Holder name' onChange={()=>{}} />
           </div>
 
           {!billingSame && <div>
             <div className={styles.fields__title}>Billing address</div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Canada' title='Country' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Canada' title='Country' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Enter your name' title='First name' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Enter your name' title='First name' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='+1' title='Phone number' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='+1' title='Phone number' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Enter your city' title='City' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Enter your city' title='City' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Enter your province' title='Province' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Enter your province' title='Province' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Enter your address' title='Address line 1' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Enter your address' title='Address line 1' onChange={()=>{}} />
             </div>
             <div className={styles.fields__mediumMarg}>
-              <Field placeHolder='Enter your address' title='Address line 2' onChange={()=>{}} />
+              <Field name={'name'} type={'text'} placeHolder='Enter your address' title='Address line 2' onChange={()=>{}} />
             </div>
           </div>}
 

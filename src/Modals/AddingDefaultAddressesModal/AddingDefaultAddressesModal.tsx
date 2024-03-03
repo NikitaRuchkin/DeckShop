@@ -40,37 +40,37 @@ export default function AddingDefaultAddressesModal({open, closeFn, edit}:IProp)
 
 						<div className={styles.modal__fieldContainer}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
-							</div>
-						</div>
-
-						<div className={styles.modal__fieldContainer}>
-							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Canada' onChange={()=>{}} title='Country' />
-							</div>
-							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='+1' onChange={()=>{}} title='Phone number' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
 							</div>
 						</div>
 
 						<div className={styles.modal__fieldContainer}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your city' onChange={()=>{}} title='City' />
+								<Field name={'name'} type={'text'} placeHolder='Canada' onChange={()=>{}} title='Country' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your province' onChange={()=>{}} title='Province' />
+								<Field name={'name'} type={'text'} placeHolder='+1' onChange={()=>{}} title='Phone number' />
+							</div>
+						</div>
+
+						<div className={styles.modal__fieldContainer}>
+							<div className={styles.modal__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your city' onChange={()=>{}} title='City' />
+							</div>
+							<div className={styles.modal__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your province' onChange={()=>{}} title='Province' />
 							</div>
 						</div>
 
 						<div className={cn(styles.modal__fieldContainer, styles.modal__borderBottom)}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
 							</div>
 						</div>
 
@@ -81,37 +81,37 @@ export default function AddingDefaultAddressesModal({open, closeFn, edit}:IProp)
 
 						<div className={styles.modal__fieldContainer}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
-							</div>
-						</div>
-
-						<div className={styles.modal__fieldContainer}>
-							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
-							</div>
-							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
 							</div>
 						</div>
 
 						<div className={styles.modal__fieldContainer}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
 							</div>
 						</div>
 
 						<div className={styles.modal__fieldContainer}>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
 							</div>
 							<div className={styles.modal__fieldWidth}>
-								<Field placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
+							</div>
+						</div>
+
+						<div className={styles.modal__fieldContainer}>
+							<div className={styles.modal__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 1' />
+							</div>
+							<div className={styles.modal__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}} title='Address line 2' />
 							</div>
 						</div>
 					</div>

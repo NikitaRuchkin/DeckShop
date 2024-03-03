@@ -79,37 +79,37 @@ export default function BillingAddressModal({open, closeFn, edit, billing}:IProp
 					<div className={styles.modalEdit__mainContainer}>
 						<div className={styles.modalEdit__fieldContainer}>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
 							</div>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
-							</div>
-						</div>
-
-						<div className={styles.modalEdit__fieldContainer}>
-							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
-							</div>
-							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
 							</div>
 						</div>
 
 						<div className={styles.modalEdit__fieldContainer}>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
 							</div>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
 							</div>
 						</div>
 
 						<div className={styles.modalEdit__fieldContainer}>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
 							</div>
 							<div className={styles.modalEdit__fieldWidth}>
-								<Field placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
+								<Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
+							</div>
+						</div>
+
+						<div className={styles.modalEdit__fieldContainer}>
+							<div className={styles.modalEdit__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your first name' onChange={()=>{}} title='First name' />
+							</div>
+							<div className={styles.modalEdit__fieldWidth}>
+								<Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
 							</div>
 						</div>
 					</div>

@@ -5,8 +5,8 @@ import styles from './CategoryLoader.module.scss'
 export default function CategoryLoader() {
 	return <div className={styles.mainContainer}>
 		<ContentLoader
-			animate={true}
-			speed={2}
+			// animate={true}
+			speed={20}
 			width={1424}
 			height={1070}
 			gradientDirection={'left-right'}

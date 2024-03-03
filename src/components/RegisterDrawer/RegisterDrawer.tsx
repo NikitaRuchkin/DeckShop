@@ -1,5 +1,6 @@
 import {Drawer} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
+import { useForm } from "react-hook-form"
 import {RootState} from "../../store/store";
 import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
 import styles from './RegisterDrawer.module.scss'
@@ -16,6 +17,17 @@ export default function RegisterDrawer() {
 	const setDrawer = ()=> {
 		dispatch(setShowDrawer(false))
 	}
+	
+	const { register, handleSubmit, setValue } = useForm({
+		shouldUseNativeValidation: true,
+	})
+	const onSubmit = async (data: any) => {
+		if(!data) {
+			return
+		}
+		console.log(data)
+		dispatch(setShowDrawer(false))
+	}
 
 	return <div>
 		<Drawer
@@ -24,32 +36,45 @@ export default function RegisterDrawer() {
 				open={showRegisterDrawer}
 				onClose={setDrawer}
 		>
-			<div className={styles.registerDrawer}>
-				<div className={styles.registerDrawer__header}>
-					<div className={styles.registerDrawer__header_text}>Greetings!</div>
-					<Button click={setDrawer} type={ButtonType.White} imageClassName={'icon-cross'} fontSize={16}/>
-				</div>
-				<div className={styles.registerDrawer__body}>
-					<div className={styles.registerDrawer__body_title}>Log into existing account</div>
-					<div className={styles.registerDrawer__body_form}>
-						<Field placeHolder='Enter your email address' onChange={()=>{}} title='Email address'/>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<div className={styles.registerDrawer}>
+					<div className={styles.registerDrawer__header}>
+						<div className={styles.registerDrawer__header_text}>Greetings!</div>
+						<Button click={setDrawer} type={ButtonType.White} imageClassName={'icon-cross'} fontSize={16}/>
 					</div>
-					<div className={styles.registerDrawer__body_form}>
-						<Field placeHolder='Enter your password' onChange={()=>{}} title='Password'/>
-					</div>
-					<div className={styles.registerDrawer__body_checkBox}>
-						<div className={styles.registerDrawer__body_checkboxContainer}>
-							<div className={styles.registerDrawer__body_checkboxContainer_checkbox}><Checkbox/></div>
-							<div className={styles.registerDrawer__body_checkboxContainer_stay}>Stay logged in</div>
+					<div className={styles.registerDrawer__body}>
+						<div className={styles.registerDrawer__body_title}>Log into existing account</div>
+						<div className={styles.registerDrawer__body_form}>
+							<Field
+								name={'username'}
+								type={'text'}
+								placeHolder='Enter your email address'
+								onChange={(value)=>setValue('username', value)}
+								title='Email address'/>
 						</div>
-						<div className={styles.registerDrawer__body_checkboxContainer_forgot}>Forgot password?</div>
+						<div className={styles.registerDrawer__body_form}>
+							<Field
+								name={'password'}
+								type={'text'}
+								placeHolder='Enter your password'
+								onChange={(value)=>setValue('password', value)}
+								title='Password'
+							/>
+						</div>
+						<div className={styles.registerDrawer__body_checkBox}>
+							<div className={styles.registerDrawer__body_checkboxContainer}>
+								<div className={styles.registerDrawer__body_checkboxContainer_checkbox}><Checkbox/></div>
+								<div className={styles.registerDrawer__body_checkboxContainer_stay}>Stay logged in</div>
+							</div>
+							<div className={styles.registerDrawer__body_checkboxContainer_forgot}>Forgot password?</div>
+						</div>
+						<div><Button type={ButtonType.Blue} submit={true} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 					</div>
-					<div><Button type={ButtonType.Blue} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
+					<div onClick={setDrawer}>
+						<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
+					</div>
 				</div>
-				<div onClick={setDrawer}>
-					<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
-				</div>
-			</div>
+			</form>
 		</Drawer>
 	</div>
 }

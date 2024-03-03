@@ -20,7 +20,7 @@ export default function CheckoutFirst() {
           <div className={cn(styles.checkout__title, styles.field__marginTopZero)}>{userExists? 'Client information' : 'Account information'}</div>
           {!userExists && <div className={styles.field__container}>
             <div className={styles.field__placeHolder}>Email address</div>
-            <Field placeHolder='Enter your email' onChange={() => {
+            <Field name={'name'} type={'text'} placeHolder='Enter your email' onChange={() => {
             }}/>
           </div>}
           {userExists && <div>
@@ -32,11 +32,11 @@ export default function CheckoutFirst() {
             </div>
             <div className={cn(styles.field__container, styles.field__smallMarg)}>
               <div className={styles.field__placeHolder}>Email address</div>
-              <Field placeHolder='Enter your email' onChange={() => {}}/>
+              <Field name={'name'} type={'text'} placeHolder='Enter your email' onChange={() => {}}/>
             </div>
             <div className={cn(styles.field__container, styles.field__smallMarg)}>
               <div className={styles.field__placeHolder}>Password</div>
-              <Field placeHolder='Enter your password' onChange={() => {}}/>
+              <Field name={'name'} type={'text'} placeHolder='Enter your password' onChange={() => {}}/>
             </div>
             <div className={styles.field__recoveryContainer}>
               <Button type={ButtonType.Blue} text='Log in' imageClassName='icon-arrow-right' click={()=>{}}/>
@@ -47,41 +47,41 @@ export default function CheckoutFirst() {
           <div className={styles.checkout__title}>Personal information</div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>First name</div>
-            <Field placeHolder='Enter your name' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your name' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Last name</div>
-            <Field placeHolder='Enter your last name' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}}/>
           </div>
 
           <div className={styles.checkout__title}>Shipping address</div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Country</div>
-            <Field placeHolder='Canada' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Canada' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>City</div>
-            <Field placeHolder='Enter your city' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your city' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Street</div>
-            <Field placeHolder='Enter your street' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your street' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Province</div>
-            <Field placeHolder='Enter your province' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your province' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Address line 1</div>
-            <Field placeHolder='Enter your address' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Address line 2</div>
-            <Field placeHolder='Enter your address' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='Enter your address' onChange={()=>{}}/>
           </div>
           <div className={styles.field__smallContainer}>
             <div className={styles.field__placeHolder}>Phone number</div>
-            <Field placeHolder='+1' onChange={()=>{}}/>
+            <Field name={'name'} type={'text'} placeHolder='+1' onChange={()=>{}}/>
           </div>
 
           <div className={styles.checkout__title}>Shipping method</div>

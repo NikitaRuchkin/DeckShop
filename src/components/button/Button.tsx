@@ -10,11 +10,12 @@ interface IButtonProps {
     imageClassName?: string;
     link?: string;
     href?: string;
-    click?: ()=> void;
+    click?: (data?: any)=> void;
     disable?: boolean;
+    submit?: boolean;
 }
 
-function Button ({text, type, imageClassName, fontSize, link, href, click, disable = false }: IButtonProps) {
+function Button ({text, type, imageClassName, fontSize, link, href, click, disable = false, submit }: IButtonProps) {
 
     if(link) {
         return <Link
@@ -54,7 +55,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
             {imageClassName && <div className={imageClassName} style={{fontSize: `${fontSize}px`}}/>}
         </a>
     }
-    return <div
+    return <button
         className={cn(styles.main,
             type === ButtonType.Blue && styles.main__blue,
             type === ButtonType.White && styles.main__white,
@@ -65,12 +66,13 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
             type === ButtonType.Red && disable &&  styles.main__red_disable,
             !text && styles.imagePadding)}
         onClick={disable? ()=>{} : click}
+        type={submit? "submit" : "button"}
     >
         {text && <div className={cn(styles.text)}>
             {text}
         </div>}
         {imageClassName && <div className={cn(imageClassName)} style={{fontSize: `${fontSize}px`}}/>}
-    </div>
+    </button>
 }
 
 export default Button
