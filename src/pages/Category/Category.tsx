@@ -1,7 +1,7 @@
 import styles from './Category.module.scss'
 import Button from "../../components/button/Button";
 import {ButtonType} from "../../shared/types/ButtonTypes";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Card from "../../components/card/Card";
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
 import FilterDrawer from "../../components/FilterDrawer/FilterDrawer";
@@ -10,6 +10,7 @@ import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {CategoryTypes} from "../../shared/types/CatalogTypes";
 import {useGetCategoryQuery} from "../../api/Products/api";
 import {categoryQuery} from "../../api/Products/query";
+import CategoryLoader from "../../components/Loaders/CategoryLoader/CategoryLoader";
 
 export interface ISort {
     name: null | string,
@@ -37,8 +38,10 @@ export default function Category() {
     const [showSortByDrawer, setShowSortByDrawer] = useState(false)
     const [showFilterDrawer, setShowFilterDrawer] = useState(false)
     const [sort, setSort] = useState<ISort>(getSearchParams())
-    const {data, isLoading, error} = useGetCategoryQuery(categoryQuery((category as string), sort))
-    console.log('isLoading: ', isLoading)
+    const {data, isLoading, error, isFetching} = useGetCategoryQuery(categoryQuery((category as string), sort))
+    const props = useGetCategoryQuery(categoryQuery((category as string), sort))
+    // console.log('isFetching: ', isFetching)
+    // console.log('props: ', props)
     const setSortAndCloseModal = (sort: ISort)=> {
         if (sort) {
             setSort(sort)
@@ -48,12 +51,12 @@ export default function Category() {
     }
     
     return <div className={styles.mainContainer}>
-        <div className={styles.category}>
+        {isFetching? <div><CategoryLoader/></div>
+          :
+          (<div className={styles.category}>
             <div className={styles.breadCrumbsBox}>
                 <BreadCrumbs/>
             </div>
-            {isLoading? <div>Loading...</div>
-              :
               <div>
                   {data && <div className={styles.category__title}>{(data.data as CategoryTypes).categories.items[0].url_key}</div>}
                   <div className={styles.category__filters}>
@@ -77,8 +80,9 @@ export default function Category() {
                         )
                       }
                   </div>
-              </div>}
-        </div>
+              </div>
+          </div>
+          )}
         <FilterDrawer isOpen={showFilterDrawer} closeFn={()=> setShowFilterDrawer(false)}/>
         <SortByDrawer isOpen={showSortByDrawer} closeFn={()=> setShowSortByDrawer(false)} setSortCategory={setSortAndCloseModal}/>
     </div>

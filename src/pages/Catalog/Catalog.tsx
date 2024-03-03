@@ -4,17 +4,19 @@ import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
 import {CatalogChildren, CatalogTypes} from "../../shared/types/CatalogTypes";
 import {useGetCatalogQuery} from "../../api/Products/api";
 import {catalogQuery} from '../../api/Products/query'
+import CatalogLoader from "../../components/Loaders/CatalogLoader/CatalogLoader";
+import {useEffect} from "react";
 
 export default function Catalog() {
-    const {data, isLoading, error} = useGetCatalogQuery(catalogQuery())
+    const {data, isFetching, error} = useGetCatalogQuery(catalogQuery())
     
     return <div className={styles.mainContainer}>
+        {isFetching? <div><CatalogLoader/></div>
+          :
         <div className={styles.catalogBox}>
             <div className={styles.breadCrumbsContainer}>
                 <BreadCrumbs/>
             </div>
-            {isLoading? <div>Loading...</div>
-            :
               <div>
                   {data && <div className={styles.catalogMargin}>
                       {(data.data.categories as CatalogTypes).items.map(
@@ -29,7 +31,7 @@ export default function Catalog() {
                   </div>
                   }
               </div>
-            }
         </div>
+        }
     </div>
 }
