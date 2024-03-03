@@ -1,12 +1,12 @@
 import styles from './Category.module.scss'
 import Button from "../../components/button/Button";
 import {ButtonType} from "../../shared/types/ButtonTypes";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Card from "../../components/card/Card";
 import BreadCrumbs from "../../components/breadСrumbs/BreadCrumbs";
 import FilterDrawer from "../../components/FilterDrawer/FilterDrawer";
 import SortByDrawer from "../../components/SortByDrawer/SortByDrawer";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import {CategoryTypes} from "../../shared/types/CatalogTypes";
 import {useGetCategoryQuery} from "../../api/Products/api";
 import {categoryQuery} from "../../api/Products/query";
@@ -38,10 +38,8 @@ export default function Category() {
     const [showSortByDrawer, setShowSortByDrawer] = useState(false)
     const [showFilterDrawer, setShowFilterDrawer] = useState(false)
     const [sort, setSort] = useState<ISort>(getSearchParams())
-    const {data, isLoading, error, isFetching} = useGetCategoryQuery(categoryQuery((category as string), sort))
-    const props = useGetCategoryQuery(categoryQuery((category as string), sort))
-    // console.log('isFetching: ', isFetching)
-    // console.log('props: ', props)
+    const {data, isFetching} = useGetCategoryQuery(categoryQuery((category as string), sort))
+
     const setSortAndCloseModal = (sort: ISort)=> {
         if (sort) {
             setSort(sort)

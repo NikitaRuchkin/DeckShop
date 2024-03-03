@@ -5,10 +5,9 @@ import {CatalogChildren, CatalogTypes} from "../../shared/types/CatalogTypes";
 import {useGetCatalogQuery} from "../../api/Products/api";
 import {catalogQuery} from '../../api/Products/query'
 import CatalogLoader from "../../components/Loaders/CatalogLoader/CatalogLoader";
-import {useEffect} from "react";
 
 export default function Catalog() {
-    const {data, isFetching, error} = useGetCatalogQuery(catalogQuery())
+    const {data, isFetching} = useGetCatalogQuery(catalogQuery())
     
     return <div className={styles.mainContainer}>
         {isFetching? <div><CatalogLoader/></div>

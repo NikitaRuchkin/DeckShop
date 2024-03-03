@@ -39,7 +39,6 @@ export default function Product() {
     //       dispatch(setCardById(product))
     //   }
     //   ,[])
-    console.log('cardInfo: ', cardInfo)
     return <div className={styles.mainContainer}>
         <div className={styles.breadCrumbsBox}>
             <BreadCrumbs/>

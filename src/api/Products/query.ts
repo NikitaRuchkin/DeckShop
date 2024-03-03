@@ -2,7 +2,7 @@ import {ISort} from "../../pages/Category/Category";
 
 export const categoryQuery = (id: string, search: ISort): string => {
 	let sort: ISort | null | string = null
-	console.log('search: ',search)
+
 	if(String(search.name) === 'null' && String(search.price) == 'null') {
 		sort = ``
 	} else if (String(search.price) === 'null') {
