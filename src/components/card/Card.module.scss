@@ -97,6 +97,13 @@
     position: relative;
     border-radius: 16px;
   }
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 328px;
+    height: 216px;
+  }
 }
 
 .arrowHidden {

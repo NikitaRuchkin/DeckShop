@@ -47,7 +47,7 @@ export default function Category() {
         }
         setShowSortByDrawer(false)
     }
-    
+    //TODO use small_image for image
     return <div className={styles.mainContainer}>
         {isFetching? <div><CategoryLoader/></div>
           :
@@ -67,6 +67,7 @@ export default function Category() {
                           (itemArray, idx) => <div className={styles.category__cards} key={idx}>{itemArray.products.items.map(
                             (itemCard, index)=><div key={index} className={styles.category__cards}>
                                 <Card
+                                  // images={itemCard.}
                                   category={(data.data as CategoryTypes).categories.items[0].url_key}
                                   urlKey={itemCard.url_key}
                                   name={itemCard.name}

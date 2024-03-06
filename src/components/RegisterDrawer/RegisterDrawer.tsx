@@ -1,6 +1,6 @@
 import {Drawer} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import { useForm } from "react-hook-form"
+import { useForm, Controller  } from "react-hook-form"
 import {RootState} from "../../store/store";
 import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
 import styles from './RegisterDrawer.module.scss'
@@ -9,24 +9,60 @@ import {ButtonSimpleType, ButtonType} from "../../shared/types/ButtonTypes";
 import Field from "../field/field";
 import Checkbox from "../Checkbox/Checkbox";
 import ButtonSimple from "../ButtonSimple/ButtonSimple";
+import {loadUser, useGetUserTokenQuery} from '../../api/Customer/api'
+import {getCustomerToken} from "../../api/Customer/query";
+import {useEffect, useState} from "react";
+import {setToken} from '../../store/reducers/user/UserReducer'
 
+interface IUserCred {
+	email: string;
+	password: string;
+}
 
 export default function RegisterDrawer() {
+	const {
+		setError,
+		handleSubmit,
+		formState: { errors, isDirty },
+		clearErrors,
+		control,
+	} = useForm<IUserCred>({
+		defaultValues: {
+			email: '',
+			password: ''
+		},
+	})
+	
 	const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
+	const [skip, setSkip] = useState(true)
+	console.log(skip)
+	const [user, setUser] = useState<IUserCred>({email: '', password: ''})
+	const {data, isFetching} = useGetUserTokenQuery(getCustomerToken(user.email, user.password), {skip})
 	const dispatch = useDispatch()
 	const setDrawer = ()=> {
 		dispatch(setShowDrawer(false))
 	}
 	
-	const { register, handleSubmit, setValue } = useForm({
-		shouldUseNativeValidation: true,
-	})
-	const onSubmit = async (data: any) => {
-		if(!data) {
-			return
+	useEffect(()=> {
+		if(data && data.data?.generateCustomerToken?.token) {
+			dispatch(setShowDrawer(false))
+			dispatch(setToken(data.data?.generateCustomerToken?.token))
+		} else if(data && data.errors?.length !== 0){
+			setError('email', {message: 'incorrect email'})
+			setError('password', {message: 'incorrect password'})
 		}
-		console.log(data)
-		dispatch(setShowDrawer(false))
+	}, [data])
+	
+	
+	const onSubmit = async (dataFields: any) => {
+		// if(Object.keys(errors).length !== 0) {
+		// 	return
+		// }
+		
+		// clearErrors()
+		setSkip(false)
+		dispatch(loadUser.util.resetApiState());
+		setUser(dataFields)
 	}
 
 	return <div>
@@ -45,20 +81,43 @@ export default function RegisterDrawer() {
 					<div className={styles.registerDrawer__body}>
 						<div className={styles.registerDrawer__body_title}>Log into existing account</div>
 						<div className={styles.registerDrawer__body_form}>
-							<Field
-								name={'username'}
-								type={'text'}
-								placeHolder='Enter your email address'
-								onChange={(value)=>setValue('username', value)}
-								title='Email address'/>
+							<Controller
+								control={control}
+								name="email"
+								rules={{validate: {
+										positive: v => v === ''? 'Field is empty' : true,
+									}}
+								}
+								render={({ field: { onChange, onBlur, value, ref } }) => (
+									<Field
+										error={errors.email && errors.email.message}
+										name={'email'}
+										type={'text'}
+										placeHolder='Enter your email address'
+										onChange={onChange}
+										title='Email address'
+									/>
+								)}
+							/>
 						</div>
 						<div className={styles.registerDrawer__body_form}>
-							<Field
-								name={'password'}
-								type={'text'}
-								placeHolder='Enter your password'
-								onChange={(value)=>setValue('password', value)}
-								title='Password'
+							<Controller
+								control={control}
+								name="password"
+								rules={{validate: {
+									positive: v => v === ''? 'Field is empty' : true,
+									}}
+								}
+								render={({ field: { onChange, onBlur, value, ref } }) => (
+									<Field
+										error={errors.password && errors.password.message}
+										name={'password'}
+										type={'password'}
+										placeHolder='Enter your password'
+										onChange={onChange}
+										title='Password'
+									/>
+								)}
 							/>
 						</div>
 						<div className={styles.registerDrawer__body_checkBox}>
@@ -68,7 +127,7 @@ export default function RegisterDrawer() {
 							</div>
 							<div className={styles.registerDrawer__body_checkboxContainer_forgot}>Forgot password?</div>
 						</div>
-						<div><Button type={ButtonType.Blue} submit={true} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
+						<div><Button disable={isFetching || !isDirty} type={ButtonType.Blue} submit={isDirty} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 					</div>
 					<div onClick={setDrawer}>
 						<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>

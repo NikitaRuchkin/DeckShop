@@ -21,7 +21,7 @@ function Card({images, name, secondName, price, urlKey, category = 'category'}: 
     return (
         <div className={styles.card}>
             <div>
-                {images? <img className={styles.card__image} src={testImage} alt={name}/> :
+              {images? <div className={styles.carousel__image}><img className={styles.card__image} src={images} alt={name}/></div> :
                     <div onMouseEnter={()=> setShowArrows(true)}
                          onMouseLeave={()=> setShowArrows(false)}>
                         <Carousel showStatus={showArrows} showIndicators={false}

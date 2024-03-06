@@ -1,4 +1,4 @@
-import {createSelector, createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 import {RootState} from '../../store'
 import {UserState} from './type'
 
@@ -7,26 +7,27 @@ const initialState: UserState = {
 		name: 'Igor',
 		address: {},
 	},
-	token: '123'
+	token: ''
 }
 
 export const UserInfoReducer = createSlice({
 	name: 'UserInfoSlice',
 	initialState,
 	reducers: {
-		// setValueOfRow: (state, action) => {
-		// 	state.token =  action
-		// },
 
 		setToken: (state, action) => {
+			if(action.payload !== '') {
+				let date = new Date(Date.now() + 86400e3).toUTCString();
+				document.cookie = `auth=${action.payload}; expires= + ${date}`;
+			}
 			state.token = action.payload
 		},
+		
 		deleteToken: (state) => {
+			document.cookie = `auth=`;
 			state.token = ''
 		},
-		// deleteRowDataOfTable: (state, action) => {
-		// 	state.dataTable.splice(action.payload, 1)
-		// },
+		
 	},
 })
 
