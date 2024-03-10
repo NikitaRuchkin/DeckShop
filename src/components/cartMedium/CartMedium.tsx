@@ -36,6 +36,7 @@ interface IPropItem {
     "uid": string,
     "url_key": string
   }
+  deleteCartById: (id: number)=> void
 }
 
 export default function CartMedium(props: IPropItem) {
@@ -84,7 +85,7 @@ export default function CartMedium(props: IPropItem) {
           <div className={styles.semiBlue}>{props.product.name}</div>
           <div className={styles.blue}>{props.product.url_key}</div>
         </div>
-        <div className={cn('icon-bin', styles.iconBin)}/>
+        <div onClick={()=> props.deleteCartById(Number(props.id))} className={cn('icon-bin', styles.iconBin)}/>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.cartMedium__amount}>

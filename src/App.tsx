@@ -13,7 +13,6 @@ import {loadCart} from "./api/Cart/api";
 import {cartTokenQuery} from "./api/Cart/query";
 
 function App() {
-  
   const dispatch = useDispatch<any>()
   useEffect(()=> {
     dispatch(setToken(getCookieAuth()))

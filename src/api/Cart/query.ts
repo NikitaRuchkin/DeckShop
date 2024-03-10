@@ -99,7 +99,7 @@ export const addSingleConfigurableProductToCartQuery = (sku: string, quantity: n
 export const removeItemFromCartQuery = (itemId: number) => {
 	const id = getCookieCart()
 	return JSON.stringify({
-		query: `{
+		query: `mutation {
     removeItemFromCart(
         input: { cart_id: "${id}", cart_item_id: ${itemId} }
     ) {

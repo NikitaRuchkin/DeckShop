@@ -18,7 +18,6 @@ import {addSingleConfigurableProductToCartQuery} from "../../api/Cart/query";
 import Field from "../../components/field/field";
 import {Controller, useForm, useWatch} from "react-hook-form";
 import ProductLoader from "../../components/Loaders/ProductLoader/ProductLoader";
-import {loadUser} from "../../api/Customer/api";
 
 const dataImage = [
 	{link: productImage},

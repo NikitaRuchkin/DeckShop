@@ -1,10 +1,14 @@
 import styles from './Cart.module.scss'
+import cn from 'clsx'
 import CartMedium from "../../components/cartMedium/CartMedium";
-import {Key} from "react";
+import {Key, useEffect, useState} from "react";
 import OrderSummary from "../../components/OrderSummary/OrderSummary";
-import {useGetCartDataQuery} from "../../api/Cart/api";
-import {cartGetDataQuery} from "../../api/Cart/query";
+import {loadCart, useGetCartDataQuery} from "../../api/Cart/api";
+import {addSingleConfigurableProductToCartQuery, cartGetDataQuery, removeItemFromCartQuery} from "../../api/Cart/query";
 import CartLoader from "../../components/Loaders/CartLoader/CartLoader";
+import {useDispatch} from "react-redux";
+import {setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
+import {CartData} from "../../api/Cart/types";
 
 // const data = [
 //   {
@@ -40,26 +44,59 @@ import CartLoader from "../../components/Loaders/CartLoader/CartLoader";
 // ]
 
 export default function Cart() {
-  const {data, isFetching} = useGetCartDataQuery(cartGetDataQuery())
+  const {data, isLoading} = useGetCartDataQuery(cartGetDataQuery())
+  const dispatch = useDispatch<any>()
+  const [dataLocal, setLocalData] = useState(data)
+  
+  const deleteCartById = (id: number) => {
+    if(data && data.data.cart.items) {
+      dispatch(loadCart.endpoints.addProductToCart.initiate(
+        removeItemFromCartQuery(id))
+      ).then(()=> {
+        dispatch(loadCart.util.resetApiState())
+        dispatch(loadCart.endpoints.getCartData.initiate(cartGetDataQuery())).then(
+          (newData: {data: CartData})=> {
+            setLocalData(newData.data)
+            return newData
+          }
+        )
+        return data
+      })
+    }
+  }
+  
+  useEffect(()=> {
+    setLocalData(data)
+  }, [data])
 
   return <div className={styles.mainContainer}>
-    {isFetching && <CartLoader/>}
-    {data && data.data.cart.items && <div className={styles.marginBottom}>
+    {isLoading && <CartLoader/>}
+    {dataLocal && dataLocal.data.cart.items.length === 0 && <div>
+      <div className={cn(styles.title, styles.marginBottom24)}>Your shopping cart is empty</div>
+      <div className={styles.smallText}>
+        <span
+          className={cn(styles.smallText, styles.logOrRegister)}
+          onClick={()=>dispatch(setShowDrawer(true))}
+        >
+          Log in or register</span> for a better shopping experience.</div>
+    </div>
+    }
+    {dataLocal && dataLocal.data.cart.items.length !== 0 && <div className={styles.marginBottom}>
       <div className={styles.title}>Your shopping cart</div>
       <div className={styles.containerContent}>
       
       <div>
-        {data.data.cart.items.map(
+        {dataLocal.data.cart.items.map(
           (item, index: Key)=> <div key={index} className={styles.cartBox}>
-            <CartMedium {...item} />
+            <CartMedium {...item} deleteCartById={deleteCartById} />
           </div>
         )}
       </div>
       
       <div>
         <OrderSummary
-          subtotal={data.data.cart.prices.subtotal_excluding_tax.value}
-          grandTotal={data.data.cart.prices.grand_total.value}/>
+          subtotal={dataLocal.data.cart.prices.subtotal_excluding_tax.value}
+          grandTotal={dataLocal.data.cart.prices.grand_total.value}/>
       </div>
       </div>
     </div>

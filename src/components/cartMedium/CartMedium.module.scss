@@ -107,10 +107,18 @@
 
 .semiBlue {
   color: rgba(5, 32, 85, 0.5);
+  max-width: 545px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .blue {
   color: rgba(5, 32, 85, 1);
+  max-width: 545px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .iconBin {
