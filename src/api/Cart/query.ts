@@ -131,3 +131,66 @@ export const removeItemFromCartQuery = (itemId: number) => {
 		variables: {}
 	});
 }
+
+export const updateCartItemsQuery = (itemId: string, quantity: number) => {
+	const id = getCookieCart()
+	return JSON.stringify({
+		query: `mutation {
+    updateCartItems(
+        input: {
+            cart_id: "${id}"
+            cart_items: { cart_item_uid: "${itemId}", quantity: ${quantity} }
+        }
+    ) {
+        cart {
+            id
+            total_quantity
+            items {
+                errors {
+                    code
+                    message
+                }
+                id
+                prices {
+                    price {
+                        value
+                    }
+                    row_total {
+                        value
+                    }
+                }
+                quantity
+                product {
+                    id
+                    name
+                    price {
+                        regularPrice {
+                            amount {
+                                currency
+                                value
+                            }
+                        }
+                    }
+                }
+                uid
+            }
+            prices {
+                applied_taxes {
+                    label
+                    amount {
+                        value
+                    }
+                }
+                grand_total {
+                    value
+                }
+                subtotal_excluding_tax {
+                    value
+                }
+            }
+        }
+    }
+}`,
+		variables: {}
+	});
+}

@@ -4,7 +4,12 @@ import CartMedium from "../../components/cartMedium/CartMedium";
 import {Key, useEffect, useState} from "react";
 import OrderSummary from "../../components/OrderSummary/OrderSummary";
 import {loadCart, useGetCartDataQuery} from "../../api/Cart/api";
-import {addSingleConfigurableProductToCartQuery, cartGetDataQuery, removeItemFromCartQuery} from "../../api/Cart/query";
+import {
+  addSingleConfigurableProductToCartQuery,
+  cartGetDataQuery,
+  removeItemFromCartQuery,
+  updateCartItemsQuery
+} from "../../api/Cart/query";
 import CartLoader from "../../components/Loaders/CartLoader/CartLoader";
 import {useDispatch} from "react-redux";
 import {setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
@@ -48,6 +53,18 @@ export default function Cart() {
   const dispatch = useDispatch<any>()
   const [dataLocal, setLocalData] = useState(data)
   
+  const changeQuantityAndGetData = (uid: string, quantity: number) => {
+    dispatch(loadCart.endpoints.updateProductInCart.initiate(updateCartItemsQuery(uid, quantity))).then((data: any)=> {
+      dispatch(loadCart.endpoints.getCartData.initiate(cartGetDataQuery())).then(
+        (newData: {data: CartData})=> {
+          setLocalData(newData.data)
+          return newData
+        }
+      )
+      return data
+    })
+  }
+  
   const deleteCartById = (id: number) => {
     if(data && data.data.cart.items) {
       dispatch(loadCart.endpoints.addProductToCart.initiate(
@@ -88,7 +105,12 @@ export default function Cart() {
       <div>
         {dataLocal.data.cart.items.map(
           (item, index: Key)=> <div key={index} className={styles.cartBox}>
-            <CartMedium {...item} deleteCartById={deleteCartById} />
+            <CartMedium
+              {...item}
+              deleteCartById={deleteCartById}
+              localData={setLocalData}
+              changeQuantityAndGetData={changeQuantityAndGetData}
+            />
           </div>
         )}
       </div>

@@ -2,11 +2,15 @@ import styles from './CartMedium.module.scss'
 import cn from 'clsx'
 import defaultImage from '../../assets/imgPng/5.png'
 import CircleButton from "../circleButton/CircleButton";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Controller, useForm, useWatch} from "react-hook-form";
 import Field from "../field/field";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import Button from "../button/Button";
+import {loadCart} from "../../api/Cart/api";
+import {useDispatch} from "react-redux";
+import {cartGetDataQuery, updateCartItemsQuery} from "../../api/Cart/query";
+import {CartData} from '../../api/Cart/types'
 
 interface IProp {
   img: string,
@@ -37,9 +41,15 @@ interface IPropItem {
     "url_key": string
   }
   deleteCartById: (id: number)=> void
+  localData: (props: CartData)=> void
+  changeQuantityAndGetData: (uid: string, quantity: number)=> void
 }
 
 export default function CartMedium(props: IPropItem) {
+  // const {amount, name, color, profile, width, price, brand} = props
+
+  const dispatch = useDispatch<any>()
+  const [quantity, setQuantity] = useState(props.quantity)
   const {
     setError,
     handleSubmit,
@@ -53,27 +63,29 @@ export default function CartMedium(props: IPropItem) {
       quantity: props.quantity,
     },
   })
+  
   const changeQuantity = (count: number)=> {
     if(count === 0 || count < 0) {
       setQuantity(1)
       setValue('quantity', 1)
+      // updateProductInCart
+      props.changeQuantityAndGetData(props.product.uid, quantity)
     } else {
       setQuantity(count)
       setValue('quantity', count)
+      props.changeQuantityAndGetData(props.product.uid, quantity)
     }
   }
+  
   const watchQuantity = useWatch({ control, name: "quantity" })
   const onSubmit = async (dataFields: {quantity: number}) => {
     setQuantity(dataFields.quantity)
   }
-  // const {amount, name, color, profile, width, price, brand} = props
-  const [quantity, setQuantity] = useState(props.quantity)
-  const quantityMinus = () => {
-    if(quantity === 1) {
-      return
-    }
-    setQuantity(quantity - 1)
-  }
+  
+  useEffect(()=> {
+    changeQuantity(Number(watchQuantity))
+  }, [watchQuantity])
+  
   return <div className={styles.cartMedium}>
     <div>
       {/*<img className={styles.cartMedium__img} src={img? img : defaultImage} alt='product'/>*/}
@@ -103,7 +115,6 @@ export default function CartMedium(props: IPropItem) {
             />
           )}
         />
-        {/*<div className={styles.cartMedium__quantity}>{props.quantity}</div>*/}
         <div className={styles.cartMedium__flex}>
           <div className={styles.marginRight}>
             <Button type={ButtonType.White} imageClassName={'icon-minus'} click={()=>changeQuantity(quantity - 1)} disable={quantity === 1} />

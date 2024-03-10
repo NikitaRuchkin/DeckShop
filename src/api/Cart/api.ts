@@ -30,6 +30,10 @@ export const loadCart = createApi({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'}}),
 		}),
 		
+		updateProductInCart: builder.query<CartData, string>({
+			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'}}),
+		}),
+		
 		getCartToken: builder.query<CartToken, string>({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
 			transformResponse: (response: CartToken) => {
