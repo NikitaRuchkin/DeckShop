@@ -10,9 +10,11 @@ interface IProp {
   type: string;
   name: string;
   register?: any;
+  width?: number;
+  value?: string | number;
 }
 
-export default function Field({placeHolder, onChange, title, error, type, name, register}:IProp) {
+export default function Field({placeHolder, onChange, title, error, type, name, register, width, value}:IProp) {
   return <div>
     {title && <div className={styles.field__title}>
       <div>{title}</div>
@@ -25,6 +27,8 @@ export default function Field({placeHolder, onChange, title, error, type, name, 
       placeholder={placeHolder}
       onChange={(e)=>{onChange(e.target.value)}}
       type={type}
+      style={width && {width: `${width}px`}}
+      value={value && value}
     />
   </div>
 }

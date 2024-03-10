@@ -15,8 +15,14 @@
 .product {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 128px;
   &__images {
     width: 584px;
+    &_small {
+      width: 568px;
+      height: 568px;
+      box-sizing: border-box;
+    }
     &__currentImage {
       display: flex;
       width: 584px;
@@ -46,7 +52,7 @@
       margin-bottom: 24px;
       margin-top: 16px;
     }
-    &__brend {
+    &__brand {
       color: var(--text-accent-50, rgba(5, 32, 85, 0.50));
       font-family: var(--font-TTInterfaces);
       font-size: 32px;
@@ -128,6 +134,9 @@
     &_control {
       display: flex;
       justify-content: space-between;
+      input {
+        text-align: center;
+      }
     }
   }
   &__width {

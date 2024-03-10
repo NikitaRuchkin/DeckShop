@@ -23,7 +23,7 @@ export default function CatalogCards({text, cards}: IProp) {
         <div className={styles.card__box}>
             {cards && cards.map(
                 (item, key: Key)=> <div key={key}>
-                    <Link to={`/catalog/${item.url_key}`} className={styles.card__info}>
+                    <Link to={`/catalog/${item.uid}`} className={styles.card__info}>
                         <div className={styles.card_flex}>
                             {/*{item.icon?*/}
                             {/*    <img className={styles.card__icon} src={item.icon} alt={'image'} />*/}

@@ -6,7 +6,7 @@ import ButtonPrimary from "../buttonPrimary/ButtonPrimary";
 import {useDispatch, useSelector} from "react-redux";
 
 import {getShowDrawer, setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
-import {getUserInfoState, getUserTokenState} from "../../store/reducers/user/UserReducer";
+import {getUserInfoState, getUserTokenCartState, getUserTokenState} from "../../store/reducers/user/UserReducer";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import {RootState} from "../../store/store";
 import {Link} from "react-router-dom";
@@ -18,7 +18,7 @@ export default function Header() {
   const user = useSelector((state: RootState)=>getUserInfoState(state.UserReducer))
   const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
   const dispatch = useDispatch()
-
+  
   const [showPopupMenu, setShowPopupMenu] = useState<Boolean>(false)
 
   const setDrawer = ()=> {

@@ -18,7 +18,6 @@ export const loadUser = createApi({
 		
 		getUserToken: builder.query<IToken, string>({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
-			// queryFn: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} })
 		}),
 		
 	}),

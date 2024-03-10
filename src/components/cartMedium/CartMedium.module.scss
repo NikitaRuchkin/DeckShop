@@ -31,6 +31,9 @@
     margin-top: 16px;
     margin-bottom: 24px;
     display: flex;
+    input {
+      text-align: center;
+    }
   }
   &__quantity {
     color: var(--text-accent-50, rgba(5, 32, 85, 0.50));
@@ -94,6 +97,7 @@
 
 .marginRight {
   margin-right: 8px;
+  margin-left: 16px;
 }
 
 .flexBetween {

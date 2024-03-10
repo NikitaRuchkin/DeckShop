@@ -35,7 +35,6 @@ export default function RegisterDrawer() {
 	
 	const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
 	const [skip, setSkip] = useState(true)
-	console.log(skip)
 	const [user, setUser] = useState<IUserCred>({email: '', password: ''})
 	const {data, isFetching} = useGetUserTokenQuery(getCustomerToken(user.email, user.password), {skip})
 	const dispatch = useDispatch()

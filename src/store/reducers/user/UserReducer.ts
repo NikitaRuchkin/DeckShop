@@ -7,7 +7,8 @@ const initialState: UserState = {
 		name: 'Igor',
 		address: {},
 	},
-	token: ''
+	token: '',
+	tokenCart: ''
 }
 
 export const UserInfoReducer = createSlice({
@@ -23,15 +24,24 @@ export const UserInfoReducer = createSlice({
 			state.token = action.payload
 		},
 		
+		setTokenCart: (state, action) => {
+			if(action.payload !== '') {
+				let date = new Date(Date.now() + 86400e3).toUTCString();
+				document.cookie = `cart=${action.payload}; expires= + ${date}`;
+			}
+			state.tokenCart = action.payload
+		},
+		
 		deleteToken: (state) => {
-			document.cookie = `auth=`;
+			document.cookie = `auth=; expires=-1`;
 			state.token = ''
 		},
 		
 	},
 })
 
-export const { setToken, deleteToken } = UserInfoReducer.actions
+export const { setToken, deleteToken, setTokenCart } = UserInfoReducer.actions
 export const getUserInfoState = (state:UserState)  => state.userInfo
 export const getUserTokenState = (state:RootState )  => state.UserReducer.token
+export const getUserTokenCartState = (state:RootState )  => state.UserReducer.tokenCart
 export default UserInfoReducer.reducer

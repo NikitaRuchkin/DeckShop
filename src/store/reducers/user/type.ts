@@ -4,4 +4,5 @@ export interface UserState {
 		address: null | {};
 	},
 	token: string;
+	tokenCart: string;
 }

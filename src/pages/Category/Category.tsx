@@ -47,6 +47,7 @@ export default function Category() {
         }
         setShowSortByDrawer(false)
     }
+
     //TODO use small_image for image
     return <div className={styles.mainContainer}>
         {isFetching? <div><CategoryLoader/></div>
@@ -56,28 +57,24 @@ export default function Category() {
                 <BreadCrumbs/>
             </div>
               <div>
-                  {data && <div className={styles.category__title}>{(data.data as CategoryTypes).categories.items[0].url_key}</div>}
+                  {/*{data && <div className={styles.category__title}>{(data.data as CategoryTypes).categories.items[0].url_key}</div>}*/}
                   <div className={styles.category__filters}>
                       <Button type={ButtonType.Blue} imageClassName='icon-filter' fontSize={16} text='Filters' click={()=> setShowFilterDrawer(true)}/>
                       <Button text='Sort by' type={ButtonType.White} imageClassName='icon-sort' fontSize={16} click={()=> setShowSortByDrawer(true)}/>
                   </div>
                   <div className={styles.category__box}>
-                      {data &&
-                        (data.data as CategoryTypes).categories.items.map(
-                          (itemArray, idx) => <div className={styles.category__cards} key={idx}>{itemArray.products.items.map(
-                            (itemCard, index)=><div key={index} className={styles.category__cards}>
-                                <Card
-                                  // images={itemCard.}
-                                  category={(data.data as CategoryTypes).categories.items[0].url_key}
-                                  urlKey={itemCard.url_key}
-                                  name={itemCard.name}
-                                  secondName={itemCard.url_key}
-                                  price={itemCard.price.regularPrice.amount.value}
-                                />
-                            </div>
-                          )}</div>
-                        )
-                      }
+                      {data && data.data.products && data.data.products.items.map(
+                        (itemCard, index)=><div key={index} className={styles.category__cards}>
+                            <Card
+                              images={itemCard.small_image.url}
+                              category={category}
+                              urlKey={itemCard.url_key}
+                              name={itemCard.name}
+                              secondName={itemCard.url_key}
+                              price={itemCard.price.regularPrice.amount.value}
+                            />
+                        </div>
+                      )}
                   </div>
               </div>
           </div>
