@@ -14,6 +14,7 @@ import CartLoader from "../../components/Loaders/CartLoader/CartLoader";
 import {useDispatch} from "react-redux";
 import {setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
 import {CartData} from "../../api/Cart/types";
+import {setQuantityGlobal} from "../../store/reducers/Products/ProductsReducer";
 
 // const data = [
 //   {
@@ -73,6 +74,7 @@ export default function Cart() {
         dispatch(loadCart.util.resetApiState())
         dispatch(loadCart.endpoints.getCartData.initiate(cartGetDataQuery())).then(
           (newData: {data: CartData})=> {
+            dispatch(setQuantityGlobal(newData.data.data.cart.total_quantity))
             setLocalData(newData.data)
             return newData
           }

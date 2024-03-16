@@ -4,4 +4,5 @@ export interface ProductCatalog {
 	ProductCatalog: CatalogTypes | '';
 	Category: CategoryTypes | '';
 	Card: '';
+	quantity: number;
 }

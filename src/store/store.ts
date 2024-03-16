@@ -6,6 +6,7 @@ import RegisterDrawer from "./reducers/RegisterDrawer/RegisterDrawer";
 import { loadProductsById } from '../api/Products/api'
 import {loadUser} from "../api/Customer/api";
 import {loadCart} from "../api/Cart/api";
+import {loadCheckout} from "../api/Checkout/api";
 
 export const store = configureStore({
 	reducer: {
@@ -15,9 +16,14 @@ export const store = configureStore({
 		[loadProductsById.reducerPath]: loadProductsById.reducer,
 		[loadUser.reducerPath]: loadUser.reducer,
 		[loadCart.reducerPath]: loadCart.reducer,
+		[loadCheckout.reducerPath]: loadCheckout.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(loadProductsById.middleware).concat(loadUser.middleware).concat(loadCart.middleware),
+		getDefaultMiddleware()
+			.concat(loadProductsById.middleware)
+			.concat(loadUser.middleware)
+			.concat(loadCart.middleware)
+			.concat(loadCheckout.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -31,6 +31,22 @@
     line-height: 150%;
     color: rgba(5, 32, 85, 0.50);
   }
+  &__disabled {
+    border: 1px solid var(--Function-Line, #C0C7D4);
+    color: #C0C7D4;
+    cursor: default;
+    &:active {
+      outline: none;
+      border: 1.5px solid var(--Function-Action-Hover, #C0C7D4);
+    }
+    &:focus {
+      outline: none;
+      border: 1.5px solid var(--Function-Action-Hover, #C0C7D4);
+    }
+    &:hover {
+      border: 1.5px solid var(--Function-Action-Hover, #C0C7D4);
+    }
+  }
   &__error {
     border: 1.5px solid var(--Function-Red, #E25555);
   }

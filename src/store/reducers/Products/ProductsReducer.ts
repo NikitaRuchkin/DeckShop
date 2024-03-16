@@ -5,7 +5,8 @@ import {ProductCatalog} from './type'
 const initialState: ProductCatalog = {
 	ProductCatalog: '',
 	Category: '',
-	Card: ''
+	Card: '',
+	quantity: 0,
 }
 
 
@@ -13,11 +14,16 @@ export const ProductsReducer = createSlice({
 	name: 'ProductsSlice',
 	initialState,
 	
-	reducers: {},
+	reducers: {
+		setQuantityGlobal: (state, payload) => {
+			console.log(payload)
+			state.quantity = payload.payload
+		},
+	},
 })
 
-export const getProducts = (state:RootState)  => state.ProductsReducer.ProductCatalog
-export const getCategoryById = (state:RootState)  => state.ProductsReducer.Category
+export const { setQuantityGlobal } = ProductsReducer.actions
+export const getQuantity = (state:RootState)  => state.ProductsReducer.quantity
 export const getCardById = (state:RootState)  => state.ProductsReducer.Card
 
 export default ProductsReducer.reducer

@@ -10,7 +10,7 @@ import {ButtonType} from "../../shared/types/ButtonTypes";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {getCardById} from "../../store/reducers/Products/ProductsReducer";
+import {getCardById, setQuantityGlobal} from "../../store/reducers/Products/ProductsReducer";
 import {useGetProductQuery} from "../../api/Products/api";
 import {loadCart} from "../../api/Cart/api";
 import {productQuery} from "../../api/Products/query";
@@ -18,6 +18,7 @@ import {addSingleConfigurableProductToCartQuery} from "../../api/Cart/query";
 import Field from "../../components/field/field";
 import {Controller, useForm, useWatch} from "react-hook-form";
 import ProductLoader from "../../components/Loaders/ProductLoader/ProductLoader";
+import {CartData} from "../../api/Cart/types";
 
 const dataImage = [
 	{link: productImage},
@@ -27,12 +28,23 @@ const dataImage = [
 	{link: productImage},
 ]
 
+interface getTotalQuantity {
+		data: {
+			addProductsToCart: {
+				cart: {
+					total_quantity: number
+				}
+			}
+	}
+}
+
 export default function Product() {
 	let {product} = useParams();
 	const {data, isFetching} = useGetProductQuery(productQuery((product as string)))
 	const dispatch = useDispatch<any>()
 	const [currentPhoto, setCurrentPhoto] = useState(0)
 	const [quantity, setQuantity] = useState(1)
+	const [disable, setDisable] = useState(false)
 	
 	const {
 		setError,
@@ -59,6 +71,7 @@ export default function Product() {
 	}
 	
 	const addProductToCart = ()=> {
+		setDisable(true)
 		if(data && data.data.products) {
 			if(quantity < 1) {
 				setQuantity(1)
@@ -66,7 +79,16 @@ export default function Product() {
 			dispatch(loadCart.util.resetApiState())
 			dispatch(loadCart.endpoints.addProductToCart.initiate(
 				addSingleConfigurableProductToCartQuery(data.data.products.items[0].sku, quantity)
-			))
+			)).then(
+				(product: {data: getTotalQuantity})=> {
+					console.log('data: ', product)
+					if(product && product.data.data) {
+						dispatch(setQuantityGlobal(product.data.data.addProductsToCart.cart.total_quantity))
+					}
+					setDisable(false)
+					return data
+				}
+			)
 		}
 	}
 	
@@ -116,7 +138,7 @@ export default function Product() {
             <div className={styles.product__info__price}>${data.data.products.items[0].price.regularPrice.amount.value}</div>
             <div>
                 <Button text={'Add to cart'}
-												disable={data.data.products.items[0].stock_status !== 'IN_STOCK'}
+												disable={data.data.products.items[0].stock_status !== 'IN_STOCK' || disable}
 												type={ButtonType.Blue}
 												imageClassName={'icon-cart'}
 												click={addProductToCart}

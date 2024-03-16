@@ -12,9 +12,11 @@ import {RootState} from "../../store/store";
 import {Link} from "react-router-dom";
 import RegisterDrawer from "../RegisterDrawer/RegisterDrawer";
 import MenuPopup from "../MenuPopup/MenuPopup";
+import {getQuantity} from "../../store/reducers/Products/ProductsReducer";
 
 export default function Header() {
   const token = useSelector((state: RootState)=>getUserTokenState(state))
+  const quantity = useSelector((state: RootState)=>getQuantity(state))
   const user = useSelector((state: RootState)=>getUserInfoState(state.UserReducer))
   const showRegisterDrawer = useSelector((state: RootState)=>getShowDrawer(state))
   const dispatch = useDispatch()
@@ -43,8 +45,8 @@ export default function Header() {
               <input  className={styles.inputContainer__input} placeholder='Search for products'/>
             </div>
             <div className={cn(styles.flexBox, styles.flexBasis, styles.flexBoxEnd, styles.positionRelative)}>
-              <div className={styles.buttonMargin}>
-                <Button text={'Cart'} type={ButtonType.White} imageClassName={'icon-cart'} fontSize={16} link={'/cart'}/>
+              <div className={cn(styles.buttonMargin, styles.positionRelative)}>
+                <Button text={'Cart'} type={ButtonType.White} imageClassName={'icon-cart'} fontSize={16} link={'/cart'} quantity={quantity}/>
               </div>
               {token &&
                   <div onMouseEnter={()=>setShowPopupMenu(true)}

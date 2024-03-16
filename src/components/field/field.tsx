@@ -12,9 +12,10 @@ interface IProp {
   register?: any;
   width?: number;
   value?: string | number;
+  disabled?: boolean;
 }
 
-export default function Field({placeHolder, onChange, title, error, type, name, register, width, value}:IProp) {
+export default function Field({placeHolder, onChange, title, error, type, name, register, width, value, disabled}:IProp) {
   return <div>
     {title && <div className={styles.field__title}>
       <div>{title}</div>
@@ -23,12 +24,13 @@ export default function Field({placeHolder, onChange, title, error, type, name, 
     <input
       {...register}
       name={name}
-      className={cn(styles.field, error? styles.field__error : null)}
+      className={cn(styles.field, error? styles.field__error : null, disabled && styles.field__disabled)}
       placeholder={placeHolder}
       onChange={(e)=>{onChange(e.target.value)}}
       type={type}
       style={width && {width: `${width}px`}}
       value={value && value}
+      disabled={disabled}
     />
   </div>
 }

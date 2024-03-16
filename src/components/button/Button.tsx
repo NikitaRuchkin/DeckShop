@@ -13,10 +13,10 @@ interface IButtonProps {
     click?: (data?: any)=> void;
     disable?: boolean;
     submit?: boolean;
+    quantity?: number;
 }
 
-function Button ({text, type, imageClassName, fontSize, link, href, click, disable = false, submit }: IButtonProps) {
-
+function Button ({text, type, imageClassName, fontSize, link, href, click, disable = false, submit, quantity }: IButtonProps) {
     if(link) {
         return <Link
             to={link}
@@ -34,6 +34,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
                 {text}
             </div>}
             {imageClassName && <div className={imageClassName} style={{fontSize: `${fontSize}px`}}/>}
+            {!!quantity && quantity !== 0 && <div className={styles.quantity}>{quantity > 99? '99+' : quantity}</div>}
         </Link>
     }
 
@@ -53,6 +54,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
                 {text}
             </div>}
             {imageClassName && <div className={imageClassName} style={{fontSize: `${fontSize}px`}}/>}
+            {!!quantity && quantity !== 0 && <div className={styles.quantity}>{quantity > 99? '99+' : quantity}</div>}
         </a>
     }
     return <button
@@ -72,6 +74,7 @@ function Button ({text, type, imageClassName, fontSize, link, href, click, disab
             {text}
         </div>}
         {imageClassName && <div className={cn(imageClassName)} style={{fontSize: `${fontSize}px`}}/>}
+        {!!quantity && quantity !== 0 && <div className={styles.quantity}>{quantity > 99? '99+' : quantity}</div>}
     </button>
 }
 

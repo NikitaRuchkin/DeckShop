@@ -64,32 +64,8 @@ export const addSingleConfigurableProductToCartQuery = (sku: string, quantity: n
         cartItems: [{ sku: "${sku}", quantity: ${quantity} }]
     ) {
         cart {
-            id
-            items {
-                id
-                quantity
-                uid
-            }
-            prices {
-                applied_taxes {
-                    amount {
-                        value
-                    }
-                    label
-                }
-                grand_total {
-                    value
-                }
-                subtotal_excluding_tax {
-                    value
-                }
-            }
-            total_quantity
-        }
-        user_errors {
-            code
-            message
-        }
+                total_quantity
+        			}
     }
 }`,
 		variables: {}
