@@ -16,7 +16,6 @@ export const ProductsReducer = createSlice({
 	
 	reducers: {
 		setQuantityGlobal: (state, payload) => {
-			console.log(payload)
 			state.quantity = payload.payload
 		},
 	},

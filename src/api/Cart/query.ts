@@ -18,9 +18,18 @@ export const cartGetDataQuery = () => {
                 code
                 message
             }
+            prices {
+               row_total {
+                   value
+               }
+            },
             quantity
             id
             product {
+                image {
+                  label
+                  url
+                },
                 id
                 name
                 price {
@@ -82,9 +91,31 @@ export const removeItemFromCartQuery = (itemId: number) => {
         cart {
             id
             items {
+                 prices {
+                    row_total {
+                       value
+                    }
+                 },
                 id
                 quantity
-                uid
+                prices {
+                    row_total {
+                        value
+                    }
+                }
+                product {
+                    image {
+                  		label
+                  		url
+                		},
+                    id
+                    manufacturer
+                    name
+                    image {
+                        url
+                        label
+                    }
+                }
             }
             prices {
                 applied_taxes {
@@ -108,20 +139,25 @@ export const removeItemFromCartQuery = (itemId: number) => {
 	});
 }
 
-export const updateCartItemsQuery = (itemId: string, quantity: number) => {
+export const updateCartItemsQuery = (itemId: number, quantity: number) => {
 	const id = getCookieCart()
 	return JSON.stringify({
 		query: `mutation {
     updateCartItems(
         input: {
             cart_id: "${id}"
-            cart_items: { cart_item_uid: "${itemId}", quantity: ${quantity} }
+            cart_items: { cart_item_id: ${itemId}, quantity: ${quantity} }
         }
     ) {
         cart {
             id
             total_quantity
             items {
+                 prices {
+                    row_total {
+                        value
+                    }
+                 },
                 errors {
                     code
                     message
@@ -137,8 +173,13 @@ export const updateCartItemsQuery = (itemId: string, quantity: number) => {
                 }
                 quantity
                 product {
+                    image {
+                  		label
+                  		url
+                		},
                     id
                     name
+                    url_key
                     price {
                         regularPrice {
                             amount {

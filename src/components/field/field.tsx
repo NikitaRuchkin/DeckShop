@@ -13,9 +13,10 @@ interface IProp {
   width?: number;
   value?: string | number;
   disabled?: boolean;
+  onBlur?: (e: string)=> void;
 }
 
-export default function Field({placeHolder, onChange, title, error, type, name, register, width, value, disabled}:IProp) {
+export default function Field({placeHolder, onChange, title, error, type, name, register, width, value, disabled, onBlur}:IProp) {
   return <div>
     {title && <div className={styles.field__title}>
       <div>{title}</div>
@@ -26,7 +27,8 @@ export default function Field({placeHolder, onChange, title, error, type, name, 
       name={name}
       className={cn(styles.field, error? styles.field__error : null, disabled && styles.field__disabled)}
       placeholder={placeHolder}
-      onChange={(e)=>{onChange(e.target.value)}}
+      onChange={onChange? (e)=>{onChange(e.target.value)} : null}
+      onBlur={onBlur? (e)=>{onBlur(e.target.value)} : null}
       type={type}
       style={width && {width: `${width}px`}}
       value={value && value}

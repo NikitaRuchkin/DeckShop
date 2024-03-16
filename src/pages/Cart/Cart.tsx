@@ -13,7 +13,7 @@ import {
 import CartLoader from "../../components/Loaders/CartLoader/CartLoader";
 import {useDispatch} from "react-redux";
 import {setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
-import {CartData} from "../../api/Cart/types";
+import {CartData, CartDataRemove, ICart, IUpdateCart} from "../../api/Cart/types";
 import {setQuantityGlobal} from "../../store/reducers/Products/ProductsReducer";
 
 // const data = [
@@ -52,17 +52,15 @@ import {setQuantityGlobal} from "../../store/reducers/Products/ProductsReducer";
 export default function Cart() {
   const {data, isLoading} = useGetCartDataQuery(cartGetDataQuery())
   const dispatch = useDispatch<any>()
-  const [dataLocal, setLocalData] = useState(data)
+  const [dataLocal, setLocalData] = useState<ICart | undefined>(data && data.data.cart)
   
-  const changeQuantityAndGetData = (uid: string, quantity: number) => {
-    dispatch(loadCart.endpoints.updateProductInCart.initiate(updateCartItemsQuery(uid, quantity))).then((data: any)=> {
-      dispatch(loadCart.endpoints.getCartData.initiate(cartGetDataQuery())).then(
-        (newData: {data: CartData})=> {
-          setLocalData(newData.data)
-          return newData
-        }
-      )
-      return data
+  const changeQuantityAndGetData = (uid: number, quantity: number) => {
+    dispatch(loadCart.endpoints.updateProductInCart.initiate(updateCartItemsQuery(uid, quantity))).then((newData: {data: IUpdateCart})=> {
+      if(newData && newData.data) {
+        setLocalData(newData.data.data.updateCartItems.cart)
+        dispatch(setQuantityGlobal(newData.data.data.updateCartItems.cart.total_quantity))
+      }
+      return newData
     })
   }
   
@@ -70,27 +68,21 @@ export default function Cart() {
     if(data && data.data.cart.items) {
       dispatch(loadCart.endpoints.addProductToCart.initiate(
         removeItemFromCartQuery(id))
-      ).then(()=> {
-        dispatch(loadCart.util.resetApiState())
-        dispatch(loadCart.endpoints.getCartData.initiate(cartGetDataQuery())).then(
-          (newData: {data: CartData})=> {
-            dispatch(setQuantityGlobal(newData.data.data.cart.total_quantity))
-            setLocalData(newData.data)
-            return newData
-          }
-        )
-        return data
+      ).then((newData: {data: CartDataRemove})=> {
+          dispatch(setQuantityGlobal(newData.data.data.removeItemFromCart.cart.total_quantity))
+          setLocalData(newData.data.data.removeItemFromCart.cart)
+          return newData
       })
     }
   }
   
   useEffect(()=> {
-    setLocalData(data)
+    setLocalData(data && data.data.cart)
   }, [data])
 
   return <div className={styles.mainContainer}>
     {isLoading && <CartLoader/>}
-    {dataLocal && dataLocal.data.cart.items.length === 0 && <div>
+    {dataLocal && dataLocal.items.length === 0 && <div>
       <div className={cn(styles.title, styles.marginBottom24)}>Your shopping cart is empty</div>
       <div className={styles.smallText}>
         <span
@@ -100,12 +92,12 @@ export default function Cart() {
           Log in or register</span> for a better shopping experience.</div>
     </div>
     }
-    {dataLocal && dataLocal.data.cart.items.length !== 0 && <div className={styles.marginBottom}>
+    {dataLocal && dataLocal.items.length !== 0 && <div className={styles.marginBottom}>
       <div className={styles.title}>Your shopping cart</div>
       <div className={styles.containerContent}>
       
       <div>
-        {dataLocal.data.cart.items.map(
+        {dataLocal.items.map(
           (item, index: Key)=> <div key={index} className={styles.cartBox}>
             <CartMedium
               {...item}
@@ -119,8 +111,8 @@ export default function Cart() {
       
       <div>
         <OrderSummary
-          subtotal={dataLocal.data.cart.prices.subtotal_excluding_tax.value}
-          grandTotal={dataLocal.data.cart.prices.grand_total.value}/>
+          subtotal={dataLocal.prices.subtotal_excluding_tax.value}
+          grandTotal={dataLocal.prices.grand_total.value}/>
       </div>
       </div>
     </div>

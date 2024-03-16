@@ -81,7 +81,6 @@ export default function Product() {
 				addSingleConfigurableProductToCartQuery(data.data.products.items[0].sku, quantity)
 			)).then(
 				(product: {data: getTotalQuantity})=> {
-					console.log('data: ', product)
 					if(product && product.data.data) {
 						dispatch(setQuantityGlobal(product.data.data.addProductsToCart.cart.total_quantity))
 					}
