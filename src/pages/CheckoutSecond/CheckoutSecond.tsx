@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import styles from './CheckoutSecond.module.scss'
-import CheckoutProcess from "../../components/CheckoutProcess/CheckoutProcess";
+import StepContainer from "../../components/StepContainer/StepContainer";
 import CartMini from "../../components/cartMini/CartMini";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import Button from "../../components/button/Button";
@@ -17,7 +17,7 @@ export default function CheckoutSecond() {
     <div className={styles.checkout}>Checkout</div>
     <div className={styles.checkoutFlex}>
 
-      <div><CheckoutProcess step={2} medium/></div>
+      <div><StepContainer step={2} medium textFirst='Shipping information'  textSecond='Payment method' textThird='Confirmation' title='Checkout process'/></div>
       <div className={styles.fields__extraLargeMarg}>
         <div className={styles.checkout__fields}>
           <div className={styles.fields__title}>Payment method</div>

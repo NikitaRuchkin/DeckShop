@@ -129,7 +129,7 @@ export default function RegisterDrawer() {
 						<div><Button disable={isFetching || !isDirty} type={ButtonType.Blue} submit={isDirty} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 					</div>
 					<div onClick={setDrawer}>
-						<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/checkoutFirst'/>
+						<ButtonSimple type={ButtonSimpleType.small} text='Create new account' imageClassName='icon-new-user' link='/createAccount'/>
 					</div>
 				</div>
 			</form>

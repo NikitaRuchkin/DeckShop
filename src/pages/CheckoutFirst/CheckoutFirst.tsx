@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import styles from './CheckoutFirst.module.scss'
-import CheckoutProcess from "../../components/CheckoutProcess/CheckoutProcess";
+import StepContainer from "../../components/StepContainer/StepContainer";
 import CartMini from "../../components/cartMini/CartMini";
 import {ButtonType} from "../../shared/types/ButtonTypes";
 import Button from "../../components/button/Button";
@@ -61,7 +61,7 @@ export default function CheckoutFirst() {
   return <div className={styles.mainContainer}>
     <div className={styles.checkout}>Checkout</div>
     <div className={styles.checkoutFlex}>
-      <div><CheckoutProcess step={1} medium/></div>
+      <div><StepContainer step={1} medium textFirst='Shipping information'  textSecond='Payment method' textThird='Confirmation' title='Checkout process'/></div>
       <div className={styles.checkout__fields}>
         <form onSubmit={handleSubmit(onSubmit)}>
         <div>

@@ -1,5 +1,5 @@
 import styles from './CheckoutThird.module.scss'
-import CheckoutProcess from "../../components/CheckoutProcess/CheckoutProcess";
+import StepContainer from "../../components/StepContainer/StepContainer";
 import CartMini from "../../components/cartMini/CartMini";
 import Button from "../../components/button/Button";
 import {ButtonType} from "../../shared/types/ButtonTypes";
@@ -9,7 +9,7 @@ export default function CheckoutThird() {
 		<div className={styles.checkoutFinish}>Checkout</div>
 		<div className={styles.checkoutFlex}>
 
-			<div><CheckoutProcess step={3} medium/></div>
+			<div><StepContainer step={3} medium textFirst='Shipping information'  textSecond='Payment method' textThird='Confirmation' title='Checkout process'/></div>
 			<div className={styles.checkoutFinish__fields}>
 				<div className={styles.checkoutFinish__title}>Payment method</div>
 				<div className={styles.checkoutFinish__numberText}>

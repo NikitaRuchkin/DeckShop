@@ -1,43 +1,185 @@
 import cn from 'clsx'
 import styles from './CreateAccount.module.scss'
-import RegistrationProcess from "../../components/RegistrationProcess/RegistrationProcess";
 import Field from "../../components/field/field";
-import {ButtonType} from "../../shared/types/ButtonTypes";
-import Button from "../../components/button/Button";
+import StepContainer from "../../components/StepContainer/StepContainer";
+import AccountCardWrapperPrimary from "../../hocs/AccountCardWrapperPrimary/AccountCardWrapperPrimary";
+import {useState} from "react";
+import {Controller, useForm} from "react-hook-form";
+import {checkValid} from "../../shared/validate/checkValid";
+import ValidatePassword from "../../components/ValidatePassword/ValidatePassword";
+
+interface IFormValues {
+	firstName: string;
+	lastName: string;
+	phone: number | string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+}
 
 export default function CreateAccount() {
-  return <div className={styles.mainContainer}>
-    <div className={styles.account__title}>Creating new account</div>
-    <div className={styles.account__container}>
-      <div className={styles.account__fieldsContainer}>
-        <div className={styles.account__fields__title}>Personal information</div>
-        <div className={cn(styles.account__fieldsFlex, styles.account__bigMargin)}>
-          <div className={styles.account__fieldWidth}>
-            <Field name={'name'} type={'text'} placeHolder='Enter your name' onChange={()=>{}} title='First name' />
-          </div>
-          <div className={styles.account__fieldWidth}>
-            <Field name={'name'} type={'text'} placeHolder='Enter your last name' onChange={()=>{}} title='Last name' />
-          </div>
-        </div>
-
-        <div className={styles.account__fields__title}>Sign-up information</div>
-        <div className={cn(styles.account__fieldsFlex, styles.account__mediumMargin)}>
-          <div className={styles.account__fieldWidth}>
-            <Field name={'name'} type={'text'} placeHolder='+1' onChange={()=>{}} title='Phone number' />
-          </div>
-          <div className={cn(styles.account__fieldWidth, styles.account__smallMargin)}>
-            <Field name={'name'} type={'text'} placeHolder='Enter your email address' onChange={()=>{}} title='Email address' />
-          </div>
-          <div className={styles.account__fieldWidth}>
-            <Field name={'name'} type={'text'} placeHolder='Enter a password' onChange={()=>{}} title='Password' />
-          </div>
-          <div className={styles.account__fieldWidth}>
-            <Field name={'name'} type={'text'} placeHolder='Confirm your password' onChange={()=>{}} title='Confirm password' />
-          </div>
-        </div>
-        <Button text={'Next step'} type={ButtonType.White} imageClassName={'icon-arrow-right'} fontSize={16}/>
-      </div>
-      <div><RegistrationProcess step={1}/></div>
-    </div>
-  </div>
+	const [disable, setDisable] = useState<boolean>(false)
+	const {
+		setError,
+		handleSubmit,
+		formState: { errors, isDirty },
+		clearErrors,
+		control,
+	} = useForm<IFormValues>({
+		defaultValues: {
+			firstName: '',
+			lastName: '',
+			phone: '',
+			email: '',
+			password: '',
+			confirmPassword: '',
+		},
+	})
+	const onSubmit = async (dataFields: IFormValues) => {
+	
+	}
+	return <div className={styles.mainContainer}>
+		<div className={styles.account__title}>Creating new account</div>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<div className={styles.account__container}>
+				<AccountCardWrapperPrimary
+					title='Personal information'
+					buttonText='Create account'
+					buttonIcon='icon-arrow-right'
+					submit
+					disable={disable}
+				>
+					<div>
+						<div className={cn(styles.account__flexBox, styles.account__userInfoMargins)}>
+							<Controller
+								control={control}
+								name="firstName"
+								rules={{validate: {
+										...checkValid
+									}}
+								}
+								render={({ field: { onChange, onBlur, value, ref } }) => (
+									<Field
+										width={376}
+										error={errors.firstName && errors.firstName.message}
+										name={'firstName'}
+										type={'text'}
+										placeHolder='Enter your first name'
+										onChange={onChange}
+										title='First name'
+									/>
+								)}
+							/>
+							<Controller
+								control={control}
+								name="lastName"
+								rules={{validate: {
+										...checkValid
+									}}
+								}
+								render={({ field: { onChange, onBlur, value, ref } }) => (
+									<Field
+										width={376}
+										error={errors.lastName && errors.lastName.message}
+										name={'lastName'}
+										type={'text'}
+										placeHolder='Enter your last name'
+										onChange={onChange}
+										title='Last name'
+									/>
+								)}
+							/>
+						</div>
+						<div>
+							<div className={styles.account__titleSmall}>Sign-up information</div>
+							<div className={cn(styles.account__flexBox, styles.account__marginBottom32px)}>
+								<Controller
+									control={control}
+									name="lastName"
+									rules={{validate: {
+											...checkValid
+										}}
+									}
+									render={({ field: { onChange, onBlur, value, ref } }) => (
+										<Field
+											width={376}
+											error={errors.lastName && errors.lastName.message}
+											name={'lastName'}
+											type={'text'}
+											placeHolder='Enter your last name'
+											onChange={onChange}
+											title='Last name'
+										/>
+									)}
+								/>
+								<Controller
+									control={control}
+									name="lastName"
+									rules={{validate: {
+											...checkValid
+										}}
+									}
+									render={({ field: { onChange, onBlur, value, ref } }) => (
+										<Field
+											width={376}
+											error={errors.lastName && errors.lastName.message}
+											name={'lastName'}
+											type={'text'}
+											placeHolder='Enter your last name'
+											onChange={onChange}
+											title='Last name'
+										/>
+									)}
+								/>
+							</div>
+							<div className={styles.account__flexBox}>
+								<Controller
+									control={control}
+									name="lastName"
+									rules={{validate: {
+											...checkValid
+										}}
+									}
+									render={({ field: { onChange, onBlur, value, ref } }) => (
+										<Field
+											width={376}
+											error={errors.lastName && errors.lastName.message}
+											name={'lastName'}
+											type={'text'}
+											placeHolder='Enter your last name'
+											onChange={onChange}
+											title='Last name'
+										/>
+									)}
+								/>
+								<Controller
+									control={control}
+									name="lastName"
+									rules={{validate: {
+											...checkValid
+										}}
+									}
+									render={({ field: { onChange, onBlur, value, ref } }) => (
+										<Field
+											width={376}
+											error={errors.lastName && errors.lastName.message}
+											name={'lastName'}
+											type={'text'}
+											placeHolder='Enter your last name'
+											onChange={onChange}
+											title='Last name'
+										/>
+									)}
+								/>
+							</div>
+						</div>
+						<ValidatePassword/>
+					</div>
+				</AccountCardWrapperPrimary>
+				<div className={styles.account__stepMargin}>
+					<StepContainer step={1} large textFirst='Account details'  textSecond='Email confirmation' title='Registration process'/>
+				</div>
+			</div>
+		</form>
+	</div>
 }

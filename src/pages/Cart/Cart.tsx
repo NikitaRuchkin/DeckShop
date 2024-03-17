@@ -50,7 +50,7 @@ import {setQuantityGlobal} from "../../store/reducers/Products/ProductsReducer";
 // ]
 
 export default function Cart() {
-  const {data, isLoading} = useGetCartDataQuery(cartGetDataQuery())
+  const {data, isLoading} = useGetCartDataQuery(cartGetDataQuery(), {refetchOnMountOrArgChange: true})
   const dispatch = useDispatch<any>()
   const [dataLocal, setLocalData] = useState<ICart | undefined>(data && data.data.cart)
   const changeQuantityAndGetData = (uid: number, quantity: number) => {

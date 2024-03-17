@@ -5,7 +5,7 @@ interface IProp {
   step: number;
   textFirst: string;
   textSecond: string;
-  textThird: string;
+  textThird?: string;
 }
 
 export default function Steps({step, textThird, textSecond, textFirst}:IProp) {
@@ -29,12 +29,13 @@ export default function Steps({step, textThird, textSecond, textFirst}:IProp) {
       </div>
       <div className={styles.checkout__stepText}>{textSecond}</div>
     </div>
-    <div className={styles.line}/>
-    <div className={styles.checkout__stepFlex}>
+    {textThird && <div className={styles.line}/>}
+    {textThird && <div className={styles.checkout__stepFlex}>
       <div className={cn(styles.checkout__stepNumberContainer, step < 3 && styles.checkout__stepNumberContainerEmpty)}>
         <div className={cn(styles.checkout__stepNumber, step < 3 && styles.checkout__stepNumberWhite)}>3</div>
       </div>
       <div className={styles.checkout__stepText}>{textThird}</div>
     </div>
+    }
   </div>
 }
