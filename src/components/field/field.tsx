@@ -4,7 +4,7 @@ import {SyntheticEvent} from "react";
 
 interface IProp {
   placeHolder: string;
-  onChange: (e: string)=> void;
+  onChange?: (e: string)=> void;
   title?: string;
   error?: string | undefined;
   type: string;
@@ -13,7 +13,7 @@ interface IProp {
   width?: number;
   value?: string | number;
   disabled?: boolean;
-  onBlur?: (e: string)=> void;
+  onBlur?: ()=> void;
 }
 
 export default function Field({placeHolder, onChange, title, error, type, name, register, width, value, disabled, onBlur}:IProp) {
@@ -28,7 +28,7 @@ export default function Field({placeHolder, onChange, title, error, type, name, 
       className={cn(styles.field, error? styles.field__error : null, disabled && styles.field__disabled)}
       placeholder={placeHolder}
       onChange={onChange? (e)=>{onChange(e.target.value)} : null}
-      onBlur={onBlur? (e)=>{onBlur(e.target.value)} : null}
+      onBlur={onBlur? onBlur : null}
       type={type}
       style={width && {width: `${width}px`}}
       value={value && value}

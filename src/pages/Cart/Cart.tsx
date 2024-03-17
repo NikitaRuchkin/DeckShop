@@ -53,10 +53,9 @@ export default function Cart() {
   const {data, isLoading} = useGetCartDataQuery(cartGetDataQuery())
   const dispatch = useDispatch<any>()
   const [dataLocal, setLocalData] = useState<ICart | undefined>(data && data.data.cart)
-  
   const changeQuantityAndGetData = (uid: number, quantity: number) => {
     dispatch(loadCart.endpoints.updateProductInCart.initiate(updateCartItemsQuery(uid, quantity))).then((newData: {data: IUpdateCart})=> {
-      if(newData && newData.data) {
+      if(newData && newData.data && newData.data.data.updateCartItems) {
         setLocalData(newData.data.data.updateCartItems.cart)
         dispatch(setQuantityGlobal(newData.data.data.updateCartItems.cart.total_quantity))
       }

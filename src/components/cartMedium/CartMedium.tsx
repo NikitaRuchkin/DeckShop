@@ -68,35 +68,29 @@ export default React.memo(function CartMedium(props: IPropItem) {
 		control,
 		getValues
 	} = useForm<{quantity: number}>({
+		mode: "onChange",
+		reValidateMode: "onBlur",
 		defaultValues: {
 			quantity: props.quantity,
 		},
+		
 	})
 	
 	const changeQuantity = (count: number)=> {
 		console.log(1)
 			if(count === 0 || count < 0) {
-				setQuantity(1)
 				setValue('quantity', 1)
-				props.changeQuantityAndGetData(Number(props.id), quantity)
+				props.changeQuantityAndGetData(Number(props.id), count)
 			} else {
-				setQuantity(count)
 				setValue('quantity', count)
-				props.changeQuantityAndGetData(Number(props.id), quantity)
+				props.changeQuantityAndGetData(Number(props.id), count)
 			}
 	}
 	
 	const watchQuantity = useWatch({ control, name: "quantity", defaultValue: props.quantity})
 	const onSubmit = async (dataFields: {quantity: number}) => {
-		setQuantity(dataFields.quantity)
+		changeQuantity(dataFields.quantity)
 	}
-	useEffect(()=> {
-		if (firstRender.current) {
-			firstRender.current = false;
-		} else {
-			changeQuantity(Number(watchQuantity))
-		}
-	}, [watchQuantity])
 	
 	return <div className={styles.cartMedium}>
 		<div>
@@ -121,7 +115,7 @@ export default React.memo(function CartMedium(props: IPropItem) {
 								type='number'
 								placeHolder=''
 								onChange={onChange}
-								onBlur={onBlur}
+								onBlur={handleSubmit(onSubmit)}
 								width={80}
 								value={value}
 							/>
@@ -129,9 +123,15 @@ export default React.memo(function CartMedium(props: IPropItem) {
 					/>
 					<div className={styles.cartMedium__flex}>
 						<div className={styles.marginRight}>
-							<Button type={ButtonType.White} imageClassName={'icon-minus'} click={()=>changeQuantity(quantity - 1)} disable={quantity === 1} />
+							<Button type={ButtonType.White} imageClassName={'icon-minus'} click={()=> {
+								setValue('quantity', Number(watchQuantity) - 1)
+								onSubmit({quantity: Number(watchQuantity) - 1})
+							}} disable={watchQuantity === 1} />
 						</div>
-						<Button type={ButtonType.White} imageClassName={'icon-plus'} click={()=>changeQuantity(quantity + 1)}/>
+						<Button type={ButtonType.White} imageClassName={'icon-plus'} click={()=> {
+							setValue('quantity', Number(watchQuantity) + 1)
+							onSubmit({quantity: Number(watchQuantity) + 1})
+						}}/>
 					</div>
 				</div>
 			</form>

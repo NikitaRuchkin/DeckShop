@@ -18,7 +18,7 @@ import {checkValid} from "../../shared/validate/checkValid";
 export default function CheckoutFirst() {
   const navigate = useNavigate();
   const dispatch = useDispatch<any>()
-  const [userExists, setUserExists] = useState(true)
+  const [userExists, setUserExists] = useState(false)
   const [disable, setDisable] = useState(false)
   const {
     setError,

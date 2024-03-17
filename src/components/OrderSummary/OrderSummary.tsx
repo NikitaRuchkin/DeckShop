@@ -24,7 +24,7 @@ export default function OrderSummary({subtotal, grandTotal}: IProp) {
       <div className={styles.cartSubtotal__price}>${grandTotal}*</div>
     </div>
     <div className={styles.btn}>
-      <Button type={ButtonType.Blue} imageClassName='icon-arrow-right' fontSize={16} text='Proceed to checkout'/>
+      <Button type={ButtonType.Blue} imageClassName='icon-arrow-right' fontSize={16} text='Proceed to checkout' link={'/checkoutFirst'}/>
     </div>
     <div className={styles.advice}>*Shipping will affect the total price</div>
   </div>

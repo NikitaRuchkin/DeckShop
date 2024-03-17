@@ -104,6 +104,7 @@ export const removeItemFromCartQuery = (itemId: number) => {
                     }
                 }
                 product {
+                		url_key
                     image {
                   		label
                   		url
@@ -111,6 +112,13 @@ export const removeItemFromCartQuery = (itemId: number) => {
                     id
                     manufacturer
                     name
+                    price {
+                    regularPrice {
+                        amount {
+                            value
+                        }
+                    	}
+                		}
                     image {
                         url
                         label

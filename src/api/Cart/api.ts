@@ -9,19 +9,6 @@ export const loadCart = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: 'https://deckshop.com/graphql' }),
 	endpoints: (builder) => ({
 		
-		// createAndAddProductToCart: builder.query<CartToken, string>({
-		// 	queryFn: async (userId: string) => {
-		// 		try {
-		// 			const token:Promise<CartToken> = await loadCart.endpoints()
-		// 			// Return the result in an object with a `data` field
-		// 			return { data: token }
-		// 		} catch (error) {
-		// 			// Catch any errors and return them as an object with an `error` field
-		// 			return { error }
-		// 		}
-		// 	},
-		// }),
-		
 		getCartData: builder.query<CartData, string>({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'}}),
 		}),
@@ -30,7 +17,7 @@ export const loadCart = createApi({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'}}),
 		}),
 		
-		updateProductInCart: builder.query<CartData, string>({
+		updateProductInCart: builder.mutation<CartData, string>({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'}}),
 		}),
 		

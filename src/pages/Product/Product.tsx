@@ -134,7 +134,10 @@ export default function Product() {
         <div className={styles.product__info}>
             <div className={styles.product__info__brand}>{data.data.products.items[0].name}</div>
             <div className={styles.product__info__name}>{data.data.products.items[0].name}</div>
-            <div className={styles.product__info__price}>${data.data.products.items[0].price.regularPrice.amount.value}</div>
+            <div className={styles.product__info__price}>{
+							data.data.products.items[0].stock_status === 'IN_STOCK'?
+							data.data.products.items[0].price.regularPrice.amount.value : 'Out of stock'
+						}</div>
             <div>
                 <Button text={'Add to cart'}
 												disable={data.data.products.items[0].stock_status !== 'IN_STOCK' || disable}
