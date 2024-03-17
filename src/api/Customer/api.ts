@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {IFormRegisterValues} from "./type";
 
 interface IToken {
 	"data": {
@@ -17,6 +18,10 @@ export const loadUser = createApi({
 	endpoints: (builder) => ({
 		
 		getUserToken: builder.query<IToken, string>({
+			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
+		}),
+		
+		createUserAcc: builder.query<IFormRegisterValues, string>({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
 		}),
 		

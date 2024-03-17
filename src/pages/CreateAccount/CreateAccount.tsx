@@ -4,28 +4,29 @@ import Field from "../../components/field/field";
 import StepContainer from "../../components/StepContainer/StepContainer";
 import AccountCardWrapperPrimary from "../../hocs/AccountCardWrapperPrimary/AccountCardWrapperPrimary";
 import {useState} from "react";
-import {Controller, useForm} from "react-hook-form";
-import {checkValid} from "../../shared/validate/checkValid";
+import {Controller, useForm, useWatch} from "react-hook-form";
+import {checkEmailValid, checkValid} from "../../shared/validate/checkValid";
 import ValidatePassword from "../../components/ValidatePassword/ValidatePassword";
+import {watch} from "fs/promises";
+import {IFormEmailValid, IFormRegisterValues, IFormRegisterValuesResponse} from "../../api/Customer/type";
+import {useDispatch} from "react-redux";
+import {loadUser} from "../../api/Customer/api";
+import {createUserAccQuery} from "../../api/Customer/query";
 
-interface IFormValues {
-	firstName: string;
-	lastName: string;
-	phone: number | string;
-	email: string;
-	password: string;
-	confirmPassword: string;
-}
+const emailValid = new RegExp('(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])')
 
 export default function CreateAccount() {
 	const [disable, setDisable] = useState<boolean>(false)
+	const [passError, setPassError] = useState<string | null>('')
+	const dispatch = useDispatch<any>()
 	const {
 		setError,
 		handleSubmit,
 		formState: { errors, isDirty },
 		clearErrors,
 		control,
-	} = useForm<IFormValues>({
+	} = useForm<IFormRegisterValues>({
+		mode: "onSubmit",
 		defaultValues: {
 			firstName: '',
 			lastName: '',
@@ -35,8 +36,21 @@ export default function CreateAccount() {
 			confirmPassword: '',
 		},
 	})
-	const onSubmit = async (dataFields: IFormValues) => {
 	
+	const watchPassword = useWatch({ control, name: "password" })
+	
+	const onSubmit = async (dataFields: IFormRegisterValues) => {
+		dispatch(loadUser.endpoints.createUserAcc.initiate(createUserAccQuery(dataFields))).then(
+			(newData: {data: IFormEmailValid})=>{
+				console.log(newData)
+				// dispatch(loadUser.endpoints.createUserAcc.initiate(createUserAccQuery(dataFields)))
+				// 	.then(
+				// 		(data: {data: IFormRegisterValuesResponse})=> {
+				// 			return data
+				// 		}
+				// 	)
+			}
+		)
 	}
 	return <div className={styles.mainContainer}>
 		<div className={styles.account__title}>Creating new account</div>
@@ -95,39 +109,40 @@ export default function CreateAccount() {
 							<div className={cn(styles.account__flexBox, styles.account__marginBottom32px)}>
 								<Controller
 									control={control}
-									name="lastName"
+									name="phone"
 									rules={{validate: {
-											...checkValid
+											...checkValid.checkEmptyField
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (
 										<Field
 											width={376}
 											error={errors.lastName && errors.lastName.message}
-											name={'lastName'}
-											type={'text'}
-											placeHolder='Enter your last name'
+											name={'phone'}
+											type={'number'}
+											placeHolder='+1'
 											onChange={onChange}
-											title='Last name'
+											title='Phone number'
 										/>
 									)}
 								/>
 								<Controller
 									control={control}
-									name="lastName"
+									name="email"
 									rules={{validate: {
-											...checkValid
+											...checkValid,
+											checkEmail: (v:string) => emailValid.test(v)? true : 'Incorrect email',
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (
 										<Field
 											width={376}
-											error={errors.lastName && errors.lastName.message}
-											name={'lastName'}
+											error={errors.email && errors.email.message}
+											name={'email'}
 											type={'text'}
-											placeHolder='Enter your last name'
+											placeHolder='Enter your email address'
 											onChange={onChange}
-											title='Last name'
+											title='Email'
 										/>
 									)}
 								/>
@@ -135,7 +150,7 @@ export default function CreateAccount() {
 							<div className={styles.account__flexBox}>
 								<Controller
 									control={control}
-									name="lastName"
+									name="password"
 									rules={{validate: {
 											...checkValid
 										}}
@@ -144,11 +159,11 @@ export default function CreateAccount() {
 										<Field
 											width={376}
 											error={errors.lastName && errors.lastName.message}
-											name={'lastName'}
+											name={'password'}
 											type={'text'}
-											placeHolder='Enter your last name'
+											placeHolder='Create a password'
 											onChange={onChange}
-											title='Last name'
+											title='Password'
 										/>
 									)}
 								/>
@@ -165,15 +180,15 @@ export default function CreateAccount() {
 											error={errors.lastName && errors.lastName.message}
 											name={'lastName'}
 											type={'text'}
-											placeHolder='Enter your last name'
+											placeHolder='Enter created password'
 											onChange={onChange}
-											title='Last name'
+											title='Confirm password'
 										/>
 									)}
 								/>
 							</div>
 						</div>
-						<ValidatePassword/>
+						<ValidatePassword errorFn={()=>{}} pass={watchPassword}/>
 					</div>
 				</AccountCardWrapperPrimary>
 				<div className={styles.account__stepMargin}>
