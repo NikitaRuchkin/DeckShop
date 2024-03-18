@@ -13,6 +13,8 @@ import CreateAccount from "../../pages/CreateAccount/CreateAccount";
 import Support from "../../pages/Support/Support";
 import Account from "../../pages/Account/Account";
 import ConfirmEmail from "../../pages/ConfirmEmail/ConfirmEmail";
+import PasswordRecovery from "../../pages/PasswordRecovery/PasswordRecovery";
+import PasswordRecoveryPass from "../../pages/PasswordRecoveryPass/PasswordRecoveryPass";
 
 export const router = createBrowserRouter([
 	{
@@ -122,6 +124,28 @@ export const router = createBrowserRouter([
 		element: (
 			<HeaderFooterWrapper>
 				<ConfirmEmail />
+			</HeaderFooterWrapper>
+		),
+	},
+	{
+		path: "/passwordRecovery",
+		errorElement: <HeaderFooterWrapper>
+			<Error/>
+		</HeaderFooterWrapper>,
+		element: (
+			<HeaderFooterWrapper>
+				<PasswordRecovery />
+			</HeaderFooterWrapper>
+		),
+	},
+	{
+		path: "/passwordRecoveryPass",
+		errorElement: <HeaderFooterWrapper>
+			<Error/>
+		</HeaderFooterWrapper>,
+		element: (
+			<HeaderFooterWrapper>
+				<PasswordRecoveryPass />
 			</HeaderFooterWrapper>
 		),
 	},

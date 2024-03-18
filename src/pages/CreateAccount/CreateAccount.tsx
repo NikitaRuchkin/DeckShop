@@ -3,9 +3,9 @@ import styles from './CreateAccount.module.scss'
 import Field from "../../components/field/field";
 import StepContainer from "../../components/StepContainer/StepContainer";
 import AccountCardWrapperPrimary from "../../hocs/AccountCardWrapperPrimary/AccountCardWrapperPrimary";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Controller, useForm, useWatch} from "react-hook-form";
-import {checkValid} from "../../shared/validate/checkValid";
+import {checkValid, emailValid} from "../../shared/validate/checkValid";
 import ValidatePassword from "../../components/ValidatePassword/ValidatePassword";
 import {IFormRegisterValues, IFormRegisterValuesResponse} from "../../api/Customer/type";
 import {useDispatch} from "react-redux";
@@ -13,8 +13,8 @@ import {loadUser} from "../../api/Customer/api";
 import {createUserAccQuery} from "../../api/Customer/query";
 import {setUserEmailRegister} from "../../store/reducers/user/UserReducer"
 import {useNavigate} from "react-router-dom";
+import {setShowDrawer} from "../../store/reducers/RegisterDrawer/RegisterDrawer";
 
-const emailValid = new RegExp('(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])')
 
 export default function CreateAccount() {
 	const navigate = useNavigate();
@@ -41,15 +41,21 @@ export default function CreateAccount() {
 		},
 	})
 	
+	const setDrawer = ()=> {
+		dispatch(setShowDrawer(true))
+	}
+	
 	const watchPassword = useWatch({ control, name: "password" })
 	
 	const onSubmit = async (dataFields: IFormRegisterValues) => {
 		setDisable(true)
 		setEmailError(false)
+		clearErrors()
 		dispatch(loadUser.endpoints.createUserAcc.initiate(createUserAccQuery(dataFields))).then(
 			(newData: {data: IFormRegisterValuesResponse})=>{
-				if(newData && newData.data.data && newData.data.data.errors) {
+				if(newData && newData.data.data && newData.data.data.createCustomerV2 === null) {
 					setEmailError(true)
+					setError('email',  { type: 'custom', message: 'Already exists' })
 				} else {
 					dispatch(setUserEmailRegister(dataFields.email))
 					navigate('/confirmEmail')
@@ -113,6 +119,10 @@ export default function CreateAccount() {
 						</div>
 						<div>
 							<div className={styles.account__titleSmall}>Sign-up information</div>
+							{emailError && <div className={styles.account__emailExist}>
+                  <div className={cn('icon-user', styles.account__emailExist__icon)}/>
+                  <div className={styles.account__emailExist__text}>The email you entered belongs to an existing account. Enter a different email address or <span onClick={setDrawer}>log in</span>.</div>
+              </div>}
 							<div className={cn(styles.account__flexBox, styles.account__marginBottom32px)}>
 								<Controller
 									control={control}
@@ -139,7 +149,6 @@ export default function CreateAccount() {
 									rules={{validate: {
 											...checkValid,
 											checkEmail: (v:string) => emailValid.test(v)? true : 'Incorrect email',
-											validPass: ()=> emailError? true : 'Already exists',
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (

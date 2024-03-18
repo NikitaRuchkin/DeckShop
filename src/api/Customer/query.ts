@@ -49,3 +49,25 @@ export const createUserEmailQuery = ({firstName, lastName, password, email}:IFor
 		variables: {}
 	});
 }
+
+export const requestPasswordResetEmail = (email:string) => {
+	return JSON.stringify({
+		query: `mutation {
+        requestPasswordResetEmail(email: "${email}")
+    }`,
+		variables: {}
+	});
+}
+
+export const requestPasswordResetPass = (email:string, token:string, password: string) => {
+	return JSON.stringify({
+		query: `mutation {
+        resetPassword(
+        email: "${email}"
+        resetPasswordToken: "${token}"
+        newPassword: "${password}"
+    )
+    }`,
+		variables: {}
+	});
+}

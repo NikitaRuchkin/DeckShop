@@ -13,6 +13,7 @@ import {loadUser, useGetUserTokenQuery} from '../../api/Customer/api'
 import {getCustomerToken} from "../../api/Customer/query";
 import {useEffect, useState} from "react";
 import {setToken} from '../../store/reducers/user/UserReducer'
+import LinkText from "../LinkText/LinkText";
 
 interface IUserCred {
 	email: string;
@@ -120,11 +121,9 @@ export default function RegisterDrawer() {
 							/>
 						</div>
 						<div className={styles.registerDrawer__body_checkBox}>
-							<div className={styles.registerDrawer__body_checkboxContainer}>
-								<div className={styles.registerDrawer__body_checkboxContainer_checkbox}><Checkbox/></div>
-								<div className={styles.registerDrawer__body_checkboxContainer_stay}>Stay logged in</div>
+							<div onClick={setDrawer}>
+								<LinkText to={'/passwordRecovery'} text={'Forgot password?'}/>
 							</div>
-							<div className={styles.registerDrawer__body_checkboxContainer_forgot}>Forgot password?</div>
 						</div>
 						<div><Button disable={isFetching || !isDirty} type={ButtonType.Blue} submit={isDirty} imageClassName='icon-arrow-right' fontSize={16} text='Log in'/> </div>
 					</div>

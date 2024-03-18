@@ -4,6 +4,35 @@
 }
 
 .account {
+  &__emailExist {
+    display: flex;
+    border-radius: 16px;
+    background: var(--Function-Blue-F2, #F2F5FA);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    &__icon {
+      font-size: 24px;
+      margin-right: 16px;
+    }
+    &__text {
+      color: var(--Text-Body, #2A416E);
+      font-family: var(--font-inter);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170%; /* 23.8px */
+      letter-spacing: 0.07px;
+    }
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
   &__title {
     color: var(--Text-Accent, #052055);
     font-family: var(--font-TTInterfaces);

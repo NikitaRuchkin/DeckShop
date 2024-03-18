@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {IFormRegisterValues, IFormRegisterValuesResponse} from "./type";
+import {IFormRegisterValues, IFormRegisterValuesResponse, IFormResetUserPassword} from "./type";
 
 interface IToken {
 	"data": {
@@ -25,6 +25,9 @@ export const loadUser = createApi({
 			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
 		}),
 		
+		resetUserPasswordEmail: builder.query<IFormResetUserPassword, string>({
+			query: (props) => ({ url: ``, method: 'POST', body: props, headers: {'Content-Type': 'application/json'} }),
+		}),
 	}),
 })
 

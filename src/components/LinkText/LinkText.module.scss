@@ -1,0 +1,14 @@
+.link {
+  color: var(--Text-Accent, #052055);
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.08px;
+  text-decoration-line: none;
+  transition: linear 150ms;
+  &:hover {
+	text-decoration-line: underline;
+  }
+}

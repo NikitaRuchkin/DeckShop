@@ -7,9 +7,11 @@
   position: relative;
   &__medium {
     width: 344px;
+    height: fit-content;
   }
   &__large {
-    width: 584px;
+    min-width: 584px;
+    height: fit-content;
   }
   &__text {
     color: #FFF;
@@ -82,9 +84,9 @@
 }
 
 .bgLarge {
-  font-size: 314px;
-  top: 175px;
-  left: 223px;
+  font-size: 347px;
+  top: 91px;
+  left: 331px;
 }
 
 .bgLargeWithoutThirdText {

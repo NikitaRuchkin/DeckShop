@@ -10,10 +10,16 @@ export interface IFormRegisterValues {
 export interface IFormRegisterValuesResponse {
 	data: {
 		customer: {
-		email: string;
-		firstname: string;
-		lastname: string;
-		id: string;
+			email: string;
+			firstname: string;
+			lastname: string;
+			id: string;
+		}
+		createCustomerV2: {
+			email: string;
+			firstname: string;
+			lastname: string;
+			id: string;
 		}
 		errors?: Array<{
 			extensions: string;
@@ -36,4 +42,10 @@ export interface IFormCheckMail {
 	},
 	createCustomerV2:	null,
 	errors:	[{message: "A customer with the same email address already exists in an associated website."}]
+}
+
+export interface IFormResetUserPassword {
+	"data": {
+		"requestPasswordResetEmail": boolean
+	}
 }
