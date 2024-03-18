@@ -1,0 +1,48 @@
+.mainContainer {
+  max-width: 1424px;
+  margin: 0 auto;
+}
+
+.confirmPass {
+  &__title {
+    color: #052055;
+    font-family: var(--font-TTInterfaces);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin-top: 56px;
+    margin-bottom: 32px;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  &__textContainer {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 24px;
+    border-radius: 24px;
+    &__title {
+      color: #052055;
+      font-family: var(--font-TTInterfaces);
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+    }
+    &__text {
+      color: var(--Text-Body, #2A416E);
+      font-family: var(--font-inter);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 24px */
+      letter-spacing: -0.08px;
+      margin-top: 32px;
+      margin-bottom: 24px;
+    }
+  }
+}

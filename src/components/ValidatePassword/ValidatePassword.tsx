@@ -4,7 +4,7 @@ import cn from "clsx";
 
 interface IProp {
 	pass: string,
-	errorFn: (e: string)=> void
+	errorFn: (e: boolean)=> void
 }
 
 interface IValidCheck {
@@ -71,9 +71,12 @@ export default function ValidatePassword({pass, errorFn}: IProp) {
 		
 		if(checkValid.length && checkValid.numbers && checkValid.uppercase && checkValidStrong.numbers && checkValidStrong.uppercase && checkValidStrong.length) {
 			setStatus('Strong')
+			errorFn(true)
 		} else if(checkValid.length && checkValid.numbers && checkValid.uppercase){
 			setStatus('Medium')
+			errorFn(true)
 		} else {
+			errorFn(false)
 			setStatus('Weak')
 		}
 		setRegExps(checkValid)

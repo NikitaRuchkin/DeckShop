@@ -5,19 +5,23 @@ import StepContainer from "../../components/StepContainer/StepContainer";
 import AccountCardWrapperPrimary from "../../hocs/AccountCardWrapperPrimary/AccountCardWrapperPrimary";
 import {useState} from "react";
 import {Controller, useForm, useWatch} from "react-hook-form";
-import {checkEmailValid, checkValid} from "../../shared/validate/checkValid";
+import {checkValid} from "../../shared/validate/checkValid";
 import ValidatePassword from "../../components/ValidatePassword/ValidatePassword";
-import {watch} from "fs/promises";
-import {IFormEmailValid, IFormRegisterValues, IFormRegisterValuesResponse} from "../../api/Customer/type";
+import {IFormRegisterValues, IFormRegisterValuesResponse} from "../../api/Customer/type";
 import {useDispatch} from "react-redux";
 import {loadUser} from "../../api/Customer/api";
 import {createUserAccQuery} from "../../api/Customer/query";
+import {setUserEmailRegister} from "../../store/reducers/user/UserReducer"
+import {useNavigate} from "react-router-dom";
 
 const emailValid = new RegExp('(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])')
 
 export default function CreateAccount() {
+	const navigate = useNavigate();
+	
 	const [disable, setDisable] = useState<boolean>(false)
-	const [passError, setPassError] = useState<string | null>('')
+	const [passError, setPassError] = useState<boolean>(false)
+	const [emailError, setEmailError] = useState<boolean>(false)
 	const dispatch = useDispatch<any>()
 	const {
 		setError,
@@ -40,15 +44,18 @@ export default function CreateAccount() {
 	const watchPassword = useWatch({ control, name: "password" })
 	
 	const onSubmit = async (dataFields: IFormRegisterValues) => {
+		setDisable(true)
+		setEmailError(false)
 		dispatch(loadUser.endpoints.createUserAcc.initiate(createUserAccQuery(dataFields))).then(
-			(newData: {data: IFormEmailValid})=>{
-				console.log(newData)
-				// dispatch(loadUser.endpoints.createUserAcc.initiate(createUserAccQuery(dataFields)))
-				// 	.then(
-				// 		(data: {data: IFormRegisterValuesResponse})=> {
-				// 			return data
-				// 		}
-				// 	)
+			(newData: {data: IFormRegisterValuesResponse})=>{
+				if(newData && newData.data.data && newData.data.data.errors) {
+					setEmailError(true)
+				} else {
+					dispatch(setUserEmailRegister(dataFields.email))
+					navigate('/confirmEmail')
+				}
+				setDisable(false)
+				return newData
 			}
 		)
 	}
@@ -117,7 +124,7 @@ export default function CreateAccount() {
 									render={({ field: { onChange, onBlur, value, ref } }) => (
 										<Field
 											width={376}
-											error={errors.lastName && errors.lastName.message}
+											error={errors.phone && errors.phone.message}
 											name={'phone'}
 											type={'number'}
 											placeHolder='+1'
@@ -132,6 +139,7 @@ export default function CreateAccount() {
 									rules={{validate: {
 											...checkValid,
 											checkEmail: (v:string) => emailValid.test(v)? true : 'Incorrect email',
+											validPass: ()=> emailError? true : 'Already exists',
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (
@@ -152,15 +160,16 @@ export default function CreateAccount() {
 									control={control}
 									name="password"
 									rules={{validate: {
-											...checkValid
+											...checkValid,
+											validPass: ()=> passError? true : 'Must meet requirements',
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (
 										<Field
 											width={376}
-											error={errors.lastName && errors.lastName.message}
+											error={errors.password && errors.password.message}
 											name={'password'}
-											type={'text'}
+											type={'password'}
 											placeHolder='Create a password'
 											onChange={onChange}
 											title='Password'
@@ -169,17 +178,19 @@ export default function CreateAccount() {
 								/>
 								<Controller
 									control={control}
-									name="lastName"
+									name="confirmPassword"
 									rules={{validate: {
-											...checkValid
+											positive: (v:string | number) => v === ''? 'Must be confirmed' : true,
+											checkEmptyField: (v:string) => v.trim() === ''? 'Must be confirmed' : true,
+											checkPass: (v)=> v === watchPassword? true : 'Does not match',
 										}}
 									}
 									render={({ field: { onChange, onBlur, value, ref } }) => (
 										<Field
 											width={376}
-											error={errors.lastName && errors.lastName.message}
-											name={'lastName'}
-											type={'text'}
+											error={errors.confirmPassword && errors.confirmPassword.message}
+											name={'confirmPassword'}
+											type={'password'}
 											placeHolder='Enter created password'
 											onChange={onChange}
 											title='Confirm password'
@@ -188,7 +199,7 @@ export default function CreateAccount() {
 								/>
 							</div>
 						</div>
-						<ValidatePassword errorFn={()=>{}} pass={watchPassword}/>
+						<ValidatePassword errorFn={setPassError} pass={watchPassword}/>
 					</div>
 				</AccountCardWrapperPrimary>
 				<div className={styles.account__stepMargin}>

@@ -8,7 +8,8 @@ const initialState: UserState = {
 		address: {},
 	},
 	token: '',
-	tokenCart: ''
+	tokenCart: '',
+	userEmailRegister: ''
 }
 
 export const UserInfoReducer = createSlice({
@@ -37,10 +38,14 @@ export const UserInfoReducer = createSlice({
 			state.token = ''
 		},
 		
+		setUserEmailRegister: (state, payload) => {
+			state.userEmailRegister = payload.payload
+		},
+		
 	},
 })
 
-export const { setToken, deleteToken, setTokenCart } = UserInfoReducer.actions
+export const { setToken, deleteToken, setTokenCart, setUserEmailRegister } = UserInfoReducer.actions
 export const getUserInfoState = (state:UserState)  => state.userInfo
 export const getUserTokenState = (state:RootState )  => state.UserReducer.token
 export const getUserTokenCartState = (state:RootState )  => state.UserReducer.tokenCart

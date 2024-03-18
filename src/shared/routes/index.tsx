@@ -12,6 +12,7 @@ import CheckoutThird from "../../pages/CheckoutThird/CheckoutThird";
 import CreateAccount from "../../pages/CreateAccount/CreateAccount";
 import Support from "../../pages/Support/Support";
 import Account from "../../pages/Account/Account";
+import ConfirmEmail from "../../pages/ConfirmEmail/ConfirmEmail";
 
 export const router = createBrowserRouter([
 	{
@@ -110,6 +111,17 @@ export const router = createBrowserRouter([
 		element: (
 			<HeaderFooterWrapper>
 				<CreateAccount />
+			</HeaderFooterWrapper>
+		),
+	},
+	{
+		path: "/confirmEmail",
+		errorElement: <HeaderFooterWrapper>
+			<Error/>
+		</HeaderFooterWrapper>,
+		element: (
+			<HeaderFooterWrapper>
+				<ConfirmEmail />
 			</HeaderFooterWrapper>
 		),
 	},

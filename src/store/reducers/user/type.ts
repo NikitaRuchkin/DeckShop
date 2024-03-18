@@ -5,4 +5,5 @@ export interface UserState {
 	},
 	token: string;
 	tokenCart: string;
+	userEmailRegister: string;
 }

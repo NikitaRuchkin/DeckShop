@@ -15,6 +15,10 @@ export interface IFormRegisterValuesResponse {
 		lastname: string;
 		id: string;
 		}
+		errors?: Array<{
+			extensions: string;
+			message: string
+		}>
 	}
 }
 
